@@ -1,4 +1,4 @@
-import '../app/globals.css'
+
 import { GetServerSideProps } from 'next';
 import MyLogo from '../images/logo.svg'
 import Image from 'next/image';
@@ -23,8 +23,8 @@ import { List } from 'postcss/lib/list';
 import Link from 'next/link';
 
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+  { name: 'Women Rings', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
   { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
   { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
   { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
@@ -45,7 +45,7 @@ const navigation = () => {
     <header className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 py-8 lg:px-8" aria-label="Global">
         <div className='flex flex-row items-center justify-center'>
-          <div className="flex lg:flex-1 mr-10">
+          <div className="flex lg:flex-1 mr-12">
             <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Mentor Diamond</span>
               <Image className="h-8 w-auto" src={MyLogo} alt="Logo" />
@@ -78,7 +78,7 @@ const navigation = () => {
                         className="group relative flex items-center gap-x-6 rounded-lg p-4 text-md leading-6 hover:bg-gray-50"
                       >
                         <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon className="h-6 w-6 text-gray-600 group-hover:text-[#ffba75]" aria-hidden="true" />
+                          <item.icon className="h-6 w-6 text-gray-500 group-hover:text-[#0F172A]" aria-hidden="true" />
                         </div>
                         <div className="flex-auto">
                           <Link href={item.href} className="block font-normal text-gray-900">
