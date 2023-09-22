@@ -19,7 +19,6 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import { List } from 'postcss/lib/list';
 import Link from 'next/link';
 
 const products = [
@@ -130,9 +129,7 @@ const navigation = () => {
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
-            Sign in<span aria-hidden="true">&rarr;</span>
-          </Link>
+           Sign in
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -228,12 +225,7 @@ const navigation = () => {
                 </Link>
               </div>
               <div className="py-6">
-                <Link
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Sign in
-                </Link>
+                Sign in
               </div>
             </div>
           </div>
