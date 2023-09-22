@@ -2,7 +2,7 @@
 import { Inter } from 'next/font/google'
 import MyNav from '@/components/navigation'
 import Checkbox from '@/components/checkbox'
-
+import MyLogin from '@/components/loginForm'
 
 import { useState } from "react";
 const inter = Inter({ subsets: ['latin'] })
@@ -17,8 +17,18 @@ export default function Login() {
 
         <div className={inter.className}>
             <MyNav/>
+            <div className="p-10  mx-auto  bg-white rounded-xl shadow-sm overflow-hidden max-w-screen-xl">
+                <h1 className='text-2xl font-bold py-4'>Sign in</h1>
+                <p className='font-light text-md'>Welcome back! Enter your credentials and access your shopping bag.</p>
+                <div className='flex flex-row flex-wrap'>
+                    <div className='flex flex-col'>
+                        <MyLogin/>
+                    </div>
+                </div>
+            </div>
 
-<div>
+{/* <div>
+
             <div className="p-10  mx-auto  bg-white rounded-xl shadow-md overflow-hidden max-w-screen-xl">
                 <div className="">
                     <div >
@@ -85,7 +95,7 @@ export default function Login() {
                         <div className="mt-10 flex items-center">
                             <div>
                                 <Checkbox/>
-                            </div>
+                            </div> */}
                             {/* <div className='ml-20'>
                             <a
                             href="#!"
@@ -93,22 +103,21 @@ export default function Login() {
                         >
                                 <span>Forgot password?</span>
                                 </a></div> */}
-                        </div>
+                        {/* </div>
                         
-                    </div>
+                    </div> */}
 
 
                     {/* <div><p className="text-3xl">Create your Account</p>
                         <p className="mt-3">You can save time during checkout, provide your credentials and checkout faster.</p></div> */}
-                </div>
+                {/* </div>
 
             </div>
 
 
-        </div>
+        </div> */}
 
         </div>
-
 
 
     )
