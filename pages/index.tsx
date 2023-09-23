@@ -4,7 +4,7 @@ import Footer from '@/components/footer2'
 
 export default function Home() {
   return (
-    <div className='h-[100vh]'>
+    <div className=''>
       <MyNav/>
       <Footer/>
     </div>

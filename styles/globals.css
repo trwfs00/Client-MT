@@ -16,6 +16,13 @@
   }
 }
 
+input[type="password"]::-ms-reveal {
+  /* Your styles here */
+  color: #0F172A; /* Change the color of the reveal button text */
+  background-color: transparent; /* Make the background transparent */
+  /* Add other styles as needed */
+}
+
 /* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
