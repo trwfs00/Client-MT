@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import GoogleIcon from '@/components/google'
 import Link from 'next/link'
+import Signup from '@/components/signupForm'
 
 export default function loginForm(props: any) {
     const [open, setOpen] = useState(false)
@@ -17,7 +18,15 @@ export default function loginForm(props: any) {
                 className={props.classNames + " w-full lg:w-auto text-left"}
                 onClick={handleModal}
             >
-                Sign in &rarr;
+                {props?.title ? (
+                    <>
+                        {props.title}
+                    </>
+                ):(
+                    <>
+                      Sign in &rarr;
+                    </>
+                )}
             </button>
             <Transition.Root show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
@@ -96,6 +105,7 @@ export default function loginForm(props: any) {
                                         >
                                             Don't have an account? <Link href={"#"} className='text-md font-semibold ml-2'>Signup</Link>
                                         </button>
+                                        <Signup/>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
