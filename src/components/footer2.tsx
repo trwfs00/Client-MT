@@ -10,7 +10,7 @@ import {
 
 export default function footer2() {
     return (
-        <footer className="bg-white bottom-0">
+        <footer className="bg-white border-t border-gray-100 shadow-sm z-50">
             <div className="mx-auto w-full max-w-screen-xl pt-6 lg:pt-8 px-4">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0 ml-5">

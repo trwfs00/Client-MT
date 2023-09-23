@@ -1,12 +1,21 @@
-import Image from 'next/image'
-import MyNav from '@/components/navigation'
-import Footer from '@/components/footer2'
+import { GetServerSideProps } from 'next';
 
-export default function Home() {
+const index = () => {
   return (
-    <div className=''>
-      <MyNav/>
-      <Footer/>
+    <div className='bg-gray-100'>
+      Enter
     </div>
-  )
+  );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+
+  return {
+    props:{
+
+    }
+  }
+}
+
+export default index
