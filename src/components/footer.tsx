@@ -8,8 +8,8 @@ import {
 export class footer extends Component {
     render() {
         return (
-            <div>
-                <footer className="footer p-20  text-base-content ">
+            <>
+                <footer className="footer bg-white p-20  text-base-content">
                     <aside className=''>
                         <div className="flex lg:flex-1 mr-12">
                             <Link href="#" className="-m-1.5 p-1.5">
@@ -55,7 +55,7 @@ export class footer extends Component {
                                 <span className="label-text text-md">Want exclusive offers and first access to the products? Sign up for the latest alert</span>
                             </label>
                             <div className="relative mt-5">
-                                <input type="text" placeholder="E-maill address" className="input input-bordered rounded-none w-full pr-16" />
+                                <input type="text" placeholder="E-maill address" className="input bg-gray-50 input-bordered rounded-none w-full pr-16" />
                                 <button className="btn  bg-gray-800 absolute top-0 right-0 rounded-none"> 
                                     <ChevronRightIcon className="h-5 w-5 text-[#ffffff] translate-y-[0.15em]" />
                                 </button>
@@ -63,20 +63,12 @@ export class footer extends Component {
                             </div>
 
                         </fieldset>
-                        {/* <nav className="md:place-self-center md:justify-self-start">
-                            <div className="grid grid-flow-col gap-4 mt-3">
-                                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
-                                <p className='text-base'>Diamond Mania</p>
-                                <button><ArrowRightIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" /></button>
-                               
-                            </div>
-                        </nav> */}
                     </form>
 
 
                 </footer>
-                <div>
-                    <footer className="footer px-10 py-4 border-t bg-base-100 text-base-content border-base-300">
+                <>
+                    <footer className="footer bg-gray-100 px-10 py-4 border-t text-base-content border-gray-200">
                         <aside className="items-center grid-flow-col  md:justify-self-start pl-10">
 
                             <p className='pr-10 text-md text-slate-400' >Privacy Policy</p>
@@ -92,12 +84,8 @@ export class footer extends Component {
                         </aside>
 
                     </footer>
-                </div>
-            </div>
-
-
-
-
+                </>
+            </>
         )
     }
 }

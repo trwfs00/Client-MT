@@ -41,7 +41,7 @@ const navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white font-mtsans">
+    <header className="bg-white font-mtsans sticky top-0">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 py-8 lg:px-8" aria-label="Global">
         <div className='flex flex-row items-center justify-center'>
           <div className="flex lg:flex-1 mr-12">
