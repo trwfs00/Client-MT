@@ -16,7 +16,7 @@ type Data = {
   type: string,
   productName: string,
   productDesc: string,
-  thumbnail: number,
+  thumbnail: string,
   idSKU: [{
     _id: string
   }],
@@ -41,13 +41,12 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default function Home(props: Props) {
-  const [product, setStudents] = useState<[Data]>(props.datas)
+export default function Home() {
   return (
     <div className={inter.className}>
-      {/* <MyNav />
-      <MyLogin /> */}
-      <Myproduct datas={product}></Myproduct>
+      <MyNav />
+      <MyLogin />
+      {/* <Myproduct datas={product}></Myproduct> */}
     </div>
   )
 }
