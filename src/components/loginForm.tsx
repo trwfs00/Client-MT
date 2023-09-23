@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import GoogleIcon from '@/components/google'
 import Link from 'next/link'
 
@@ -12,7 +12,7 @@ export default function loginForm(props: any) {
     }
 
     return (
-        <div className='font-mtsans'>
+        <>
             <button type="button"
                 className={props.classNames + " w-full lg:w-auto text-left"}
                 onClick={handleModal}
@@ -46,6 +46,13 @@ export default function loginForm(props: any) {
                             >
                                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:py-4">
                                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                        <button
+                                            type="button"
+                                            className="inline-flex fixed right-4 top-4 rounded-full bg-gray-100 p-1"
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            <XMarkIcon className="h-6 w-6 text-gray-700" />
+                                        </button>
                                         <div className="sm:flex sm:items-start">
                                             <div className="mt-3 text-center sm:ml-4 sm:mt-0">
                                                 <Dialog.Title as="h3" className="text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
@@ -56,12 +63,12 @@ export default function loginForm(props: any) {
                                                         Welcome back! Enter your credentials and access your shopping bag.
                                                     </p>
                                                     <div className="relative z-0 w-full my-6 group text-left">
-                                                        <input type="email" name="floating_email" id="floating_email" className="block py-3.5 px-0 w-full text-md font-light text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer" placeholder=" " required />
-                                                        <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                                                        <input type="email" name="floating_email" id="floating_email" className="block py-3.5 px-0 w-full text-md font-light text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-700 dark:border-gray-900 dark:focus:border-gray-900 focus:outline-none focus:ring-0 focus:border-gray-900 peer" placeholder=" " required />
+                                                        <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                                                     </div>
                                                     <div className="relative z-0 w-full mb-6 group text-left">
-                                                        <input type="password" name="floating_password" id="floating_password" className="block py-3.5 px-0 w-full font-light text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer" placeholder=" " required />
-                                                        <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                                                        <input type="password" name="floating_password" id="floating_password" className="block py-3.5 px-0 w-full font-light text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-700 dark:border-gray-900 dark:focus:border-gray-900 focus:outline-none focus:ring-0 focus:border-gray-900 peer" placeholder=" " required />
+                                                        <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,7 +87,7 @@ export default function loginForm(props: any) {
                                             className="inline-flex mb-6 w-full justify-center rounded-md bg-white px-2 py-3 text-md font-semibold text-gray-900 hover:bg-gray-50 border border-gray-100 sm:ml-3 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                         >
-                                            <GoogleIcon classNames="w-6 h-6 mr-2.5"/> Sign in with Google
+                                            <GoogleIcon classNames="w-6 h-6 mr-2.5" /> Sign in with Google
                                         </button>
                                         <button
                                             type="button"
@@ -96,6 +103,6 @@ export default function loginForm(props: any) {
                     </div>
                 </Dialog>
             </Transition.Root>
-        </div>
+        </>
     )
 }

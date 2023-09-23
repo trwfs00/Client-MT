@@ -45,7 +45,7 @@ const navigation = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 py-8 lg:px-8" aria-label="Global">
         <div className='flex flex-row items-center justify-center'>
           <div className="flex lg:flex-1 mr-12">
-            <Link href="#" className="-m-1  .5 p-1.5">
+            <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Mentor Diamond</span>
               <Image className="h-10 w-auto" src={MyLogo} alt="Logo" />
             </Link>
@@ -114,12 +114,12 @@ const navigation = () => {
           </Popover.Group>
         </div>
         <div className="flex lg:flex lg:flex-1 lg:justify-end gap-8">
-          <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
+          <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
             <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Link href="#" className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
+          {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
             <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </Link>
+          </button> */}
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
@@ -142,8 +142,8 @@ const navigation = () => {
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <Link href="#" className="flex -m-1.5 p-1.5 sm:invisible">
+          <div className="flex items-center justify-between sm:justify-end">
+            <Link href="#" className="flex -m-1.5 p-1.5 sm:invisible sm:hidden">
               <span className="sr-only">Mentor Diamond</span>
               <Image
                 className="h-10 w-auto"
@@ -151,10 +151,13 @@ const navigation = () => {
                 alt="Logo"
               />
             </Link>
-            <div className='flex flex-row flex-wrap gap-8'>
-              <button className="flex sm:hidden lg:flex text-md font-normal leading-6 text-gray-900">
+            <div className='flex flex-row flex-wrap gap-8 sm:-m-1.5 sm:p-1.5 sm:py-3.5'>
+              <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
                 <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
               </button>
+              {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
+                <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
+              </button> */}
               <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
                 <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
               </button>
