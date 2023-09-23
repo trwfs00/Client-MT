@@ -14,14 +14,18 @@ type Props = {
     type: string,
     productName: string,
     productDesc: string,
-    thumbnail: string,
-    idSKU: [{
-      _id: string
-    }],
+    thumbnail: {
+        data: Buffer,
+        contentType: string
+    }[],
+    idSKU:{
+        _id: string
+    }[],
     created_at: string,
     updated_at: string,
     deleted_at: string
   }
+
   
   export const getServerSideProps = async () => {
     try {
@@ -38,33 +42,9 @@ type Props = {
       }
     }
   }
-
-  
   
   export default function Home(props: Props) {
     const [product, setproduct] = useState<[Data]>(props.datas)
-    const [imageUrl, setImageUrl] = useState('');
-
-    // เมื่อคอมโพเนนต์โหลด ให้ทำการส่งข้อมูล base64 ไปยังเซิร์ฟเวอร์และรับ URL ของรูปภาพกลับมา
-    useEffect(() => {
-        const base64Data = '...'; // ตัวอย่างข้อมูล base64 ของรูปภาพ
-
-        fetch('/api/convertBase64ToURL', {
-            method: 'POST',
-            body: JSON.stringify({ base64Data }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            setImageUrl(data.imageUrl);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }, []);
-    
     return (
       <div className={inter.className}>
         <Myproduct datas={product}></Myproduct>
