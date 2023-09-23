@@ -63,7 +63,7 @@ export default function loginForm(props: any) {
                                         </button>
                                         <div className="sm:flex sm:items-start">
                                             <div className="mt-3 text-center sm:ml-4 sm:mt-0">
-                                                <Dialog.Title as="h3" className="text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
+                                                <Dialog.Title as="h3" className="font-mtserif text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
                                                     Welcome back!
                                                 </Dialog.Title>
                                                 <div className="mt-2 text-left">
