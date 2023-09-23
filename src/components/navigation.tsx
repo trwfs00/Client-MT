@@ -43,31 +43,31 @@ type UserExist = {
   name: string,
 }
 
-// export const getServerSideProps = async () => {
-//   try {
-//     let response = await fetch('http://localhost:8080/user/existUser')
-//     let datas = await response.json()
-    
-//     return {
-//       props: { datas: JSON.parse(JSON.stringify(datas)) }
-//     }
-//   } catch (err) {
-//     console.error(err)
-//     return {
-//       props: { datas: [] },
-//     }
-//   }
-// }
+type Auth = {
+  auth: boolean
+}
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = ( { userExist } : Props) => {
-
-  // const [userExist, setUserExist] = useState<[UserExist]>(props.userExist)
+const navigation = (props: Auth) => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const handleLogout = async () => {
+
+    console.log('logout click')
+
+    await fetch('http://localhost:8080/user/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
+
+  }
+
+  // console.log(props)
 
   return (
     <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
@@ -155,7 +155,15 @@ const navigation = ( { userExist } : Props) => {
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
+          {props.auth
+            ? <button type="button"
+              className={" w-full lg:w-auto text-left"}
+              onClick={handleLogout} >
+              Sign out &rarr;
+            </button>
+            : <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
+          }
+
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -248,7 +256,14 @@ const navigation = ( { userExist } : Props) => {
                 </Link>
               </div>
               <div className="py-6">
-                <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"} />
+                {props.auth ?
+                  <button type="button"
+                    className={" w-full lg:w-auto text-left"}
+                    onClick={handleLogout}
+                  >
+                    Sign out &rarr;
+                  </button>
+                  : <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"} />}
               </div>
             </div>
           </div>

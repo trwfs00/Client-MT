@@ -1,35 +1,10 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useRef, useState,SyntheticEvent } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import GoogleIcon from '@/components/google'
 import Link from 'next/link'
-import { data } from 'autoprefixer'
+import router from 'next/router';
 
-type data = {
-    email: string,
-    password: string,
-    cookie: string
-}
-
-export const getServerSideProps = async () => {
-    try {
-        console.log("Getserver")
-        let response = await fetch('http://localhost:8080/user',{
-            method: "GET",
-            body: JSON.stringify(data)
-        })
-        let datas = await response.json()
-
-        return {
-            props: { datas: JSON.parse(JSON.stringify(datas)) }
-        }
-    } catch (error) {
-        console.error(error)
-        return {
-            props: { datas: [] },
-        }
-    }
-}
 
 export default function loginForm(props: any) {
     const [open, setOpen] = useState(false)
@@ -43,37 +18,32 @@ export default function loginForm(props: any) {
     const [error, setError] = useState('')
     const [message, setMessage] = useState('')
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault()
+
         if (email && password) {
             try {
-                let respone = await fetch('http://localhost:8080/user/login', {
+                await fetch('http://localhost:8080/user/login', {
                     method: "POST",
-                    body: JSON.stringify({
-                        email, password
-                    }),
-                    headers: {
-                        Accept: "application/json , text/plain, */*",
-                        "Content-Type": "application/json"
-                    },
-                    credentials: 'include'
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ email, password })
                 })
-                respone = await respone.json()
-                setMessage('Login Sucessfully')
-                console.log(respone)
+                
                 setOpen(false)
+                window.location.reload();
             } catch (err: any) {
                 setError(err)
             }
+            
         } else {
-            return setError('All fields are required!! MotherFUcker idiot')
+            return setError("All fields are required!! MotherFUcker idiot")
         }
-
     }
 
 
     return (
-        <div className='font-mtsans'>
+        <>
             <button type="button"
                 className={props.classNames + " w-full lg:w-auto text-left"}
                 onClick={handleModal}
@@ -81,7 +51,7 @@ export default function loginForm(props: any) {
                 Sign in &rarr;
             </button>
             <Transition.Root show={open} as={Fragment}>
-                <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+                <Dialog as="div" className="relative z-50" initialFocus={cancelButtonRef} onClose={setOpen}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -122,7 +92,7 @@ export default function loginForm(props: any) {
                                                             placeholder=" "
                                                             required
                                                             onChange={(e) => setEmail(e.target.value)}
-                                                            value={email}
+                                                            // value={email}
                                                         />
                                                         <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                                                     </div>
@@ -132,7 +102,7 @@ export default function loginForm(props: any) {
                                                             placeholder=" "
                                                             required
                                                             onChange={(e) => setPassword(e.target.value)}
-                                                            value={password}
+                                                            // value={password}
                                                         />
                                                         <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                                                     </div>
@@ -148,6 +118,7 @@ export default function loginForm(props: any) {
                                             type="button"
                                             className="inline-flex mb-2 w-full justify-center rounded-md bg-[#0F172A] px-2 py-3 text-md font-semibold text-white  hover:bg-[#161F34] sm:ml-3 sm:w-auto"
                                             onClick={handleSubmit}
+
                                         >
                                             Sign in
                                         </button>
@@ -172,6 +143,6 @@ export default function loginForm(props: any) {
                     </div>
                 </Dialog>
             </Transition.Root>
-        </div>
+        </>
     )
 }
