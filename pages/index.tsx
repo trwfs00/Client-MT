@@ -1,12 +1,10 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import MyNav from '@/components/navigation'
-import Footer from '@/components/footer'
-const inter = Inter({ subsets: ['latin'] })
+import Footer from '@/components/footer2'
 
 export default function Home() {
   return (
-    <div className={inter.className}>
+    <div className='h-[200vh]'>
       <MyNav/>
       <Footer/>
     </div>
