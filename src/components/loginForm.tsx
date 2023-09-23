@@ -84,7 +84,7 @@ export default function loginForm(props: any) {
                                         </button>
                                         <button
                                             type="button"
-                                            className="inline-flex w-full justify-center rounded-md bg-white px-2 py-3 text-md font-normal text-gray-900sm:ml-3 sm:w-auto"
+                                            className="inline-flex w-full justify-center rounded-md bg-white px-2 py-3 text-md font-normal text-gray-900 sm:ml-3 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                         >
                                             Don't have an account? <Link href={"#"} className='text-md font-semibold ml-2'>Signup</Link>
