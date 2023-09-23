@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Signin from '@/components/loginForm'
 import { useState } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
+import Link from 'next/link';
 
 const register = () => {
     const [selectedGender, setSelectedGender] = useState(0);
@@ -103,10 +104,18 @@ const register = () => {
                             </div>
                             <div className="flex items-start">
                                 <div className="flex items-center h-5">
+                                    <input id="offers" aria-describedby="offers" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="offers" className="font-normal italic text-gray-700">Yes, I’d like to get insider information about exclusive offers, events and more.</label>
+                                </div>
+                            </div>
+                            <div className="flex items-start">
+                                <div className="flex items-center h-5">
                                     <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required />
                                 </div>
-                                <div className="ml-3 text-md">
-                                    <label htmlFor="terms" className="font-normal text-gray-500">I accept the <a className="font-medium text-gray-900 hover:underline" href="#">Terms and Conditions</a></label>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="terms" className="font-normal italic text-gray-700">I accept the <Link className="font-medium text-gray-900 hover:underline" href="#">Terms and Conditions</Link></label>
                                 </div>
                             </div>
                             <div className="block pt-4 pb-6">
