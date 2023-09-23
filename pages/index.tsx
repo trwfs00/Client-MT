@@ -63,12 +63,24 @@ export default function Home(props: Props) {
   console.log(props)
 
   return (
-    <div className={inter.className}>
-      <MyNav userExist={userExist} />
+    <div className='h-[100vh]'>
+      <MyNav/>
       <Footer/>
     </div>
-  )
+  );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+
+  return {
+    props:{
+
+    }
+  }
+}
+
+export default index
 
 
 // export const getServerSideProps = async () => {
