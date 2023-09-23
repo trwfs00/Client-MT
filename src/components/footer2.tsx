@@ -10,11 +10,11 @@ import {
 
 export default function footer2() {
     return (
-        <footer className="bg-white border-t border-gray-100 shadow-sm z-50">
+        <footer className="bg-white border-t border-gray-100 shadow-sm z-50 font-mtsans">
             <div className="mx-auto w-full max-w-screen-xl pt-6 lg:pt-8 px-4">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0 ml-5">
-                        <Link href="#" className="-m-1.5 p-1.5">
+                        <Link href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Mentor Diamond</span>
                             <Image className="h-10 w-auto" src={MyLogo} alt="Logo" />
                         </Link>
@@ -26,7 +26,7 @@ export default function footer2() {
                     </div>
                     <div className="grid grid-cols-12 gap-8 sm:gap-6 mx-5 lg:mx-20 mt-5">
                         <div className='col-span-12 sm:col-span-6 lg:col-span-4'>
-                            <h2 className="mb-6 text-xl font-semibold text-gray-900 uppercase ">Help & Information</h2>
+                            <h2 className="mb-6 text-lg font-medium text-gray-900 uppercase">Help & Information</h2>
                             <ul className="text-gray-500 font-normal">
                                 <li className="mb-4">
                                     <Link href="#" className="hover:underline">Contact Us</Link>
@@ -54,7 +54,7 @@ export default function footer2() {
                             </ul>
                         </div>
                         <div className='col-span-12 sm:col-span-6 lg:col-span-4'>
-                            <h2 className="mb-6 text-xl font-semibold text-gray-900 uppercase ">Categories</h2>
+                            <h2 className="mb-6 text-lg font-medium text-gray-900 uppercase ">Categories</h2>
                             <ul className="text-gray-500 font-normal">
                                 <li className="mb-4">
                                     <Link href="#" className="hover:underline">Earrings</Link>
@@ -81,13 +81,13 @@ export default function footer2() {
                             </ul>
                         </div>
                         <div className='col-span-12 sm:col-span-12 lg:col-span-4'>
-                            <h2 className="mb-6 text-xl font-semibold text-gray-900 uppercase">Join Our Exclusive Offers</h2>
+                            <h2 className="mb-6 text-lg font-medium text-gray-900 uppercase">Join Our Exclusive Offers</h2>
                             <ul className="text-gray-500 font-normal">
                                 <span >Want exclusive offers and first access to the products? Sign up for the latest alert</span>
 
                                 <div className="flex flex-row">
                                     <input type="text" placeholder="E-maill address" className="input bg-gray-50 input-bordered rounded-none my-6 w-full" />
-                                    <button className="btn bg-gray-800 rounded-none my-6">
+                                    <button className="btn bg-[#0F172A] rounded-none my-6 hover:bg-gray-900">
                                         <ChevronRightIcon className="h-5 w-5 text-white translate-y-[0.15em]" />
                                     </button>
                                 </div>
