@@ -22,7 +22,7 @@ const register = () => {
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="font-mtserif text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                            Create and account
+                            Create an Account
                         </h1>
                         <p className="font-mtsans text-md font-normal leading-tight tracking-tight text-gray-600">
                             You can save time during checkout, provide your credentials and checkout faster.
