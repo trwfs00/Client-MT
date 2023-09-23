@@ -3,6 +3,33 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import GoogleIcon from '@/components/google'
 import Link from 'next/link'
+import { data } from 'autoprefixer'
+
+type data = {
+    email: string,
+    password: string,
+    cookie: string
+}
+
+export const getServerSideProps = async () => {
+    try {
+        console.log("Getserver")
+        let response = await fetch('http://localhost:8080/user',{
+            method: "GET",
+            body: JSON.stringify(data)
+        })
+        let datas = await response.json()
+
+        return {
+            props: { datas: JSON.parse(JSON.stringify(datas)) }
+        }
+    } catch (error) {
+        console.error(error)
+        return {
+            props: { datas: [] },
+        }
+    }
+}
 
 export default function loginForm(props: any) {
     const [open, setOpen] = useState(false)
@@ -10,6 +37,40 @@ export default function loginForm(props: any) {
     const handleModal = () => {
         if (open || !open) setOpen(!open)
     }
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const [message, setMessage] = useState('')
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault()
+        if (email && password) {
+            try {
+                let respone = await fetch('http://localhost:8080/user/login', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email, password
+                    }),
+                    headers: {
+                        Accept: "application/json , text/plain, */*",
+                        "Content-Type": "application/json"
+                    },
+                    credentials: 'include'
+                })
+                respone = await respone.json()
+                setMessage('Login Sucessfully')
+                console.log(respone)
+                setOpen(false)
+            } catch (err: any) {
+                setError(err)
+            }
+        } else {
+            return setError('All fields are required!! MotherFUcker idiot')
+        }
+
+    }
+
 
     return (
         <div className='font-mtsans'>
@@ -56,13 +117,28 @@ export default function loginForm(props: any) {
                                                         Welcome back! Enter your credentials and access your shopping bag.
                                                     </p>
                                                     <div className="relative z-0 w-full my-6 group text-left">
-                                                        <input type="email" name="floating_email" id="floating_email" className="block py-3.5 px-0 w-full text-md font-light text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer" placeholder=" " required />
+                                                        <input type="email" name="floating_email" id="floating_email"
+                                                            className="block py-3.5 px-0 w-full text-md font-light text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-700 dark:border-gray-600 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+                                                            placeholder=" "
+                                                            required
+                                                            onChange={(e) => setEmail(e.target.value)}
+                                                            value={email}
+                                                        />
                                                         <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                                                     </div>
                                                     <div className="relative z-0 w-full mb-6 group text-left">
-                                                        <input type="password" name="floating_password" id="floating_password" className="block py-3.5 px-0 w-full font-light text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer" placeholder=" " required />
+                                                        <input type="password" name="floating_password" id="floating_password"
+                                                            className="block py-3.5 px-0 w-full font-light text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-700 dark:border-gray-400 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+                                                            placeholder=" "
+                                                            required
+                                                            onChange={(e) => setPassword(e.target.value)}
+                                                            value={password}
+                                                        />
                                                         <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-900 peer-focus:dark:text-gray-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                                                     </div>
+                                                    <p>{message ? <div className="text-green-500">{message}</div> : null}
+                                                        {error ? <div className="text-red-500">{error}</div> : null}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,7 +147,7 @@ export default function loginForm(props: any) {
                                         <button
                                             type="button"
                                             className="inline-flex mb-2 w-full justify-center rounded-md bg-[#0F172A] px-2 py-3 text-md font-semibold text-white  hover:bg-[#161F34] sm:ml-3 sm:w-auto"
-                                            onClick={() => setOpen(false)}
+                                            onClick={handleSubmit}
                                         >
                                             Sign in
                                         </button>
@@ -80,7 +156,7 @@ export default function loginForm(props: any) {
                                             className="inline-flex mb-6 w-full justify-center rounded-md bg-white px-2 py-3 text-md font-semibold text-gray-900 hover:bg-gray-50 border border-gray-100 sm:ml-3 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                         >
-                                            <GoogleIcon classNames="w-6 h-6 mr-2.5"/> Sign in with Google
+                                            <GoogleIcon classNames="w-6 h-6 mr-2.5" /> Sign in with Google
                                         </button>
                                         <button
                                             type="button"

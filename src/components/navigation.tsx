@@ -19,7 +19,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
-import Signin from '@/components/loginForm'
+import Signin from '@/src/components/loginForm'
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -33,11 +33,40 @@ const callsToAction = [
   { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
 
+type Props = {
+  userExist: [UserExist]
+}
+
+type UserExist = {
+  _id: string
+  email: string,
+  name: string,
+}
+
+// export const getServerSideProps = async () => {
+//   try {
+//     let response = await fetch('http://localhost:8080/user/existUser')
+//     let datas = await response.json()
+    
+//     return {
+//       props: { datas: JSON.parse(JSON.stringify(datas)) }
+//     }
+//   } catch (err) {
+//     console.error(err)
+//     return {
+//       props: { datas: [] },
+//     }
+//   }
+// }
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = () => {
+const navigation = ( { userExist } : Props) => {
+
+  // const [userExist, setUserExist] = useState<[UserExist]>(props.userExist)
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -126,7 +155,8 @@ const navigation = () => {
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
+          {userExist ? <button type="button" className={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full lg:w-auto text-left"}>Sign out &rarr; </button> : <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} /> }
+          {/* <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} /> */}
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -216,6 +246,14 @@ const navigation = () => {
                 </Link>
               </div>
               <div className="py-6">
+                {/* {userExist ?
+                  <button type="button"
+                    className={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50 w-full lg:w-auto text-left"}
+                  >
+                    Sign out &rarr;
+                  </button>
+                  : <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"} />
+                } */}
                 <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"} />
               </div>
             </div>
@@ -226,14 +264,5 @@ const navigation = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-
-  return {
-    props: {
-
-    }
-  }
-}
 
 export default navigation
