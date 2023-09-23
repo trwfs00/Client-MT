@@ -48,7 +48,7 @@ export default function footer2() {
                                 </li>
 
                                 <li >
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Book an Appointment</Link>
+                                    <Link href="#" className="hover:underline">Book an Appointment</Link>
                                 </li>
 
                             </ul>
@@ -57,25 +57,25 @@ export default function footer2() {
                             <h2 className="mb-6 text-xl font-semibold text-gray-900 uppercase ">Categories</h2>
                             <ul className="text-gray-500 font-normal">
                                 <li className="mb-4">
-                                    <Link href="https://flowbite.com/" className="hover:underline">Earrings</Link>
+                                    <Link href="#" className="hover:underline">Earrings</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Necklaces</Link>
+                                    <Link href="#" className="hover:underline">Necklaces</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Best Sellers</Link>
+                                    <Link href="#" className="hover:underline">Best Sellers</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Engagement Ring</Link>
+                                    <Link href="#" className="hover:underline">Engagement Ring</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Casual Ring</Link>
+                                    <Link href="#" className="hover:underline">Casual Ring</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Women</Link>
+                                    <Link href="#" className="hover:underline">Women</Link>
                                 </li>
                                 <li>
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Men</Link>
+                                    <Link href="#" className="hover:underline">Men</Link>
                                 </li>
 
                             </ul>
