@@ -87,7 +87,7 @@ export default function footer2() {
 
                                 <div className="flex flex-row">
                                     <input type="text" placeholder="E-maill address" className="input bg-gray-50 input-bordered rounded-none my-6 w-full" />
-                                    <button className="btn bg-gray-800 rounded-none my-6 -translate-x-6">
+                                    <button className="btn bg-gray-800 rounded-none my-6">
                                         <ChevronRightIcon className="h-5 w-5 text-white translate-y-[0.15em]" />
                                     </button>
                                 </div>
@@ -98,7 +98,7 @@ export default function footer2() {
                 <hr className="mt-8 mb-3 border-gray-200 sm:mx-auto" />
                 
                 <div className='md:flex md:items-center md:justify-between md:p-2'>
-                    <ul className="flex flex-wrap items-center justify-center gap-2 text-sm font-normal text-gray-500 sm:mt-0 ">
+                    <ul className="flex flex-wrap items-center justify-center gap-2 text-sm font-normal text-gray-500 sm:mt-0 pb-2">
                         <li>
                             <Link href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
                         </li>
@@ -114,7 +114,7 @@ export default function footer2() {
                         
                     </ul>
                     
-                    <span className="flex md:mt-0 sm:mt-2 w-full sm:w-auto text-sm text-gray-500 sm:text-center justify-center"> @Mentor Diamond. 2024 </span>
+                    <span className="flex md:mt-0 sm:mt-2 w-full sm:w-auto text-sm text-gray-500 sm:text-center justify-center pb-2"> &copy;Mentor Diamond. 2024 </span>
                 </div>
             </div>
         </footer>
