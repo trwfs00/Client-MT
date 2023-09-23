@@ -41,7 +41,7 @@ const navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-50">
+    <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 py-8 lg:px-8" aria-label="Global">
         <div className='flex flex-row items-center justify-center'>
           <div className="flex lg:flex-1 mr-12">
@@ -141,7 +141,7 @@ const navigation = () => {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 w-full overflow-y-auto bg-white px-6 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 z-40">
           <div className="flex items-center justify-between sm:justify-end">
             <Link href="/" className="flex -m-1.5 p-1.5 sm:invisible sm:hidden">
               <span className="sr-only">Mentor Diamond</span>

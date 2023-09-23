@@ -34,18 +34,12 @@ export default function banner() {
         />
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <p className="text-sm leading-6 text-gray-200">
+        <Link href='/auth/register' className="text-center text-sm leading-6 text-gray-200">
           <strong className="font-semibold text-white">Mentor Diamond 2024</strong>
           <svg viewBox="0 0 2 2" className=" mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
             <circle cx={1} cy={1} r={1} />
           </svg>
-          Offer 90% off deals and free shipping with zero worries today, visit on website.
-        </p>
-        <Link
-          href="/auth/register"
-          className="flex-none rounded-full bg-white px-3.5 py-1 text-sm font-semibold text-[#0F172A] shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          See more <span aria-hidden="true">&rarr;</span>
+          Offer 90% off deals and free shipping with zero worries today, visit on website&rarr;
         </Link>
       </div>
       <div className="flex flex-1 justify-end">
