@@ -6,6 +6,11 @@ import MyLogin from '@/components/loginForm'
 
 import { useState } from "react";
 const inter = Inter({ subsets: ['latin'] })
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+
+
+
 
 export default function Login() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
