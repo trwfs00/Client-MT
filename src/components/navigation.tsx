@@ -19,7 +19,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import Signin from '@/components/loginForm';
+import Signin from '@/src/components/loginForm'
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -33,15 +33,44 @@ const callsToAction = [
   { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
 
+type Props = {
+  userExist: [UserExist]
+}
+
+type UserExist = {
+  _id: string
+  email: string,
+  name: string,
+}
+
+// export const getServerSideProps = async () => {
+//   try {
+//     let response = await fetch('http://localhost:8080/user/existUser')
+//     let datas = await response.json()
+    
+//     return {
+//       props: { datas: JSON.parse(JSON.stringify(datas)) }
+//     }
+//   } catch (err) {
+//     console.error(err)
+//     return {
+//       props: { datas: [] },
+//     }
+//   }
+// }
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 const navigation = () => {
+
+  // const [userExist, setUserExist] = useState<[UserExist]>(props.userExist)
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-50">
+    <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 py-8 lg:px-8" aria-label="Global">
         <div className='flex flex-row items-center justify-center'>
           <div className="flex lg:flex-1 mr-12">
@@ -126,7 +155,7 @@ const navigation = () => {
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full lg:w-auto text-left"} />
+          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -141,7 +170,7 @@ const navigation = () => {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 w-full overflow-y-auto bg-white px-6 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 z-40">
           <div className="flex items-center justify-between sm:justify-end">
             <Link href="/" className="flex -m-1.5 p-1.5 sm:invisible sm:hidden">
               <span className="sr-only">Mentor Diamond</span>
@@ -219,7 +248,7 @@ const navigation = () => {
                 </Link>
               </div>
               <div className="py-6">
-                <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50 w-full lg:w-auto text-left"} />
+                <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50 w-full"} />
               </div>
             </div>
           </div>
@@ -229,14 +258,5 @@ const navigation = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-
-  return {
-    props: {
-
-    }
-  }
-}
 
 export default navigation

@@ -1,8 +1,9 @@
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import Signin from '@/components/loginForm'
+import Signin from '@/src/components/loginForm'
 import { useState } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
+import Link from 'next/link';
 
 const register = () => {
     const [selectedGender, setSelectedGender] = useState(0);
@@ -12,7 +13,7 @@ const register = () => {
     });
 
     const handleValueChange = (newValue: any) => {
-        console.log("newValue:", newValue);
+        //console.log("newValue:", newValue);
         setValue(newValue);
     }
     return (
@@ -20,8 +21,8 @@ const register = () => {
             <div className="flex flex-col items-center justify-center px-6 my-10 sm:my-12 md:my-14">
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="font-mtserif text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                            Create and account
+                        <h1 className="font-mtserif text-2xl md:text-2xl lg:text-3xl font-semibold leading-tight tracking-tight text-gray-900">
+                            Create an Account
                         </h1>
                         <p className="font-mtsans text-md font-normal leading-tight tracking-tight text-gray-600">
                             You can save time during checkout, provide your credentials and checkout faster.
@@ -103,10 +104,18 @@ const register = () => {
                             </div>
                             <div className="flex items-start">
                                 <div className="flex items-center h-5">
+                                    <input id="offers" aria-describedby="offers" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="offers" className="font-normal italic text-gray-700">Yes, I’d like to get insider information about exclusive offers, events and more.</label>
+                                </div>
+                            </div>
+                            <div className="flex items-start">
+                                <div className="flex items-center h-5">
                                     <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required />
                                 </div>
-                                <div className="ml-3 text-md">
-                                    <label htmlFor="terms" className="font-normal text-gray-500">I accept the <a className="font-medium text-gray-900 hover:underline" href="#">Terms and Conditions</a></label>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="terms" className="font-normal italic text-gray-700">I accept the <Link className="font-medium text-gray-900 hover:underline" href="#">Terms and Conditions</Link></label>
                                 </div>
                             </div>
                             <div className="block pt-4 pb-6">
