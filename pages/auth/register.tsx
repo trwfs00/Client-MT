@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import Signin from '@/components/loginForm'
+import Signin from '@/src/components/loginForm'
 import { useState } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
 import Link from 'next/link';

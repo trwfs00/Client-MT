@@ -19,7 +19,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import Signin from '@/components/loginForm'
+import Signin from '@/src/components/loginForm'
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
