@@ -11,30 +11,30 @@ function Categories() {
     return (
             <div className="container mx-auto max-w-7xl">
                 {/* <h1>Categories</h1> */}
-                <div className='flex flex-nowrap gap-10 carousel carousel-center p-2 py-6 hover:overflow-x-scroll overflow-x-hidden text-center'>
-                    <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4 ">
+                <div className='flex flex-nowrap gap-10 carousel carousel-center p-2 py-6 hover:overflow-x-scroll overflow-x-hidden text-center cursor-pointer font-mtserif'>
+                    <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4">
                         <a href=""><Image className="h-[8em] w-auto" src={MyBest} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Best Sellers</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Best Sellers</p>
                     </div>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4">
                         <a href=""><Image className="h-[8em] w-auto" src={En} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Engagement Rings</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Engagement Rings</p>
                     </div>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4 ">
                         <a href=""><Image className="h-[8em] w-auto" src={Neck} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Casual Rings</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Casual Rings</p>
                     </div>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4 ">
                         <a href=""><Image className="h-[8em] w-auto" src={casual} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Necklaces</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Necklaces</p>
                     </div>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4 ">
                         <a href=""><Image className="h-[8em] w-auto" src={Ear} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Earrings</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Earrings</p>
                     </div>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4">
                         <a href=""><Image className="h-[8em] w-auto" src={Women} alt="Logo" /></a>
-                        <p className="text-md my-4 font-semibold">Women</p>
+                        <p className="text-md md:text-lg my-4 font-medium">Women</p>
                     </div>
                 </div>
             </div>
