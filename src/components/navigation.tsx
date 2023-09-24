@@ -19,7 +19,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import Signin from '@/src/components/loginForm'
+import Signin from '@/components/loginForm';
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -142,14 +142,14 @@ const navigation = () => {
             </Link>
           </Popover.Group>
         </div>
-        <div className="flex lg:flex lg:flex-1 lg:justify-end gap-8">
+        <div className="flex lg:flex lg-flex-1 lg:justify-end gap-8">
           <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
             <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
           {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
             <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button> */}
-          <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
+          <Link href="#" className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
