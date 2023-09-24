@@ -155,7 +155,7 @@ const navigation = () => {
           <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
+          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -248,7 +248,7 @@ const navigation = () => {
                 </Link>
               </div>
               <div className="py-6">
-                <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50"} />
+                <Signin classNames={"-mx-3 block rounded-lg px-3 py-2 text-base font-normal leading-7 text-gray-900 hover:bg-gray-50 w-full"} />
               </div>
             </div>
           </div>

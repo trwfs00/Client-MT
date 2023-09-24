@@ -75,7 +75,7 @@ export default function loginForm(props: any) {
     return (
         <>
             <button type="button"
-                className={props.classNames + " w-full lg:w-auto text-left"}
+                className={props.classNames + " lg:w-auto text-left"}
                 onClick={handleModal}
             >
                 Sign in &rarr;
@@ -109,7 +109,7 @@ export default function loginForm(props: any) {
                                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                         <div className="sm:flex sm:items-start">
                                             <div className="mt-3 text-center sm:ml-4 sm:mt-0">
-                                                <Dialog.Title as="h3" className="text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
+                                                <Dialog.Title as="h3" className="font-mtserif text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
                                                     Welcome back!
                                                 </Dialog.Title>
                                                 <div className="mt-2 text-left">
@@ -163,7 +163,7 @@ export default function loginForm(props: any) {
                                             className="inline-flex w-full justify-center rounded-md bg-white px-2 py-3 text-md font-normal text-gray-900 sm:ml-3 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                         >
-                                            Don't have an account? <Link href={"#"} className='text-md font-semibold ml-2'>Signup</Link>
+                                            Don't have an account? <Link href={"/auth/register"} className='text-md font-semibold ml-2'>Signup</Link>
                                         </button>
                                     </div>
                                 </Dialog.Panel>
