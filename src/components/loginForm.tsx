@@ -73,7 +73,7 @@ export default function loginForm(props: any) {
 
 
     return (
-        <div className='font-mtsans'>
+        <>
             <button type="button"
                 className={props.classNames + " w-full lg:w-auto text-left"}
                 onClick={handleModal}
@@ -172,6 +172,6 @@ export default function loginForm(props: any) {
                     </div>
                 </Dialog>
             </Transition.Root>
-        </div>
+        </>
     )
 }
