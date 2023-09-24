@@ -73,7 +73,7 @@ export default function loginForm(props: any) {
 
 
     return (
-        <div className='font-mtsans'>
+        <>
             <button type="button"
                 className={props.classNames + " w-full lg:w-auto text-left"}
                 onClick={handleModal}
@@ -81,7 +81,7 @@ export default function loginForm(props: any) {
                 Sign in &rarr;
             </button>
             <Transition.Root show={open} as={Fragment}>
-                <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+                <Dialog as="div" className="relative z-50" initialFocus={cancelButtonRef} onClose={setOpen}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -94,7 +94,7 @@ export default function loginForm(props: any) {
                         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="fixed inset-0 w-screen overflow-y-auto">
                         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                             <Transition.Child
                                 as={Fragment}
@@ -172,6 +172,6 @@ export default function loginForm(props: any) {
                     </div>
                 </Dialog>
             </Transition.Root>
-        </div>
+        </>
     )
 }

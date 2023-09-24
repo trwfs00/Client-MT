@@ -6,7 +6,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import Link from 'next/link';
 
 const register = () => {
-    const [selectedGender, setSelectedGender] = useState(0);
+    const [selectedGender, setSelectedGender] = useState(null);
     const [value, setValue] = useState({
         startDate: null,
         endDate: null
@@ -65,7 +65,7 @@ const register = () => {
                                             className="w-4 h-4 text-gray-700 bg-gray-100 border-gray-300"
                                             checked={selectedGender === 0}
                                             onChange={() => setSelectedGender(0)}
-                                            defaultChecked={true}
+                                            defaultChecked
                                         />
                                         <label htmlFor="radio_female" className="ml-2 text-md font-normal text-gray-900 dark:text-gray-300">Female</label>
                                     </div>
