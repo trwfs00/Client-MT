@@ -63,7 +63,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = ( { userExist } : Props) => {
+const navigation = () => {
 
   // const [userExist, setUserExist] = useState<[UserExist]>(props.userExist)
 
