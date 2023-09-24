@@ -13,7 +13,7 @@ import { ArrowLongLeftIcon, ArrowLongRightIcon } from "@heroicons/react/24/outli
 export default function carousel() {
     return (
         <div className="box-content md:flex md:flex-row md:flex-wrap overflow-hidden justify-between max-h-[calc(100vh-6em)]">
-        <div className="absolute -translate-y-1/2 lg:translate-y-0 left-5 right-5 top-[84%] lg:static md:flex-1 z-10">
+        <div className="absolute -translate-y-1/2 lg:translate-y-0 left-5 right-5 top-[82%] lg:static md:flex-1 z-10">
             <div className="flex flex-col justify-center items-center relative h-full w-2/3 lg:w-3/4 mx-auto">
                 <h1 className="font-mtserif font-semibold text-4xl text-center lg:text-left lg:text-5xl xl:text-7xl mb-6 text-gray-900">
                     Jewelry that Speaks Volumes
