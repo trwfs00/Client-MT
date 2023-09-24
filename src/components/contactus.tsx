@@ -14,7 +14,7 @@ const pic = [
 function contactus() {
     return (
         <div className='bg-white mx-auto max-w-7xl p-8 mt-20 pb-10 md:pb-20'>
-            <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 font-mtserif text-center">
+            <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 font-mtserif text-center">
                 Contact Us</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-md font-normal md:text-xl text-center mt-6 mb-12">
                 Explore Our Precious Creations and Find Your Perfect Jewel. Feel free to consult with our experts or make an appointment to see and try the real thing.
