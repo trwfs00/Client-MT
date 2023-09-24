@@ -65,6 +65,7 @@ const register = () => {
                                             className="w-4 h-4 text-gray-700 bg-gray-100 border-gray-300"
                                             checked={selectedGender === 0}
                                             onChange={() => setSelectedGender(0)}
+                                            defaultChecked={true}
                                         />
                                         <label htmlFor="radio_female" className="ml-2 text-md font-normal text-gray-900 dark:text-gray-300">Female</label>
                                     </div>
