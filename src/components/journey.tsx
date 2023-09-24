@@ -12,12 +12,12 @@ function journey() {
                     <div className="max-w-md lg:max-w-lg xl:mr-40">
                         <h1 className="mb-6 text-3xl md:text-5xl font-semibold text-gray-900 font-mtserif">Your Journey,<br/> Our Passion</h1>
                         <p className="mb-10 text-xs md:text-md md:text-lg text-gray-700">Made with Love From Earth's Heart to Your Heart In Each Sparkling Gem, a Tale of Love and Legacy Unfolds to Your Heart</p>
-                        <div className="flex text-sm md:text-xl font-mtserif mx-auto justify-center md:justify-start">
-                            <button className="bg-transparent  text-black font-normal py-2 px-4 border transition duration-100 hover:scale-110 border-current rounded-full">
+                        <div className="flex text-sm md:text-xl gap-4 font-mtserif mx-auto justify-center md:justify-start">
+                            <button className="bg-transparent hover:bg-[#e2d0b8] sm:hover:bg-[#e2d0b810] text-black font-normal py-2 px-4 border transition duration-100 hover:scale-110 border-current rounded-full">
                                 Our Story
                             </button>
                             <button
-                                className="ml-4 bg-transparent  text-black font-normal py-2 px-4 border transition duration-100 hover:scale-110 border-current rounded-full">
+                                className="bg-transparent hover:bg-[#e2d0b8] sm:hover:bg-[#e2d0b810] text-black font-normal py-2 px-4 border transition duration-100 hover:scale-110 border-current rounded-full">
                                 Find Our Store
                             </button>
                         </div>
