@@ -25,7 +25,7 @@ export default function carousel() {
         </div>
         <div className="md:flex-1">
             <div className="carousel w-full">
-                <div id="slide1" className="carousel-item relative w-full h-screen max-h-[calc(100vh-6em)]">
+                <div id="slide1" className="carousel-item relative w-full h-screen max-h-[calc(100vh-6em)]" data-carousel-item>
                     <Image src={slide1}
                         className="w-full h-auto object-cover"
                         loading="lazy"
@@ -39,7 +39,7 @@ export default function carousel() {
                         </a>
                     </div>
                 </div>
-                <div id="slide2" className="carousel-item relative w-full">
+                <div id="slide2" className="carousel-item relative w-full h-screen max-h-[calc(100vh-6em)]">
                     <Image src={slide2} 
                         className="w-full h-auto object-cover" 
                         loading="lazy"
@@ -53,7 +53,7 @@ export default function carousel() {
                         </a>
                     </div>
                 </div>
-                <div id="slide3" className="carousel-item relative w-full">
+                <div id="slide3" className="carousel-item relative w-full h-screen max-h-[calc(100vh-6em)]">
                     <Image src={slide3} 
                         className="w-full h-auto object-cover"
                         loading="lazy"
@@ -67,7 +67,7 @@ export default function carousel() {
                         </a>
                     </div>
                 </div>
-                <div id="slide4" className="carousel-item relative w-full">
+                <div id="slide4" className="carousel-item relative w-full h-screen max-h-[calc(100vh-6em)]">
                     <Image src={slide4} 
                         className="w-full h-auto object-cover"
                         loading="lazy"
