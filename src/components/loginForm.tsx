@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import GoogleIcon from '@/components/google'
 import Link from 'next/link'
 import { data } from 'autoprefixer'
@@ -14,7 +14,7 @@ type data = {
 export const getServerSideProps = async () => {
     try {
         console.log("Getserver")
-        let response = await fetch('http://localhost:8080/user',{
+        let response = await fetch('http://localhost:8080/user', {
             method: "GET",
             body: JSON.stringify(data)
         })
@@ -108,6 +108,13 @@ export default function loginForm(props: any) {
                                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:py-4">
                                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                         <div className="sm:flex sm:items-start">
+                                            <button
+                                                type="button"
+                                                className="inline-flex fixed right-4 top-4 rounded-full bg-gray-100 p-1 hover:bg-red-100 transition-all duration-200 hover:scale-110"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                <XMarkIcon className="h-6 w-6 text-gray-700 hover:text-red-700 transition-all duration-200 hover:rotate-180" />
+                                            </button>
                                             <div className="mt-3 text-center sm:ml-4 sm:mt-0">
                                                 <Dialog.Title as="h3" className="font-mtserif text-xl md:text-2xl font-semibold leading-6 mb-4 text-gray-900">
                                                     Welcome back!
@@ -146,21 +153,21 @@ export default function loginForm(props: any) {
                                     <div className="bg-white px-4 py-3 sm:flex sm:flex-col gap-4 sm:gap-2 sm:px-6">
                                         <button
                                             type="button"
-                                            className="inline-flex mb-2 w-full justify-center rounded-md bg-[#0F172A] px-2 py-3 text-md font-semibold text-white  hover:bg-[#161F34] sm:ml-3 sm:w-auto"
+                                            className="inline-flex mb-2 w-full justify-center rounded-md mr-3.5 bg-[#0F172A] px-2 py-3 text-md font-semibold text-white  hover:bg-[#161F34] sm:ml-3 sm:w-auto transition-all duration-200 hover:scale-105"
                                             onClick={handleSubmit}
                                         >
                                             Sign in
                                         </button>
                                         <button
                                             type="button"
-                                            className="inline-flex mb-6 w-full justify-center rounded-md bg-white px-2 py-3 text-md font-semibold text-gray-900 hover:bg-gray-50 border border-gray-100 sm:ml-3 sm:w-auto"
+                                            className="inline-flex mb-6 w-full justify-center rounded-md mr-3.5 bg-white px-2 py-3 text-md font-semibold text-gray-900 hover:bg-gray-50 border border-gray-100 sm:ml-3 sm:w-auto transition-all duration-200 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                         >
                                             <GoogleIcon classNames="w-6 h-6 mr-2.5" /> Sign in with Google
                                         </button>
                                         <button
                                             type="button"
-                                            className="inline-flex w-full justify-center rounded-md bg-white px-2 py-3 text-md font-normal text-gray-900 sm:ml-3 sm:w-auto"
+                                            className="inline-flex w-full justify-center rounded-md bg-white px-2 py-3 text-md font-normal text-gray-900 sm:ml-3 sm:w-auto transition-all duration-200 hover:scale-105"
                                             onClick={() => setOpen(false)}
                                         >
                                             Don't have an account? <Link href={"/auth/register"} className='text-md font-semibold ml-2'>Signup</Link>
