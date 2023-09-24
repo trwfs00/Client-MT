@@ -11,7 +11,7 @@ function Categories() {
     return (
             <div className="container mx-auto max-w-7xl">
                 {/* <h1>Categories</h1> */}
-                <div className='flex flex-nowrap gap-10 carousel carousel-center p-5 hover:overflow-x-scroll overflow-x-hidden text-center'>
+                <div className='flex flex-nowrap gap-10 carousel carousel-center p-2 py-6 hover:overflow-x-scroll overflow-x-hidden text-center'>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4 ">
                         <a href=""><Image className="h-[8em] w-auto" src={MyBest} alt="Logo" /></a>
                         <p className="text-md my-4 font-semibold">Best Sellers</p>
