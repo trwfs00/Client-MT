@@ -6,7 +6,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import Link from 'next/link';
 
 const register = () => {
-    const [selectedGender, setSelectedGender] = useState(null);
+    const [selectedGender, setSelectedGender] = useState(0);
     const [value, setValue] = useState({
         startDate: null,
         endDate: null
