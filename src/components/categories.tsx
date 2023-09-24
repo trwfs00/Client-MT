@@ -12,7 +12,7 @@ function Categories() {
         <>
             <div className="container mx-auto">
                 <div className='text-center text-4xl font-semibold text-gray-900 dark:text-white" ' >
-                    <h1>Categories</h1>
+                    {/* <h1>Categories</h1> */}
                     <div className='overflow-x-auto'>
                         <div className='flex flex-wrap'>
                         <div className=" mt-10 w-24 h-24 sm:w-48 sm:h-30 md:w-64 md:h-64 lg:w-40 lg:h-50  rounded-full mx-auto mb-4 ">
