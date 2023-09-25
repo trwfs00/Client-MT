@@ -96,14 +96,10 @@ const navigation = (props: Auth) => {
   }
 
   //Drawer cart
-  const [openRight, setOpenRight] = React.useState(false);
+  const [openRight, setOpenRight] = useState(false);
   const openDrawerRight = () => setOpenRight(true);
   const closeDrawerRight = () => setOpenRight(false);
 
-  //Drawer cart
-  const [openRight, setOpenRight] = React.useState(false);
-  const openDrawerRight = () => setOpenRight(true);
-  const closeDrawerRight = () => setOpenRight(false);
 
   return (
     <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
