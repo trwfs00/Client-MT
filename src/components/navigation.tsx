@@ -5,6 +5,13 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+import React from "react";
+import {
+  Drawer,
+  Button,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
 import { GetServerSideProps } from 'next';
 import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
@@ -87,6 +94,11 @@ const navigation = (props: Auth) => {
     location.reload();
 
   }
+
+  //Drawer cart
+  const [openRight, setOpenRight] = React.useState(false);
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
 
   //Drawer cart
   const [openRight, setOpenRight] = React.useState(false);
@@ -212,6 +224,7 @@ const navigation = (props: Auth) => {
             : <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
           }
 
+          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
           <div className="flex lg:hidden">
             <button
               type="button"
