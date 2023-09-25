@@ -5,6 +5,13 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+import React from "react";
+import {
+  Drawer,
+  Button,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
 import { GetServerSideProps } from 'next';
 import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
@@ -55,7 +62,6 @@ type UserExist = {
 //     let response = await fetch('http://localhost:8080/user/existUser')
 //     let datas = await response.json()
 
-
 //     return {
 //       props: { datas: JSON.parse(JSON.stringify(datas)) }
 //     }
@@ -74,6 +80,11 @@ function classNames(...classes: string[]) {
 const navigation = (props: Auth) => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  //Drawer cart
+  const [openRight, setOpenRight] = React.useState(false);
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
 
   //Drawer cart
   const [openRight, setOpenRight] = React.useState(false);
