@@ -5,13 +5,6 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
-import React from "react";
-import {
-  Drawer,
-  Button,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
 import { GetServerSideProps } from 'next';
 import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
@@ -62,6 +55,7 @@ type UserExist = {
 //     let response = await fetch('http://localhost:8080/user/existUser')
 //     let datas = await response.json()
 
+
 //     return {
 //       props: { datas: JSON.parse(JSON.stringify(datas)) }
 //     }
@@ -81,25 +75,10 @@ const navigation = (props: Auth) => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const handleLogout = async () => {
-
-    console.log('logout click')
-
-    await fetch('http://localhost:8080/user/logout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-    })
-
-    location.reload();
-
-  }
-
   //Drawer cart
-  const [openRight, setOpenRight] = useState(false);
+  const [openRight, setOpenRight] = React.useState(false);
   const openDrawerRight = () => setOpenRight(true);
   const closeDrawerRight = () => setOpenRight(false);
-
 
   return (
     <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
@@ -210,15 +189,6 @@ const navigation = (props: Auth) => {
               <div>Cartitems</div>
             </Drawer>
           </React.Fragment>
-
-          {props.auth
-            ? <button type="button"
-              className={" w-full lg:w-auto text-left"}
-              onClick={handleLogout} >
-              Sign out &rarr;
-            </button>
-            : <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
-          }
 
           <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
           <div className="flex lg:hidden">
