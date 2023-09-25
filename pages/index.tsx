@@ -1,9 +1,9 @@
 import OurStroy from '@/components/journey'
-import NavAddmin from '@/components/navaddmin'
+import Productlist from '@/src/components/productlist'
 export default function index() {
   return (
     <>
-      <NavAddmin />
+      <Productlist />
     </>
   );
 }
