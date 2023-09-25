@@ -52,7 +52,7 @@ const navaddmin = () => {
                                 </button>
                             </div>
                         </div>
-                        <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
+                        <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
                             <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
                             Add product
                         </button>
@@ -104,7 +104,7 @@ const navaddmin = () => {
                                         หลังเที่ยง
                                     </td>
                                     <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                        <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                             <TrashIcon className="h-5 w-5 text-white" />
 
                                         </button>
