@@ -1,3 +1,10 @@
+import React from "react";
+import {
+  Drawer,
+  Button,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
 import { GetServerSideProps } from 'next';
 import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
@@ -43,9 +50,21 @@ type UserExist = {
   name: string,
 }
 
-type Auth = {
-  auth: boolean
-}
+// export const getServerSideProps = async () => {
+//   try {
+//     let response = await fetch('http://localhost:8080/user/existUser')
+//     let datas = await response.json()
+
+//     return {
+//       props: { datas: JSON.parse(JSON.stringify(datas)) }
+//     }
+//   } catch (err) {
+//     console.error(err)
+//     return {
+//       props: { datas: [] },
+//     }
+//   }
+// }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -68,6 +87,11 @@ const navigation = (props: Auth) => {
     location.reload();
 
   }
+
+  //Drawer cart
+  const [openRight, setOpenRight] = React.useState(false);
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
 
   return (
     <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">
@@ -152,9 +176,33 @@ const navigation = (props: Auth) => {
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
-          <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
-            <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </button>
+          <React.Fragment>
+            <button onClick={openDrawerRight} className="flex lg:flex text-md font-normal leading-6 text-gray-900">
+              <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
+            </button>
+            <Drawer
+              size={400}
+              placement="right"
+              open={openRight}
+              onClose={closeDrawerRight}
+              className="p-4"
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <Typography variant="h5" color="black">
+                  Carts
+                </Typography>
+                <IconButton variant="text" color="blue-gray" onClick={closeDrawerRight}>
+                  <XMarkIcon className="h-6 w-6 text-gray-500" />
+                </IconButton>
+              </div>
+              <div>Cartitems</div>
+              <div>Cartitems</div>
+              <div>Cartitems</div>
+              <div>Cartitems</div>
+              <div>Cartitems</div>
+            </Drawer>
+          </React.Fragment>
+
           {props.auth
             ? <button type="button"
               className={" w-full lg:w-auto text-left"}
