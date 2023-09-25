@@ -9,7 +9,7 @@ type Props = {
     type: string,
     productName: string,
     productDesc: string,
-    thumbnail: number,
+    thumbnail: string,
     idSKU: [{
         _id: string
     }],
@@ -41,8 +41,9 @@ function productstore({ datas }: Props) {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.type}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.productName}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.productDesc}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.productDesc}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                    <img src='{product.thumbnail}' />
+                                    <img src={product.thumbnail} alt="Product Thumbnail" />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.created_at}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.created_at}</td>
