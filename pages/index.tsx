@@ -5,7 +5,7 @@ import Card from '@/components/product-card'
 import Contactus from "@/components/contactus";
 import Purchases from "@/components/purchases";
 
-export default function Home() {
+export default function index() {
   return (
     <div className='h-[100vh]'>
       <MyNav/>
