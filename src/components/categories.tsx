@@ -9,7 +9,8 @@ import Image from 'next/image';
 
 function Categories() {
     return (
-            <div className="container mx-auto max-w-7xl my-6">
+        <div className='bg-white'>
+            <div className="container mx-auto max-w-7xl py-2">
                 <h1 className='text-3xl md:text-4xl my-12 font-semibold text-gray-900 font-mtserif text-center'>Categories</h1>
                 <div className='flex flex-nowrap gap-10 carousel carousel-center p-2 py-6 hover:overflow-x-scroll overflow-x-hidden text-center cursor-pointer font-mtserif'>
                     <div className="min-w-[6em] max-w-sm rounded-full mx-auto mb-4">
@@ -38,6 +39,7 @@ function Categories() {
                     </div>
                 </div>
             </div>
+        </div>
     )
 }
 
