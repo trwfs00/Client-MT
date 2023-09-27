@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import MyNav from '@/components/navigation'
 import React, { useEffect, useState } from 'react'
 import MyProduct from '@/components/productstore'
 
@@ -45,6 +46,7 @@ export default function Home(props: Props) {
 
   return (
     <div className='bg-gray-800 h-screen'>
+        <MyNav />
             <div className='max-w-6xl m-auto mt-10'>
                 <div className="grid grid-cols-2">
                     <div>

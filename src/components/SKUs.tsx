@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Diff from '@/components/diffFromHuman'
 
 type Props = {
@@ -7,11 +7,12 @@ type Props = {
 
 type Data = {
     _id: string;
-    type: string;
-    productName: string;
-    productDesc: string;
-    thumbnail: string;
-    idSKU: {
+    Products_idProducts: string;
+    color: string;
+    goldWight: string;
+    price: number;
+    cost: number;
+    idPictures: {
         _id: string;
     }[];
     created_at: string;
@@ -19,54 +20,55 @@ type Data = {
     deleted_at: string;
 };
 
-function productstore({ datas }: Props) {
-    return (
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+function SKUs({ datas }: Props) {
+  return (
+    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        ประเภทสินค้า
+                        SKUs Code
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        ชื่อสินค้า
+                        Color
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        รายละเอียดสินค้า
+                        GoldWigth
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        รูปภาพสินค้า
+                        Price
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        วันที่สร้าง
+                        SKUs Image
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        แก้ไข
+                        Edit
                     </th>
                     <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        ลบ
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-center text-lg font-medium text-gray-500 uppercase dark:text-gray-400">
-                        รายละเอียดเพิ่มเติม
+                        Delete
                     </th>
                 </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 {datas?.length > 0 ? (
-                    datas.map((product) => (
-                        <tr key={product._id}> {}
-                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">{product.type}</td>
+                    datas.map((skus) => (
+                        <tr key={skus._id}> {/* Add a unique key */}
                             <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">
-                                {product.productName}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">{product.productDesc}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">
-                                <img src={product.thumbnail} width={150} height={150} alt="Product Thumbnail" />
+                                {skus._id}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">
-                                <Diff timestamp={product.created_at}/>
+                                {skus.color}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">
+                                {skus.goldWight}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg text-blue-100 dark:text-gray-200">
+                                {skus.price}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-center text-lg font-medium">
-                                <a className="text-blue-500 hover:text-blue-700" href={`./Product/${product._id}`}>Edit</a>
+                                image
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center text-lg font-medium">
+                                <a className="text-blue-500 hover:text-blue-700" href="#">Edit</a>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-center text-lg font-medium">
                                 <a className="text-blue-500 hover:text-blue-700" href="#">Delete</a>
@@ -83,12 +85,12 @@ function productstore({ datas }: Props) {
                     )) 
                 ) : (
                     <tr>
-                        <td colSpan={7} className='text-white p-4'>ไม่มีสินค้า</td>
+                        <td colSpan={9} className='text-white p-4'>ไม่มีสินค้า</td>
                     </tr>
                 )}
             </tbody>
         </table>
-    );
+  )
 }
 
-export default productstore;
+export default SKUs
