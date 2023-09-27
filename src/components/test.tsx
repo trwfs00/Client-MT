@@ -1,5 +1,4 @@
 import React from 'react';
-import Diff from '@/components/diffFromHuman'
 
 type Props = {
     datas: Data[];
@@ -51,15 +50,13 @@ function productstore({ datas }: Props) {
                 {datas?.length > 0 ? (
                     datas.map((product) => (
                         <tr key={product._id}> {/* Add a unique key */}
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-100 dark:text-gray-200">{product.type}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-100 dark:text-gray-200">{product.productName}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-100 dark:text-gray-200">{product.productDesc}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-100 dark:text-gray-200">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.type}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.productName}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.productDesc}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                 <img src={product.thumbnail} width={150} height={150} alt="Product Thumbnail" />
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-100 dark:text-gray-200">
-                                <Diff timestamp={product.created_at}/>
-                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{product.created_at}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a className="text-blue-500 hover:text-blue-700" href={`./Product/${product._id}`}>Edit</a>
                             </td>
