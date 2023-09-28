@@ -1,15 +1,13 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import MyNav from '@/components/navigation'
-import MyLogin from '@/components/loginForm'
+import OurStroy from '@/components/journey'
+import Productdetail from '@/src/components/productdetail'
+import Navadmin from '@/src/components/navadmin'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function index() {
   return (
-    <div className={inter.className}>
-      <MyNav />
-      <MyLogin/>
-    </div>
-  )
+    <>
+      <Navadmin/>
+      <Productdetail/>
+    </>
+  );
 }

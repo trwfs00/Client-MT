@@ -6,6 +6,7 @@ import Image from 'next/image';
 import MyBest from '@/images/best.svg'
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { input } from '@material-tailwind/react';
+import En from "@/images/En.svg"
 
 type Props = {
     datas: Data[];
@@ -162,8 +163,8 @@ const navaddmin = ({ datas }: Props) => {
                                     <td className="px-6 py-4">
                                         Laptop
                                     </td>
-                                    <td className="px-6 py-4">
-                                        $2999
+                                    <td className='flex justify-center items-center'>
+                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
@@ -198,8 +199,8 @@ const navaddmin = ({ datas }: Props) => {
                                     <td className="px-6 py-4">
                                         Laptop PC
                                     </td>
-                                    <td className="px-6 py-4">
-                                        $1999
+                                    <td className='flex justify-center items-center'>
+                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
@@ -234,8 +235,8 @@ const navaddmin = ({ datas }: Props) => {
                                     <td className="px-6 py-4">
                                         Accessories
                                     </td>
-                                    <td className="px-6 py-4">
-                                        $99
+                                    <td className='flex justify-center items-center'>
+                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
