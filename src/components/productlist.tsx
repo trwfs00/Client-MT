@@ -1,4 +1,5 @@
 import React from 'react'
+import Diff from '@/components/diffFromHuman'
 import MyLogo from '@/images/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,7 +7,25 @@ import MyBest from '@/images/best.svg'
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { input } from '@material-tailwind/react';
 
-const navaddmin = () => {
+type Props = {
+    datas: Data[];
+};
+
+type Data = {
+    _id: string;
+    type: string;
+    productName: string;
+    productDesc: string;
+    thumbnail: string;
+    idSKU: {
+        _id: string;
+    }[];
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
+};
+
+const navaddmin = ({ datas }: Props) => {
     return (
         <>
             <div className="navbar bg-base-100">
@@ -87,6 +106,52 @@ const navaddmin = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                            {datas?.length > 0 ? (
+                                datas.map((product) => (
+                                    <tr key={product._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {product.type}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {product.productName}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {product.productDesc}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <img src={product.thumbnail} width={150} height={150} alt="Product Thumbnail" />
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <Diff timestamp={product.created_at}/>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <link href={`#`}>
+                                            <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <TrashIcon className="h-5 w-5 text-white" />
+                                            </button>
+                                        </link>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <link href={`./Product/${product._id}`}>
+                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <PencilSquareIcon className="h-5 w-5 text-white " />
+                                            </button>
+                                        </link>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <link href={`./Product/Productdetail/${product._id}`}>
+                                            <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <InformationCircleIcon className="h-5 w-5 text-white" />
+                                            </button>
+                                        </link>
+                                    </td>
+                                </tr>
+                                    )) 
+                            ) : (
+                                <tr>
+                                    <td colSpan={8} className='text-white p-4'>ไม่มีสินค้า</td>
+                                </tr>
+                            )}
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         Apple MacBook Pro 17"

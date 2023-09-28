@@ -166,7 +166,6 @@ function details({ data : {_id,type,productName,productDesc,thumbnail,} }: produ
 
   return (
     <>
-      <MyNav />
       {/* <Details datas={datas}/> */}
 
       <div className="mb-12 space-y-2 text-center">
@@ -188,12 +187,10 @@ function details({ data : {_id,type,productName,productDesc,thumbnail,} }: produ
             <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
               {productDesc}
             </p>
-            <a className="inline-block" href="#">
-              <span className="text-info dark:text-blue-300">Read more</span>
-            </a>
           </div>
           
         </div>
+
         
       </div>
 
