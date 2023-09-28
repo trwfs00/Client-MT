@@ -1,7 +1,7 @@
 import MyNav from '@/components/navigation'
 import React, { useEffect, useState } from 'react'
 import SKUs from '@/src/components/SKUs'
-import detailproduct from '@/src/components/detailproduct'
+import Details from '@/src/components/detailproduct'
 import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 
 type PageParams = {
@@ -9,19 +9,26 @@ type PageParams = {
 }
 
 type ContentPageProps = {
-  data: Data
-}
-
-type ProductPageProps = {
-  datas : Datas
+  data: skus
 }
 
 type Props = {
-  data: Data[];
+  data: skus[];
 }
 
-type Propss = {
-  datas: Datas[];
+type productPageProps = {
+  data: Data
+}
+
+type ResponeFromServers = {
+  _id: string,
+  type: string,
+  productName: string,
+  productDesc: string,
+  thumbnail: string,
+  idSKU: {
+    _id: string;
+  }[],
 }
 
 type ResponeFromServer = {
@@ -32,28 +39,26 @@ type ResponeFromServer = {
   price: number;
   cost: number;
   idPictures: {
-      _id: string;
+    _id: string;
   }[];
   created_at: string;
   updated_at: string;
   deleted_at: string;
 }
 
-type ResponeFromServers = {
-  _id: string;
-    type: string;
-    productName: string;
-    productDesc: string;
-    thumbnail: string;
-    idSKU: {
-        _id: string;
-    }[];
-    created_at: string;
-    updated_at: string;
-    deleted_at: string;
-}
 
 type Data = {
+  _id: string,
+  type: string,
+  productName: string,
+  productDesc: string,
+  thumbnail: string,
+  idSKU: {
+    _id: string;
+  }[],
+}
+
+type skus = {
   _id: string;
   Products_idProducts: string;
   color: string;
@@ -61,45 +66,28 @@ type Data = {
   price: number;
   cost: number;
   idPictures: {
-      _id: string;
+    _id: string;
   }[];
   created_at: string;
   updated_at: string;
   deleted_at: string;
 }
 
-type Datas = {
-    _id: string;
-    type: string;
-    productName: string;
-    productDesc: string;
-    thumbnail: string;
-    idSKU: {
-        _id: string;
-    }[];
-    created_at: string;
-    updated_at: string;
-    deleted_at: string;
-}
-
 export async function getServerSideProps({ params }
-  : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ProductPageProps>> {
+  : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<productPageProps>> {
   try {
     let response = await fetch('http://localhost:8080/product/onePro/' + params?.id)
     let ResponeFromServers: ResponeFromServers = await response.json()
     console.log(ResponeFromServers)
     return {
       props: {
-        datas: {
+        data: {
           _id: ResponeFromServers._id,
           type: ResponeFromServers.type,
           productName: ResponeFromServers.productName,
           productDesc: ResponeFromServers.productDesc,
           thumbnail: ResponeFromServers.thumbnail,
-          idSKU: ResponeFromServers.idSKU,
-          created_at: ResponeFromServers.created_at,
-          updated_at: ResponeFromServers.updated_at,
-          deleted_at: ResponeFromServers.deleted_at
+          idSKU: ResponeFromServers.idSKU
         },
       },
     }
@@ -107,16 +95,13 @@ export async function getServerSideProps({ params }
     console.error(error)
     return {
       props: {
-        datas: {
+        data: {
           _id: '',
           type: '',
           productName: '',
           productDesc: '',
           thumbnail: '',
-          idSKU: [],
-          created_at: '',
-          updated_at: '',
-          deleted_at: ''
+          idSKU: []
         },
       },
     }
@@ -167,18 +152,61 @@ export async function getServerSideProps_skus({ params }
 }
 
 
-function details(props: Props, propss : Propss) {
+function details({ data : {_id,type,productName,productDesc,thumbnail,} }: productPageProps,props: Props) {
+  const [skus, setSKUs] = useState<skus[]>(props.data);
+  // const [__id, setId] = useState(data._id)
+  // const [_type, setType] = useState(data.type)
+  // const [_productName, setProductName] = useState(data.productName)
+  // const [_productDesc, setProductDesc] = useState(data.productDesc)
+  // const [_thumbnail, setThumbnail] = useState(data.thumbnail)
 
-  const [products, setProducts] = useState<Datas[]>(propss.datas);
-  const [skus, setSKUs] = useState<Data[]>(props.data);
+  if (!_id) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-    <MyNav />
-    <SKUs datas={skus} />
-    <detailproduct data={products}/>
+      <MyNav />
+      {/* <Details datas={datas}/> */}
+
+      <div className="mb-12 space-y-2 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">Product</h2>
+      </div>
+      <div className="gap-8 flex justify-center items-center lg:grid-cols-3">
+        <div className="group p-6 justify-center items-center sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+          <div className="relative overflow-hidden rounded-xl">
+            <img src={thumbnail}
+            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+          </div>
+          <div className="mt-6 relative">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              {productName}
+            </h3>
+            <h4 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              {type}
+            </h4>
+            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
+              {productDesc}
+            </p>
+            <a className="inline-block" href="#">
+              <span className="text-info dark:text-blue-300">Read more</span>
+            </a>
+          </div>
+          
+        </div>
+        
+      </div>
+
+      {/* <div className="flex flex-col content-center">
+        <img src={thumbnail} alt={productName} className="max-w-fit h-48 object-cover" /><div className="p-4 flex flex-col justify-between">
+          <h3 className="text-lg font-bold">{productName}</h3>
+          <p className="text-sm">{productDesc}</p>
+          <span className="text-gray-500">{type}</span>
+        </div>
+      </div> */}
+
+      <SKUs datas={skus} />
     </>
   )
 }
-
 export default details
