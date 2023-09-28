@@ -1,9 +1,11 @@
 import MyNav from '@/components/navigation'
 import React, { useEffect, useState } from 'react'
 import SKUs from '@/src/components/SKUs'
-import Details from '@/src/components/detailproduct'
+import Details from '@/src/components/productdetail'
 import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
-
+import Image from 'next/image';
+import En from "@/images/En.svg"
+import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 type PageParams = {
   id: string
 }
@@ -152,8 +154,9 @@ export async function getServerSideProps_skus({ params }
 }
 
 
-function details({ data : {_id,type,productName,productDesc,thumbnail,} }: productPageProps,props: Props) {
+function details({ data: { _id, type, productName, productDesc, thumbnail, idSKU } }: productPageProps, props: Props) {
   const [skus, setSKUs] = useState<skus[]>(props.data);
+  // const [pro, setPro] = useState<Data[]>(data);
   // const [__id, setId] = useState(data._id)
   // const [_type, setType] = useState(data.type)
   // const [_productName, setProductName] = useState(data.productName)
@@ -166,43 +169,67 @@ function details({ data : {_id,type,productName,productDesc,thumbnail,} }: produ
 
   return (
     <>
-      {/* <Details datas={datas}/> */}
+      <div className="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content flex flex-col  ">
+          {/* Page content here */}
+          <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
+          <div className='contrainer mx-10 my-2'>
 
-      <div className="mb-12 space-y-2 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">Product</h2>
-      </div>
-      <div className="gap-8 flex justify-center items-center lg:grid-cols-3">
-        <div className="group p-6 justify-center items-center sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
-          <div className="relative overflow-hidden rounded-xl">
-            <img src={thumbnail}
-            alt="art cover" loading="lazy" width="1000" height="667" className="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
+            <div className="grid grid-cols-3 gap-4">
+
+              <div className="border mt-5 bg-white shadow-md sm:rounded-lg ">
+                <div className='mt-5'>
+                  <p className='text-center text-md font-medium'>{productName}</p>
+                </div>
+                <div className="flex justify-center items-center h-48 my-5">
+                  <Image width={150}  height={100} src={thumbnail} alt="Logo" />
+                </div>
+                <div className='flex justify-center items-center'>
+                  <p className='mt-2 border sm:rounded-lg p-1 bg-slate-400'>{type}</p>
+                </div>
+                <div className='mt-5 p-3 text-white sm:rounded-lg bg-slate-700 '>
+                  <p>Product Details</p>
+                  <p>{productDesc}</p>
+                </div>
+
+
+              </div>
+              <div className="col-span-2 ">
+
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-5"></div>
+                <Details data={skus} />
+              </div>
+            </div>
           </div>
-          <div className="mt-6 relative">
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              {productName}
-            </h3>
-            <h4 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              {type}
-            </h4>
-            <p className="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              {productDesc}
-            </p>
-          </div>
-          
         </div>
-
-        
       </div>
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-      {/* <div className="flex flex-col content-center">
-        <img src={thumbnail} alt={productName} className="max-w-fit h-48 object-cover" /><div className="p-4 flex flex-col justify-between">
-          <h3 className="text-lg font-bold">{productName}</h3>
-          <p className="text-sm">{productDesc}</p>
-          <span className="text-gray-500">{type}</span>
-        </div>
-      </div> */}
+        <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
+          {/* Sidebar content here */}
+          <li>
+            <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+              <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
+              <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
+            </button>
+          </li>
+          <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <UsersIcon className="h-6 w-6 text-gray-500" />
+              <span className="flex-1 ml-3 whitespace-nowrap">User</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
+              <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
+            </a>
+          </li>
+        </ul>
 
-      <SKUs datas={skus} />
+      </div>
     </>
   )
 }

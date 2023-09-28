@@ -72,10 +72,12 @@ const navaddmin = ({ datas }: Props) => {
                                 </button>
                             </div>
                         </div>
-                        <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
-                            <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
-                            Add product
-                        </button>
+                        <Link href={'./Product/addpro'}>
+                            <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
+                                <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
+                                Add product
+                            </button>
+                        </Link>
                     </div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-5">
                         <table className="w-full text-sm text-left text-gray-500 ">
@@ -120,31 +122,31 @@ const navaddmin = ({ datas }: Props) => {
                                         {product.productDesc}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <img src={product.thumbnail} width={150} height={150} alt="Product Thumbnail" />
+                                        <Image className="h-20 w-auto" width={150} height={150} src={product.thumbnail} alt={product.productName} />
                                     </td>
                                     <td className="px-6 py-4">
                                         <Diff timestamp={product.created_at}/>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <link href={`#`}>
+                                        <Link href={'#'}>
                                             <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                 <TrashIcon className="h-5 w-5 text-white" />
                                             </button>
-                                        </link>
+                                        </Link>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <link href={`./Product/${product._id}`}>
+                                        <Link href={`./Product/${product._id}`}>
                                             <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                 <PencilSquareIcon className="h-5 w-5 text-white " />
                                             </button>
-                                        </link>
+                                        </Link>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <link href={`./Product/Productdetail/${product._id}`}>
+                                        <Link href={`./Product/Productdetail/${product._id}`}>
                                             <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                 <InformationCircleIcon className="h-5 w-5 text-white" />
                                             </button>
-                                        </link>
+                                        </Link>
                                     </td>
                                 </tr>
                                     )) 
@@ -153,114 +155,6 @@ const navaddmin = ({ datas }: Props) => {
                                     <td colSpan={8} className='text-white p-4'>ไม่มีสินค้า</td>
                                 </tr>
                             )}
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Apple MacBook Pro 17"
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Silver
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Laptop
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Microsoft Surface Pro
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        White
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Laptop PC
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr className="bg-white dark:bg-gray-800">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Magic Mouse 2
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Black
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Accessories
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 hover:bg-yellow-500 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
