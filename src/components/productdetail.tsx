@@ -12,6 +12,11 @@ function productdetail() {
                 {/* Page content here */}
                 <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
                 <div className='contrainer mx-10 my-2'>
+                    <div className='flex justify-end'>
+                        <button type="button" className=" bg-slate-700 text-white mr-10 w-25 h-10 px-4   hover:bg-slate-500 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
+                        <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
+                        Add SKUs
+                    </button></div>
                     <div className="grid grid-cols-3 gap-4">
 
                         <div className="border mt-5 bg-white shadow-md sm:rounded-lg ">
@@ -143,7 +148,7 @@ function productdetail() {
                                             <td className="">
                                                 <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                     <PencilSquareIcon className="h-4 w-4 text-white " />
-                                                    </button>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>

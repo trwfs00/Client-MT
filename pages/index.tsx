@@ -6,7 +6,7 @@ import Productlist from '@/src/components/productlist'
 export default function index() {
   return (
     <>
-      <Productlist/>
+      <Productdetail />
     </>
   );
 }
