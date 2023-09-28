@@ -233,6 +233,7 @@ const navaddmin = () => {
                     </div>
 
                 </div>
+                
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
@@ -259,7 +260,6 @@ const navaddmin = () => {
                     </ul>
 
                 </div>
-                 
             </div>
 
 
