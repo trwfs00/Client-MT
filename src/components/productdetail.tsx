@@ -66,7 +66,7 @@ function productdetail() {
                                                 <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
-                                                <div id="tooltip-dark" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                <div id="tooltip-dark" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
                                                     Tooltip content
                                                     <div className="tooltip-arrow" data-popper-arrow></div>
                                                 </div>
@@ -159,19 +159,19 @@ function productdetail() {
                 <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
                     {/* Sidebar content here */}
                     <li>
-                        <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                             <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
                             <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
                         </button>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
                             <UsersIcon className="h-6 w-6 text-gray-500" />
                             <span className="flex-1 ml-3 whitespace-nowrap">User</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
                             <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
                             <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
                         </a>
