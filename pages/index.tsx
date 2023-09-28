@@ -1,9 +1,13 @@
 import OurStroy from '@/components/journey'
-import Productlist from '@/src/components/productlist'
+import Productdetail from '@/src/components/productdetail'
+import Navadmin from '@/src/components/navadmin'
+
+
 export default function index() {
   return (
     <>
-      <Productlist />
+      <Navadmin/>
+      <Productdetail/>
     </>
   );
 }
