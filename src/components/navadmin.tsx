@@ -3,8 +3,6 @@ import MyLogo from '@/images/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import MyBest from '@/images/best.svg'
-import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
-import { input } from '@material-tailwind/react';
 
 export default function navadmin() {
   return (

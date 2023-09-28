@@ -7,7 +7,7 @@ export default function index() {
   return (
     <>
       <Navadmin/>
-      <Productdetail/>
+      <Productlist/>
     </>
   );
 }
