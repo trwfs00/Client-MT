@@ -2,9 +2,24 @@ import React from 'react'
 import Image from 'next/image';
 import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
-
+import Swal from 'sweetalert2';
 
 function productdetail() {
+    const showAlert = () => {
+        Swal.fire({
+            title: 'Delete Product',
+            text: 'Are you sure you want to delete this product?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel',
+        }).then((result: { isConfirmed: any; }) => {
+            if (result.isConfirmed) {
+                // Place your logic to delete the product here
+                Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+            }
+        });
+    };
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -68,7 +83,7 @@ function productdetail() {
                                                 <Image className="h-20 w-auto" src={En} alt="Logo" />
                                             </td>
                                             <td className="">
-                                                <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
                                                 <div id="tooltip-dark" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
@@ -77,7 +92,7 @@ function productdetail() {
                                                 </div>
                                             </td>
                                             <td className="">
-                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                     <PencilSquareIcon className="h-4 w-4 text-white " />
                                                 </button>
                                             </td>
@@ -95,12 +110,12 @@ function productdetail() {
                                                 <Image className="h-20 w-auto" src={En} alt="Logo" />
                                             </td>
                                             <td className="">
-                                                <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
                                             </td>
                                             <td className="">
-                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                     <PencilSquareIcon className="h-4 w-4 text-white " />
                                                 </button>
                                             </td>
@@ -118,12 +133,12 @@ function productdetail() {
                                                 <Image className="h-20 w-auto" src={En} alt="Logo" />
                                             </td>
                                             <td className="">
-                                                <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
                                             </td>
                                             <td className="">
-                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                     <PencilSquareIcon className="h-4 w-4 text-white " />
                                                 </button>
                                             </td>
@@ -141,12 +156,12 @@ function productdetail() {
                                                 <Image className="h-20 w-auto" src={En} alt="Logo" />
                                             </td>
                                             <td className="">
-                                                <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <button type="button" className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
                                             </td>
                                             <td className="">
-                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                     <PencilSquareIcon className="h-4 w-4 text-white " />
                                                 </button>
                                             </td>
