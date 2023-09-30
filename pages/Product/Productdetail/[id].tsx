@@ -2,10 +2,11 @@ import MyNav from '@/components/navigation'
 import React, { useEffect, useState } from 'react'
 import SKUs from '@/src/components/SKUs'
 import Details from '@/src/components/productdetail'
-import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import type { GetServerSidePropsContext, GetServerSidePropsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import Image from 'next/image';
 import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link'
 type PageParams = {
   id: string
 }
@@ -17,6 +18,12 @@ type ContentPageProps = {
 type Props = {
   data: skus[];
 }
+
+type ProductPageProps = {
+  productData: Data;
+  skusData: skus;
+};
+
 
 type productPageProps = {
   data: Data
@@ -34,18 +41,15 @@ type ResponeFromServers = {
 }
 
 type ResponeFromServer = {
-  _id: string;
-  Products_idProducts: string;
-  color: string;
-  goldWight: string;
-  price: number;
-  cost: number;
+  _id: string,
+  Products_idProducts: string,
+  color: string,
+  goldWight: string,
+  price: number,
+  cost: number,
   idPictures: {
-    _id: string;
-  }[];
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
+    path: string;
+  }[],
 }
 
 
@@ -61,101 +65,140 @@ type Data = {
 }
 
 type skus = {
-  _id: string;
-  Products_idProducts: string;
-  color: string;
-  goldWight: string;
-  price: number;
-  cost: number;
+  _id: string,
+  Products_idProducts: string,
+  color: string,
+  goldWight: string,
+  price: number,
+  cost: number,
   idPictures: {
-    _id: string;
-  }[];
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
+    path: string;
+  }[],
 }
 
-export async function getServerSideProps({ params }
-  : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<productPageProps>> {
+// export async function getServerSideProps({ params }
+//   : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<productPageProps>> {
+//   try {
+//     let response = await fetch('http://localhost:8080/product/onePro/' + params?.id)
+//     let ResponeFromServers: ResponeFromServers = await response.json()
+//     console.log(ResponeFromServers)
+//     return {
+//       props: {
+//         data: {
+//           _id: ResponeFromServers._id,
+//           type: ResponeFromServers.type,
+//           productName: ResponeFromServers.productName,
+//           productDesc: ResponeFromServers.productDesc,
+//           thumbnail: ResponeFromServers.thumbnail,
+//           idSKU: ResponeFromServers.idSKU
+//         },
+//       },
+//     }
+//   } catch (error) {
+//     console.error(error)
+//     return {
+//       props: {
+//         data: {
+//           _id: '',
+//           type: '',
+//           productName: '',
+//           productDesc: '',
+//           thumbnail: '',
+//           idSKU: []
+//         },
+//       },
+//     }
+//   }
+// }
+
+// export async function getServerSideProps_skus({ params }: GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ContentPageProps>> {
+//   try {
+//     let response = await fetch('http://localhost:8080/sku/oneSKUs/' + params?.id)
+//     let ResponeFromServer: ResponeFromServer = await response.json()
+//     console.log(ResponeFromServer)
+//     const data = {
+//       _id: ResponeFromServer._id,
+//       Products_idProducts: ResponeFromServer.Products_idProducts,
+//       color: ResponeFromServer.color,
+//       goldWight: ResponeFromServer.goldWight,
+//       price: ResponeFromServer.price,
+//       cost: ResponeFromServer.cost,
+//       idPictures: ResponeFromServer.idPictures,
+//       // Only include properties that are needed
+//     };
+
+//     return {
+//       props: {
+//         data,
+//       },
+//     }
+//   } catch (error) {
+//     console.error(error)
+//     return {
+//       props: {
+//         data: {
+//           _id: '',
+//           Products_idProducts: '',
+//           color: '',
+//           goldWight: '',
+//           price: 0,
+//           cost: 0,
+//           idPictures: [],
+//           // Only include properties that are needed
+//         },
+//       },
+//     }
+//   }
+// }
+
+export async function getServerSideProps(context: GetServerSidePropsContext<PageParams>): Promise<GetServerSidePropsResult<ProductPageProps>> {
   try {
-    let response = await fetch('http://localhost:8080/product/onePro/' + params?.id)
-    let ResponeFromServers: ResponeFromServers = await response.json()
-    console.log(ResponeFromServers)
+    const [productResponse, skusResponse] = await Promise.all([
+      fetch(`http://localhost:8080/product/onePro/${context.params?.id}`),
+      fetch(`http://localhost:8080/sku/productSKUs/${context.params?.id}`),
+    ]);
+
+    const productData: ResponeFromServers = await productResponse.json();
+    const skusData: ResponeFromServer = await skusResponse.json(); // Note the [] for an array of SKUs
+
+    console.log(productData);
+    console.log(skusData);
+
     return {
       props: {
-        data: {
-          _id: ResponeFromServers._id,
-          type: ResponeFromServers.type,
-          productName: ResponeFromServers.productName,
-          productDesc: ResponeFromServers.productDesc,
-          thumbnail: ResponeFromServers.thumbnail,
-          idSKU: ResponeFromServers.idSKU
-        },
+        productData,
+        skusData,
       },
-    }
+    };
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return {
       props: {
-        data: {
+        productData: {
           _id: '',
           type: '',
           productName: '',
           productDesc: '',
           thumbnail: '',
-          idSKU: []
+          idSKU: [],
         },
-      },
-    }
-  }
-}
-
-export async function getServerSideProps_skus({ params }
-  : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ContentPageProps>> {
-  try {
-    let response = await fetch('http://localhost:8080/product/oneSKUs/' + params?.id)
-    let ResponeFromServer: ResponeFromServer = await response.json()
-    console.log(ResponeFromServer)
-    return {
-      props: {
-        data: {
-          _id: ResponeFromServer._id,
-          Products_idProducts: ResponeFromServer.Products_idProducts,
-          color: ResponeFromServer.color,
-          goldWight: ResponeFromServer.goldWight,
-          price: ResponeFromServer.price,
-          cost: ResponeFromServer.cost,
-          created_at: ResponeFromServer.created_at,
-          idPictures: ResponeFromServer.idPictures,
-          updated_at: ResponeFromServer.updated_at,
-          deleted_at: ResponeFromServer.deleted_at
-        },
-      },
-    }
-  } catch (error) {
-    console.error(error)
-    return {
-      props: {
-        data: {
+        skusData: {
           _id: '',
           Products_idProducts: '',
           color: '',
           goldWight: '',
           price: 0,
           cost: 0,
-          created_at: '',
           idPictures: [],
-          updated_at: '',
-          deleted_at: ''
-        },
+        }, 
       },
-    }
+    };
   }
 }
 
-
-function details({ data: { _id, type, productName, productDesc, thumbnail, idSKU } }: productPageProps, props: Props) {
-  const [skus, setSKUs] = useState<skus[]>(props.data);
+function details({ productData , skusData }: ProductPageProps,) {
+  const skuse = skusData;
+  const { _id, type, productName, productDesc, thumbnail, idSKU } = productData
   // const [pro, setPro] = useState<Data[]>(data);
   // const [__id, setId] = useState(data._id)
   // const [_type, setType] = useState(data.type)
@@ -175,7 +218,14 @@ function details({ data: { _id, type, productName, productDesc, thumbnail, idSKU
           {/* Page content here */}
           <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
           <div className='contrainer mx-10 my-2'>
-
+            <div className='flex justify-end'>
+              <Link href={`../Productdetail/AddSKUs/${_id}`}>
+                <button type="button" className="bg-slate-700 text-white mr-10 w-25 h-10 px-4 hover:bg-slate-500 font-medium rounded-lg text-sm text-center inline-flex items-center">
+                  <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
+                  Add SKUs
+                </button>
+              </Link>
+            </div>
             <div className="grid grid-cols-3 gap-4">
 
               <div className="border mt-5 bg-white shadow-md sm:rounded-lg ">
@@ -183,7 +233,7 @@ function details({ data: { _id, type, productName, productDesc, thumbnail, idSKU
                   <p className='text-center text-md font-medium'>{productName}</p>
                 </div>
                 <div className="flex justify-center items-center h-48 my-5">
-                  <Image width={150}  height={100} src={thumbnail} alt="Logo" />
+                  <Image width={150} height={100} src={thumbnail} alt="Logo" />
                 </div>
                 <div className='flex justify-center items-center'>
                   <p className='mt-2 border sm:rounded-lg p-1 bg-slate-400'>{type}</p>
@@ -198,7 +248,7 @@ function details({ data: { _id, type, productName, productDesc, thumbnail, idSKU
               <div className="col-span-2 ">
 
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-5"></div>
-                <Details data={skus} />
+                <Details data={skuse as unknown as skus[]} />
               </div>
             </div>
           </div>

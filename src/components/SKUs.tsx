@@ -13,11 +13,8 @@ type Data = {
     price: number;
     cost: number;
     idPictures: {
-        _id: string;
+        path: string;
     }[];
-    created_at: string;
-    updated_at: string;
-    deleted_at: string;
 };
 
 function SKUs({ datas }: Props) {
@@ -85,7 +82,7 @@ function SKUs({ datas }: Props) {
                     )) 
                 ) : (
                     <tr>
-                        <td colSpan={9} className='text-white p-4'>ไม่มีสินค้า</td>
+                        <td colSpan={9} className='text-black p-4'>ไม่มีสินค้า</td>
                     </tr>
                 )}
             </tbody>
