@@ -80,7 +80,7 @@ function productdetail() {
                                                 </div>
                                             </td>
                                             <td>
-                                                <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                                <Image className="" width={100} height={150} src={En} alt="Logo" />
                                             </td>
                                             <td className="">
                                                 <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
@@ -130,7 +130,7 @@ function productdetail() {
                                                 </div>
                                             </td>
                                             <td>
-                                                <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                                <Image className="" width={100} height={150} src={En} alt="Logo" />
                                             </td>
                                             <td className="">
                                                 <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
@@ -153,7 +153,7 @@ function productdetail() {
                                                 </div>
                                             </td>
                                             <td>
-                                                <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                                <Image className="" width={100} height={150} src={En} alt="Logo" />
                                             </td>
                                             <td className="">
                                                 <button type="button" className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">

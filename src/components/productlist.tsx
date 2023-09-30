@@ -114,7 +114,7 @@ const navaddmin = () => {
                                         Laptop
                                     </td>
                                     <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
@@ -149,7 +149,7 @@ const navaddmin = () => {
                                         Laptop PC
                                     </td>
                                     <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
@@ -181,7 +181,7 @@ const navaddmin = () => {
                                         Accessories
                                     </td>
                                     <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
+                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
                                     </td>
                                     <td className="px-6 py-4">
                                         หลังเที่ยง

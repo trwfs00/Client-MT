@@ -10,7 +10,7 @@ import Editskus from '@/src/components/editskus'
 
 export default function index() {
   return (
-    <Editpd />
+    <Productdetail />
     
   );
 }
