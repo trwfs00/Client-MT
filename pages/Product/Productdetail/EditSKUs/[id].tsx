@@ -37,7 +37,7 @@ type Data = {
 export async function getServerSideProps({ params }
     : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ContentPageProps>> {
     try {
-        let response = await fetch('http://localhost:8080/sku/productSKUs/' + params?.id)
+        let response = await fetch('http://localhost:8080/sku/oneSKUs/' + params?.id)
         let responeFromServer: ResponeFromServer = await response.json()
         console.log(responeFromServer)
         return {
@@ -89,25 +89,24 @@ function edit({ data: { _id, Products_idProducts,color,goldWight,price,cost,idPi
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
             const reader = new FileReader();
-
+    
             reader.onloadend = () => {
                 const base64String = reader.result as string;
                 console.log(base64String);
-
-                // Append _id and path to the idPictures array
-                setIdPictures((prevIdPictures) => [
-                    ...prevIdPictures,
-                    {path: base64String },
-                ]);
+    
+                // Replace all existing images with the new one
+                setIdPictures([{ path: base64String }]);
             };
-
+    
             reader.onerror = (error) => {
                 console.log("Error: ", error);
             };
-
+    
             reader.readAsDataURL(file);
         }
     }
+    
+    
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
