@@ -1,6 +1,6 @@
 
 // import Productdetail from '@/src/components/productdetail'
-import Productlist from '@/src/components/productlist'
+// import Productlist from '@/src/components/productlist'
 import Navadmin from '@/src/components/navadmin'
 import Addskus from '@/src/components/addskus'
 import Addpro from '@/src/components/addproduct'
