@@ -65,9 +65,9 @@ const navigation = (props: Auth) => {
       credentials: 'include',
     })
 
-  }
+    location.reload();
 
-  // console.log(props)
+  }
 
   return (
     <header className="bg-white font-mtsans sticky top-0 border-b border-gray-100 shadow-sm z-40">

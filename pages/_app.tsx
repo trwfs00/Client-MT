@@ -6,6 +6,8 @@ import MyBanner from '@/components/banner'
 import MyFooter from '@/components/footer2'
 import { useEffect, useState } from 'react'
 import { stringify } from 'querystring'
+import { AuthProvider } from './AuthContext';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -35,8 +37,8 @@ const noto = Noto_Sans_Thai({
 export default function App({ Component, pageProps }: AppProps) {
 
   const [message, setMessage] = useState('')
-  const [auth,setAuth] = useState(false)
-  const [user,setUser] = useState()
+  const [auth, setAuth] = useState(false)
+  const [user, setUser] = useState()
 
   useEffect(() => {
     (
@@ -46,12 +48,12 @@ export default function App({ Component, pageProps }: AppProps) {
             credentials: "include"
           })
           const userExist = await response.json()
-          
+
           // console.log(userExist)
-          if(userExist.auth === false){
+          if (userExist.auth === false) {
             // console.log(userExist)
             setAuth(false)
-          }else{
+          } else {
             // console.log(userExist)
             setMessage(`Hi ${userExist.fullname}`)
             setAuth(true)
@@ -68,11 +70,13 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <main className={`${inter.variable} ${playfair.variable} ${noto.variable} bg-gray-100`}>
-      <MyBanner/>
-      <MyNav auth={auth}/>
+    <AuthProvider>
+      <main className={`${inter.variable} ${playfair.variable} ${noto.variable} bg-gray-100`}>
+        <MyBanner />
+        <MyNav auth={auth} />
         <Component {...pageProps} />
-      <MyFooter/>
-    </main>
+        <MyFooter />
+      </main>
+    </AuthProvider>
   )
 }

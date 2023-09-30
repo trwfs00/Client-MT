@@ -7,10 +7,16 @@ import Contactus from "@/components/contactus";
 import Purchases from "@/components/purchases";
 import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
+import { useAuth } from './AuthContext';
 
 export default function index() {
+
+  const { auth, user } = useAuth();
+  console.log(user)
+
   return (
     <main>
+      {user?.fullname}
       <Carousel />
       <Category />
       <Card />
