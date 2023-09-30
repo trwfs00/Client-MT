@@ -10,7 +10,7 @@ import Order from '@/src/components/order'
 
 export default function index() {
   return (
-    <Productdetail />
+    // <Productdetail />
     
   );
 }

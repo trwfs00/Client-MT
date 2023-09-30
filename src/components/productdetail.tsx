@@ -22,18 +22,31 @@ type Datas = {
 };
 
 function productdetail({ data }: Propss) {
-    const showAlert = () => {
+
+    const handleDelete = async (Id: any) => {
         Swal.fire({
-            title: 'Delete Product',
-            text: 'Are you sure you want to delete this product?',
+            title: 'Delete SKUs',
+            text: 'Are you sure you want to delete this SKUs?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Delete',
             cancelButtonText: 'Cancel',
-        }).then((result: { isConfirmed: any; }) => {
+        }).then(async (result: { isConfirmed: any; }) => {
             if (result.isConfirmed) {
-                // Place your logic to delete the product here
-                Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+                try {
+                    const response = await fetch(`http://localhost:8080/sku/deleteSKUs/${Id}`, {
+                      method: 'DELETE',
+                    });
+              
+                    if (response.ok) {
+                      Swal.fire('Deleted!', 'The SKUs has been deleted.', 'success');
+                      // Optionally, you can refresh the SKUs list or handle the deletion UI logic here.
+                    } else {
+                      Swal.fire('Error', 'Failed to delete the SKUs.', 'error');
+                    }
+                  } catch (error) {
+                    Swal.fire('Error', 'An error occurred while deleting the SKUs.', 'error');
+                  }
             }
         });
     };
@@ -66,7 +79,7 @@ function productdetail({ data }: Propss) {
                                 <Image width={80} height={80} src={skus.idPictures[0]?.path} alt="Logo" />
                             </td>
                             <td className="">
-                                <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                <button onClick={() => handleDelete(skus._id)} type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                     <TrashIcon className="h-4 w-4 text-white" />
                                 </button>
                                 {/* <div id="tooltip-dark" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">

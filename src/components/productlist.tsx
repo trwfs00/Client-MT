@@ -27,53 +27,38 @@ type Data = {
     deleted_at: string;
 };
 
-const navaddmin = ({ datas }: Props) => {
-const navaddmin = () => {
-    const showAlert = () => {
-        Swal.fire({
-            title: 'Delete Product',
-            text: 'Are you sure you want to delete this product?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Delete',
-            cancelButtonText: 'Cancel',
-        }).then((result: { isConfirmed: any; }) => {
-            if (result.isConfirmed) {
-                // Place your logic to delete the product here
-                Swal.fire('Deleted!', 'The product has been deleted.', 'success');
-            }
-        });
-    };
+function navaddmin ({ datas }: Props)  {
+
+        const handleDelete = async (productId: any) => {
+            Swal.fire({
+                title: 'Delete Product',
+                text: 'Are you sure you want to delete this product?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel',
+            }).then(async (result: { isConfirmed: any; }) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = await fetch(`http://localhost:8080/product/deletePro/${productId}`, {
+                          method: 'DELETE',
+                        });
+                  
+                        if (response.ok) {
+                          Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+                          // Optionally, you can refresh the product list or handle the deletion UI logic here.
+                        } else {
+                          Swal.fire('Error', 'Failed to delete the product.', 'error');
+                        }
+                      } catch (error) {
+                        Swal.fire('Error', 'An error occurred while deleting the product.', 'error');
+                      }
+                }
+            });
+        };
+
     return (
         <>
-            <div className="navbar bg-base-100">
-                <div className="flex lg:flex-1 ">
-                    <Link href="/" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Mentor Diamond</span>
-                        <Image className="h-10 w-auto" src={MyLogo} alt="Logo" />
-                    </Link>
-                </div>
-                <div className="flex-none  gap-5">
-
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <Image className="h-30 w-auto" src={MyBest} alt="Logo" />
-                            </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col  ">
@@ -122,7 +107,7 @@ const navaddmin = () => {
                                    
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className='text-center'>
                             {datas?.length > 0 ? (
                                 datas.map((product) => (
                                     <tr key={product._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -141,12 +126,25 @@ const navaddmin = () => {
                                     <td className="px-6 py-4">
                                         <Diff timestamp={product.created_at}/>
                                     </td>
-                                    <td className="px-6 py-4">
-                                        <Link href={'#'}>
-                                            <button type="button" className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                    <td className="">
+                                            <button type="button" onClick={() => handleDelete(product._id)} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                 <TrashIcon className="h-5 w-5 text-white" />
                                             </button>
+                                        <Link href={`./Product/${product._id}`} className="text-md font-normal leading-6 text-gray-900">
+                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <PencilSquareIcon className="h-5 w-5 text-white " />
+                                            </button>
                                         </Link>
+                                        <Link href={`./Product/Productdetail/${product._id}`}>
+                                            <button type="button" className=" bg-blue-700 ml-3 hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                                <InformationCircleIcon className="h-5 w-5 text-white" />
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    {/* <td className="px-6 py-4">
+                                            <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
+                                                <TrashIcon className="h-5 w-5 text-white" />
+                                            </button>
                                     </td>
                                     <td className="px-6 py-4">
                                         <Link href={`./Product/${product._id}`}>
@@ -161,81 +159,20 @@ const navaddmin = () => {
                                                 <InformationCircleIcon className="h-5 w-5 text-white" />
                                             </button>
                                         </Link>
-                                    </td>
+                                    </td> */}
                                 </tr>
                                     )) 
                             ) : (
                                 <tr>
                                     <td colSpan={8} className='text-white p-4'>ไม่มีสินค้า</td>
                                 </tr>
-                                <tr className="bg-white ">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                        Magic Mouse 2
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Black
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Accessories
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 hover:bg-yellow-500 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-                                    </td>
-                                </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                
-                <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-                        {/* Sidebar content here */}
-                        <li>
-                            <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
-                                <span className="flex-1 ml-3 text-left whitespace-nowrap"> Manage Product</span>
-                            </button>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                                <UsersIcon className="h-6 w-6 text-gray-500" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Manage Use</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                                <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Manage purchase order</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </>
-    )
-}
+    )}
 
 export default navaddmin
