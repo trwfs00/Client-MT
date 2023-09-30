@@ -59,7 +59,7 @@ function productdetail({ data }: Propss) {
                                 </div> */}
                             </td>
                             <td className="">
-                                <Link href={`../Productdetail/AddSKUs/${skus._id}`}>
+                                <Link href={`../Productdetail/EditSKUs/${skus._id}`}>
                                     <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                         <PencilSquareIcon className="h-4 w-4 text-white " />
                                     </button>
