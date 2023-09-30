@@ -3,6 +3,7 @@ import Image from 'next/image';
 import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 type Propss = {
     data: Datas[];
@@ -21,6 +22,21 @@ type Datas = {
 };
 
 function productdetail({ data }: Propss) {
+    const showAlert = () => {
+        Swal.fire({
+            title: 'Delete Product',
+            text: 'Are you sure you want to delete this product?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel',
+        }).then((result: { isConfirmed: any; }) => {
+            if (result.isConfirmed) {
+                // Place your logic to delete the product here
+                Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+            }
+        });
+    };
     return (
         <table className="table table-xs bg-white ">
             <thead>
