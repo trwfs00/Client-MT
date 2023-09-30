@@ -69,8 +69,8 @@ function productdetail() {
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody >
-                                        <tr >
+                                    <tbody className='text-center'>
+                                        <tr  >
                                             <td className="p-3">Cy Ganderton</td>
                                             <td >Quality Control Specialist</td>
                                             <td>Littel, Schaden and Vandervort</td>
@@ -79,17 +79,13 @@ function productdetail() {
                                                     <span>29999</span>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <Image className="" width={100} height={150} src={En} alt="Logo" />
                                             </td>
                                             <td className="">
                                                 <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
                                                     <TrashIcon className="h-4 w-4 text-white" />
                                                 </button>
-                                                <div id="tooltip-dark" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
-                                                    Tooltip content
-                                                    <div className="tooltip-arrow" data-popper-arrow></div>
-                                                </div>
                                             </td>
                                             <td className="">
                                                 <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">

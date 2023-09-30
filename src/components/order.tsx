@@ -8,25 +8,11 @@ import { input } from '@material-tailwind/react';
 import En from "@/images/En.svg"
 import Swal from 'sweetalert2';
 
-const navaddmin = () => {
-    const showAlert = () => {
-        Swal.fire({
-            title: 'Delete Product',
-            text: 'Are you sure you want to delete this product?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Delete',
-            cancelButtonText: 'Cancel',
-        }).then((result: { isConfirmed: any; }) => {
-            if (result.isConfirmed) {
-                // Place your logic to delete the product here
-                Swal.fire('Deleted!', 'The product has been deleted.', 'success');
-            }
-        });
-    };
-    return (
-        <>
-            <div className="navbar bg-base-100">
+export default function 
+h1() {
+  return (
+    <>
+    <div className="navbar bg-base-100">
                 <div className="flex lg:flex-1 ">
                     <Link href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Mentor Diamond</span>
@@ -76,7 +62,7 @@ const navaddmin = () => {
                     </div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-5">
                         <table className="w-full text-sm text-left text-gray-500 ">
-                            <thead className="text-xs text-white uppercase text-center bg-slate-700">
+                            <thead className="text-xs text-center text-white uppercase bg-slate-700">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
                                         Type
@@ -93,11 +79,11 @@ const navaddmin = () => {
                                     <th scope="col" className="px-6 py-3">
                                         Created_At
                                     </th>
-                                   
+                                    
                                     <th scope="col" className="px-6 py-3">
                                         Manage
                                     </th>
-                                   
+                                    
                                 </tr>
                             </thead>
                             <tbody className='text-center'>
@@ -117,19 +103,18 @@ const navaddmin = () => {
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
                                     </td>
-                                    <td className="">
-                                        <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-                                        </button>
+                                    
+                                    <td className="px-6 py-4">
                                         <Link href="" className="text-md font-normal leading-6 text-gray-900">
-                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                                <PencilSquareIcon className="h-5 w-5 text-white " />
-                                            </button>
-                                        </Link>  
-                                        <button type="button" className=" bg-blue-700 ml-3 hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-                                        </button>
+                                          <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                              <PencilSquareIcon className="h-5 w-5 text-white " />
+                                          </button>
+                                          <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                              <InformationCircleIcon className="h-5 w-5 text-white" />
+                                          </button>
+                                        </Link>                                        
                                     </td>
+                                    
                                 </tr>
                                 <tr className="bg-white border-b ">
                                     <td scope="row" className="px-6 py-4   whitespace-nowrap ">
@@ -147,19 +132,16 @@ const navaddmin = () => {
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
                                     </td>
-                                    <td className="">
-                                        <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-                                        </button>
-                                        <Link href="" className="text-md font-normal leading-6 text-gray-900">
-                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                                <PencilSquareIcon className="h-5 w-5 text-white " />
-                                            </button>
-                                        </Link>
-                                        <button type="button" className=" bg-blue-700 ml-3 hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-                                        </button>
+                                    
+                                    <td className="px-6 py-4">
+                                      <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                          <PencilSquareIcon className="h-5 w-5 text-white " />
+                                      </button>
+                                      <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                          <InformationCircleIcon className="h-5 w-5 text-white" />
+                                      </button>
                                     </td>
+                                   
                                 </tr>
                                 <tr className="bg-white ">
                                     <td scope="row" className="px-6 py-4  whitespace-nowrap ">
@@ -177,19 +159,16 @@ const navaddmin = () => {
                                     <td className="px-6 py-4">
                                         หลังเที่ยง
                                     </td>
-                                    <td className="">
-                                        <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700  font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
+                                    
+                                    <td className="px-6 py-4">
+                                        <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                            <PencilSquareIcon className="h-5 w-5 text-white " />
                                         </button>
-                                        <Link href="" className="text-md font-normal leading-6 text-gray-900">
-                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                                <PencilSquareIcon className="h-5 w-5 text-white " />
-                                            </button>
-                                        </Link>
-                                        <button type="button" className=" bg-blue-700 ml-3 hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-                                        </button>
+                                      <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
+                                          <InformationCircleIcon className="h-5 w-5 text-white" />
+                                      </button>
                                     </td>
+                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -221,8 +200,6 @@ const navaddmin = () => {
                     </ul>
                 </div>
             </div>
-        </>
-    )
+            </>
+  )
 }
-
-export default navaddmin

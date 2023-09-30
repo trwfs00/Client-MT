@@ -6,7 +6,7 @@ import Addskus from '@/src/components/addskus'
 import Addpro from '@/src/components/addproduct'
 import Editpd from '@/src/components/editPD'
 import Editskus from '@/src/components/editskus'
-
+import Order from '@/src/components/order'
 
 export default function index() {
   return (
