@@ -1,42 +1,23 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import MyNav from '@/components/navigation'
 import Footer from '@/components/footer2'
-import { useEffect, useState } from 'react'
+import Card from '@/components/product-card'
+import Category from '@/components/categories'
+import Contactus from "@/components/contactus";
+import Purchases from "@/components/purchases";
+import Carousel from "@/components/carousel"
+import Journey from '@/components/journey'
 
-
-const inter = Inter({ subsets: ['latin'] })
-
-
-export default function Home() {
-  const [message, setMessage] = useState('')
-  const [auth,setAuth] = useState(false)
-
-  // useEffect(() => {
-  //   (
-  //     async () => {
-  //       try {
-  //         const response = await fetch('http://localhost:8080/user/userExist', {
-  //           credentials: "include"
-  //         })
-  //         const user = await response.json()
-
-  //         console.log(user)
-  //         setMessage(`Hi ${user.fullname}`)
-  //         setAuth(true)
-  //       } catch (error) {
-  //         console.log(error)
-  //         setMessage(`Error: ${error}`)
-  //         setAuth(false)
-  //       }
-
-  //     }
-  //   )()
-  // })
-
+export default function index() {
   return (
-    <div className={inter.className}>
-      {message}
-    </div>
-  );
+    <main>
+      <Carousel />
+      <Category />
+      <Card />
+      <Journey />
+      <Contactus />
+      {/* <Contactus/> */}
+      {/* <Footer/> */}
+    </main>
+  )
 }

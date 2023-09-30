@@ -95,10 +95,10 @@ export default function footer2() {
                         </div>
                     </div>
                 </div>
-                <hr className="mt-8 mb-3 border-gray-200 sm:mx-auto" />
+                <hr className="mt-8 border-gray-200 sm:mx-auto" />
                 
                 <div className='md:flex md:items-center md:justify-between md:p-2'>
-                    <ul className="flex flex-wrap items-center justify-center gap-2 text-sm font-normal text-gray-500 sm:mt-0 pb-2">
+                    <ul className="flex flex-wrap items-center justify-center gap-2 text-sm font-normal text-gray-500 sm:mt-0 pb-2 pt-2.5">
                         <li>
                             <Link href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
                         </li>
@@ -114,7 +114,7 @@ export default function footer2() {
                         
                     </ul>
                     
-                    <span className="flex md:mt-0 sm:mt-2 w-full sm:w-auto text-sm text-gray-500 sm:text-center justify-center pb-2"> &copy;Mentor Diamond. 2024 </span>
+                    <span className="flex md:mt-0 sm:mt-2 w-full sm:w-auto text-sm text-gray-500 sm:text-center justify-center pb-2 pt-2.5"> &copy;Mentor Diamond. 2024 </span>
                 </div>
             </div>
         </footer>

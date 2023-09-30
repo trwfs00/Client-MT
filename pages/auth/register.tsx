@@ -21,7 +21,7 @@ const register = () => {
             <div className="flex flex-col items-center justify-center px-6 my-10 sm:my-12 md:my-14">
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="font-mtserif text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                        <h1 className="font-mtserif text-2xl md:text-2xl lg:text-3xl font-semibold leading-tight tracking-tight text-gray-900">
                             Create an Account
                         </h1>
                         <p className="font-mtsans text-md font-normal leading-tight tracking-tight text-gray-600">
