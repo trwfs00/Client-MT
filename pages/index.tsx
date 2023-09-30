@@ -1,16 +1,14 @@
-import Carousel from '@/components/carousel'
 import OurStroy from '@/components/journey'
-import Category from '@/components/categories'
-import Contact from '@/components/contactus'
+import Productdetail from '@/src/components/productdetail'
+import Navadmin from '@/src/components/navadmin'
+
 
 export default function index() {
   return (
-    <main className='bg-white font-mtsans overflow-hidden'>
-      <Carousel/>
-      <Category/>
-      <OurStroy/>
-      <Contact/>
-    </main>
+    <>
+      <Navadmin/>
+      <Productlist/>
+    </>
   );
 }
 
