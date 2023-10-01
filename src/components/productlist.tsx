@@ -8,6 +8,7 @@ import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircl
 import { input } from '@material-tailwind/react';
 import En from "@/images/En.svg"
 import Swal from 'sweetalert2';
+import router from 'next/router'
 
 type Props = {
     datas: Data[];
@@ -45,7 +46,11 @@ function navaddmin ({ datas }: Props)  {
                         });
                   
                         if (response.ok) {
-                          Swal.fire('Deleted!', 'The product has been deleted.', 'success');
+                            Swal.fire('Deleted!', 'The product has been deleted.', 'success').then(async (result: { isConfirmed: any; }) => {
+                                if (result.isConfirmed) {
+                                    await router.reload(); // Redirect to the desired page
+                                }
+                            });
                           // Optionally, you can refresh the product list or handle the deletion UI logic here.
                         } else {
                           Swal.fire('Error', 'Failed to delete the product.', 'error');

@@ -4,6 +4,7 @@ import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
 
 type Propss = {
     data: Datas[];
@@ -23,6 +24,8 @@ type Datas = {
 
 function productdetail({ data }: Propss) {
 
+    const router = useRouter();
+
     const handleDelete = async (Id: any) => {
         Swal.fire({
             title: 'Delete SKUs',
@@ -39,7 +42,11 @@ function productdetail({ data }: Propss) {
                     });
               
                     if (response.ok) {
-                      Swal.fire('Deleted!', 'The SKUs has been deleted.', 'success');
+                        Swal.fire('Deleted!', 'The SKUs has been deleted.', 'success').then(async (result: { isConfirmed: any; }) => {
+                            if (result.isConfirmed) {
+                                await router.reload(); // Redirect to the desired page
+                            }
+                        });
                       // Optionally, you can refresh the SKUs list or handle the deletion UI logic here.
                     } else {
                       Swal.fire('Error', 'Failed to delete the SKUs.', 'error');

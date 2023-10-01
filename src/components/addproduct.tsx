@@ -5,6 +5,34 @@ import React from 'react'
 import En from "@/images/En.svg"
 import Ring from "@/images/ring.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
+
+type Props = {
+    datas: [Data]
+}
+
+type Data = {
+    type: string,
+    productName: string,
+    productDesc: string,
+    thumbnail: string
+}
+
+export const getServerSideProps = async () => {
+    try {
+        let response = await fetch('http://localhost:8080/product')
+        let datas = await response.json()
+        const test = 'test'
+        return {
+            props: { datas: JSON.parse(JSON.stringify(datas)) }
+        }
+    } catch (error) {
+        console.error(error)
+        return {
+            props: { datas: [] },
+        }
+    }
+}
+
 export default function addproduct() {
     return (
         <div className="drawer lg:drawer-open">
@@ -39,7 +67,6 @@ export default function addproduct() {
                             <div className="form-control w-full max-w-xs  ">
                                 <label className="label">
                                     <span className="label-text font-medium">Type</span>
-
                                 </label>
                                 <select className="select select-bordered border-gray-700">
                                     <option disabled selected>Rings</option>
