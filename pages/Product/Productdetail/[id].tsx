@@ -7,6 +7,9 @@ import Image from 'next/image';
 import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
+import { useAuth } from '../../AuthContext';
+
+
 type PageParams = {
   id: string
 }
@@ -115,13 +118,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext<Page
           price: 0,
           cost: 0,
           idPictures: [],
-        }, 
+        },
       },
     };
   }
 }
 
-function details({ productData , skusData }: ProductPageProps,) {
+function details({ productData, skusData }: ProductPageProps,) {
+  const { auth, user } = useAuth();
+  console.log(user) 
+  
   const skuse = skusData;
   const { _id, type, productName, productDesc, thumbnail, idSKU } = productData
   // const [pro, setPro] = useState<Data[]>(data);

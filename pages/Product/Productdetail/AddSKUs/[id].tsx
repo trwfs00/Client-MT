@@ -6,6 +6,8 @@ import Ring from "@/images/ring.svg"
 import { ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useAuth } from '../../../AuthContext';
+
 
 type Props = {
     datas: [Data]
@@ -41,6 +43,9 @@ export const getServerSideProps = async () => {
 }
 
 function image(props: Props) {
+
+    const { auth, user } = useAuth();
+    console.log(user)
 
     const router = useRouter();
     const { id } = router.query;

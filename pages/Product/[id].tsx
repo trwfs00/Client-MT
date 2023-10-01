@@ -4,7 +4,7 @@ import router from 'next/router'
 import { convertToObject } from 'typescript'
 import Image from 'next/image'
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
-
+import { useAuth } from '../AuthContext';
 
 type PageParams = {
     id: string
@@ -63,6 +63,10 @@ export async function getServerSideProps({ params }
 }
 
 function editpro({ data: { _id, type, productName, productDesc, thumbnail } }: ContentPageProps) {
+    
+    const { auth, user } = useAuth();
+    console.log(user)
+    
     // const [product, setProducts] = useState<[Data]>(props.datas)
     const [_type, setType] = useState(type)
     const [_productName, setProductName] = useState(productName)

@@ -3,6 +3,7 @@ import router from 'next/router'
 import { convertToObject } from 'typescript'
 import Image from 'next/image';
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '../AuthContext';
 
 type Props = {
     datas: [Data]
@@ -32,6 +33,9 @@ export const getServerSideProps = async () => {
 }
 
 function image(props: Props) {
+
+    const { auth, user } = useAuth();
+    console.log(user)
 
     const [product, setProducts] = useState<[Data]>(props.datas)
     const [type, setType] = useState('')
