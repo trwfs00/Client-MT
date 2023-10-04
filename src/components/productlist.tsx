@@ -27,8 +27,8 @@ type Data = {
     deleted_at: string;
 };
 
+
 const navaddmin = ({ datas }: Props) => {
-const navaddmin = () => {
     const showAlert = () => {
         Swal.fire({
             title: 'Delete Product',
@@ -115,11 +115,11 @@ const navaddmin = () => {
                                     <th scope="col" className="px-6 py-3">
                                         Created_At
                                     </th>
-                                   
+                                
                                     <th scope="col" className="px-6 py-3">
                                         Manage
                                     </th>
-                                   
+                                
                                 </tr>
                             </thead>
                             <tbody>
@@ -168,42 +168,7 @@ const navaddmin = () => {
                                 <tr>
                                     <td colSpan={8} className='text-white p-4'>ไม่มีสินค้า</td>
                                 </tr>
-                                <tr className="bg-white ">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                        Magic Mouse 2
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        Black
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Accessories
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="h-20 w-auto" src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                            <TrashIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 hover:bg-yellow-500 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <InformationCircleIcon className="h-5 w-5 text-white" />
-
-                                        </button>
-                                    </td>
-                                </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>

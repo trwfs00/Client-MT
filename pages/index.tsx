@@ -1,5 +1,5 @@
 
-// import Productdetail from '@/src/components/productdetail'
+import Productdetail from '@/src/components/productdetail'
 // import Productlist from '@/src/components/productlist'
 import Navadmin from '@/src/components/navadmin'
 import Addskus from '@/src/components/addskus'
@@ -31,9 +31,6 @@ export default function index() {
       <Card />
       <Journey />
       <Contactus />
-      {/* <Contactus/> */}
-      {/* <Footer/> */}
-      {/* <Productdetail /> */}
     </main>
   )
 }
