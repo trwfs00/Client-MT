@@ -20,6 +20,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import Signin from '@/src/components/loginForm'
+import ShopBag from '@/components/shoppingbag'
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -152,9 +153,7 @@ const navigation = () => {
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
-          <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
-            <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </button>
+          <ShopBag/>
           <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
           <div className="flex lg:hidden">
             <button
