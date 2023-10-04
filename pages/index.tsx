@@ -11,11 +11,11 @@ import Journey from '@/components/journey'
 export default function index() {
   return (
     <main>
-       <Carousel />
-       <Category/>
-       <Card/>
-       <Journey/>
-       <Contactus/>
+      <Carousel />
+      <Category />
+      <Card />
+      <Journey />
+      <Contactus />
       {/* <Contactus/> */}
       {/* <Footer/> */}
     </main>
