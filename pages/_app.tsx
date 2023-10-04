@@ -22,7 +22,7 @@ const noto = Noto_Sans_Thai({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${inter.variable} ${playfair.variable} ${noto.variable} bg-gray-100`}>
+    <main className={`${inter.variable} ${playfair.variable} ${noto.variable}`}>
       <MyBanner/>
       <MyNav/>
         <Component {...pageProps} />
