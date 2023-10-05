@@ -18,15 +18,11 @@ import Successful from '@/components/successful'
 export default function index() {
   return (
     <main>
-      <Successful/>
-      {/* <NewAddresss/> */}
-      {/* <EditAddress/> */}
-      {/* <NewAddress/> */}
-       {/* <Carousel />
-       <Category/>
-       <Card/>
-       <Journey/>
-       <Contactus/> */}
+      <Carousel />
+      <Category />
+      <Card />
+      <Journey />
+      <Contactus />
       {/* <Contactus/> */}
       {/* <Footer/> */}
     </main>
