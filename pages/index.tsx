@@ -7,15 +7,26 @@ import Contactus from "@/components/contactus";
 import Purchases from "@/components/purchases";
 import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
+import Address from '@/components/myaddress'
+import NewAddress from '@/components/newaddress'
+import NewAddresss from '@/pages/auth/register'
+import EditAddress from '@/components/editaddress'
+import Checkout from '@/components/checkout'
+import Successful from '@/components/successful'
+
 
 export default function index() {
   return (
     <main>
-       <Carousel />
+      <Successful/>
+      {/* <NewAddresss/> */}
+      {/* <EditAddress/> */}
+      {/* <NewAddress/> */}
+       {/* <Carousel />
        <Category/>
        <Card/>
        <Journey/>
-       <Contactus/>
+       <Contactus/> */}
       {/* <Contactus/> */}
       {/* <Footer/> */}
     </main>
