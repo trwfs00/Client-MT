@@ -1,17 +1,18 @@
 
 import Productdetail from '@/src/components/productdetail'
 import Productlist from '@/src/components/productlist'
-import Navadmin from '@/src/components/navadmin'
-import Addskus from '@/src/components/addskus'
+import Nav from '@/src/components/Admin/nav'
+import Sidebar from '@/src/components/Admin/sidebar'
 import Addpro from '@/src/components/addproduct'
 import Editpd from '@/src/components/editPD'
-import Editskus from '@/src/components/editskus'
+import Proflie from '@/src/components/proflie'
 import Order from '@/src/components/order'
 import Orderdetail from '@/src/components/orderdetail'
 
 export default function index() {
   return (
-    <Order />
+    // <Nav />
+    <Sidebar/>
     
   );
 }
