@@ -13,7 +13,7 @@ const register = () => {
     });
 
     const handleValueChange = (newValue: any) => {
-        //console.log("newValue:", newValue);
+        console.log("newValue:", newValue);
         setValue(newValue);
     }
     return (
