@@ -10,12 +10,12 @@ import router from 'next/router';
 const register = () => {
 
     // const [selectedGender, setSelectedGender] = useState(0);
-    
+
     const handleValueChange = async (newValue: any) => {
         //console.log("newValue:", newValue);
         setValue(newValue);
     }
-    
+
     function convertDateFormat(originalDateString: any) {
         // Split the original date string using '-'
         const parts = originalDateString.split('-');
@@ -23,7 +23,7 @@ const register = () => {
         const reformattedDateString = `${parts[2]}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
         return reformattedDateString;
     }
-    
+
     const [value, setValue] = useState({
         startDate: new Date(),
         endDate: new Date()
@@ -48,17 +48,17 @@ const register = () => {
 
     console.log(gender)
 
-    useEffect(() =>{
-        
+    useEffect(() => {
+
         console.log(gender)
         console.log(value)
-    },[value])
+    }, [value])
 
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
 
-        
+
 
         if (fullname && email && password && conpassword && phone && gender && value && relationship) {
             const dateOfbirth = value.endDate
@@ -69,8 +69,15 @@ const register = () => {
                     await fetch('http://localhost:8080/user/register', {
                         method: "POST",
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({  email, password, fullname, phone, gender, dateOfbirth, relationship})
+                        body: JSON.stringify({ email, password, fullname, phone, gender, dateOfbirth, relationship })
                     })
+                    await fetch('http://localhost:8080/user/login', {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify({ email, password })
+                    })
+
                     await router.push('/');
                 } catch (err: any) {
                     setError(err)
@@ -82,7 +89,6 @@ const register = () => {
             }
         } else {
             setMessage('')
-            console.log('wtf')
         }
 
     }
@@ -165,16 +171,16 @@ const register = () => {
                                     </div>
                                     <h3 className="block text-md font-medium text-gray-900 mt-6 md:mt-0 mb-2">Birthday (Optional)</h3>
                                     <div className="flex items-center mb-6 md:mb-2">
-                                    <Datepicker
-                                        useRange={false}
-                                        asSingle={true}
-                                        value={value}
-                                        primaryColor={"blue"}   
-                                        onChange={handleValueChange}
-                                        displayFormat={"DD-MM-YYYY"}
-                                        readOnly={true}
-                                        inputClassName={'py-3.5 px-0 w-full text-md font-normal text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 peer'}
-                                    />
+                                        <Datepicker
+                                            useRange={false}
+                                            asSingle={true}
+                                            value={value}
+                                            primaryColor={"blue"}
+                                            onChange={handleValueChange}
+                                            displayFormat={"DD-MM-YYYY"}
+                                            readOnly={true}
+                                            inputClassName={'py-3.5 px-0 w-full text-md font-normal text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 peer'}
+                                        />
                                     </div>
                                     <label htmlFor="underline_select" className="sr-only">Underline select</label>
                                     <select id="underline_select"

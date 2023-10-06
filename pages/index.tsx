@@ -56,11 +56,20 @@ export const getServerSideProps = async () => {
 export default function index({ datas }: Props) {
 
   const { auth, user } = useAuth();
-  console.log(user)
+
+  // console.log(user?.isAdmin)
+
+  // if(user?.isAdmin) {
+  //   console.log("admin")
+  // }else{
+  //   console.log('user')
+  // }
+  
+
+
 
   return (
     <main>
-      {user?.fullname}
       <Carousel />
       <Category />
       <Card datas={datas} />
@@ -69,3 +78,4 @@ export default function index({ datas }: Props) {
     </main>
   )
 }
+ 
