@@ -44,31 +44,32 @@ export default function order() {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-row gap-10 p-10">
                     {/* Page content here */}
-                    <div className='border bg-white w-full max-w-xl p-8 rounded-xl'>
-                        <h1 className='text-xl  font-bold'>Order</h1>
-                        <div className='grid grid-cols-4 mt-5 bg-white shadow-lg rounded-xl '>
-                            <div><Image className="m-5   rounded-xl" width={100} height={100} src={Ring} alt="Logo" /></div>
-                            <div className='p-8'>
-                            <p> Customer_id  </p>
-                            <p> notes </p>
-                            <p> status </p>
-                            <p>Total </p></div>
-                            <div className=' flex justify-end  col-span-4 mr-5 mb-5'>
-                                <button
-                                    onClick={() => { setIsOpen(!isOpen) }}
-                                    className='bg-gray-700  text-white px-3 py-2 rounded-full'>details</button></div>
+                    <div className='border bg-white w-full max-w-xl p-8 rounded-xl relative'>
+                        <h1 className='text-xl font-bold'>Order</h1>
+                        <div className='flex flex-col max-w-full justify-between my-5 p-4 bg-white border border-gray-100 shadow-sm rounded-xl'>
+                            <div className='flex-1'>
+                                <h1>Order ID #0012030</h1>
+                                <h1>บลาๆๆๆๆๆ</h1>
+                                <div className='flex flex-row w-full justify-between items-center'>
+                                    <h1>บลาๆๆๆๆๆ</h1>
+                                    <button
+                                        onClick={() => { setIsOpen(!isOpen) }}
+                                        className='bg-[#0F172A]  text-white px-6 h-10 w-auto rounded-full focus:ring-4 focus:outline-none focus:ring-gray-100'>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        
-
                     </div>
                     {isOpen ? (
-                        <div className='border bg-white flex-auto p-5 rounded-xl'>
-                            <h1 className='text-xl font-bold text-center'>Order Detail</h1>
+                        <div className='border bg-white flex-auto flex flex-col justify-between p-5 rounded-xl'>
+                            <>
+                                <h1 className='text-xl font-bold text-center'>Order Detail</h1>
                                 <div className=''>
-                                    <p className='mt-5'>Order no.</p>
-                                    
+                                    <p className='mt-5 ml-5'>Order no.</p>
+
                                     <div className='grid grid-cols-3 gap-4 '>
-                                        <Image className="m-5 rounded-xl " width={200} height={150} src={Ring} alt="Logo" />
+                                        <Image className="m-5 rounded-xl" src={Ring} alt="Logo" />
                                         <div className='col-span-2 ml-10'>
                                             <p className='mt-5  font-medium text-sm'> skus_id :<span className='pl-2'>123549849</span> </p>
                                             <p className='text-sm  text-gray-500'>color :<span className='pl-2'>123549849</span></p>
@@ -83,25 +84,43 @@ export default function order() {
                                         <p className='ml-5 font-medium'>Total</p>
                                         <p className='font-medium'>$2545</p>
                                     </div> </div>
-                            <div className='grid grid-cols-3 gap-4 border-b border-gray-300 '>
-                                <Image className="m-5 rounded-xl " width={150} height={100} src={Ring} alt="Logo" />
-                                <div className="flex items-center col-span-2 ml-10">
-                                    <input id="checked-checkbox" type="checkbox" value="" className="w-4 h-4  bg-gray-700 border-gray-300 rounded " />
-                                    <label htmlFor="checked-checkbox" className="ml-2  text-sm  text-gray-900 ">Checked state</label>
+                                <div className='grid grid-cols-3 gap-4  border-gray-300 '>
+                                    <Image className="m-5 rounded-xl " width={150} height={100} src={Ring} alt="Logo" />
+                                    <div className="flex items-center col-span-2 ml-10">
+                                        <div className="form-control">
+                                            <label className="label cursor-pointer">
+
+                                                <input type="radio" name="radio-10" className="radio checked:bg-red-500" />
+                                                <span className="label-text pl-3">not pay</span>
+                                            </label>
+                                        </div>
+                                        <div className="form-control">
+                                            <label className="label cursor-pointer">
+
+                                                <input type="radio" name="radio-10" className="radio checked:bg-blue-500" />
+                                                <span className="label-text pl-3">pay complete</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
+                            </>
+                            <div className=''>
+                                <button type="button" className="text-white bg-[#0F172A] w-full hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                    Confirm
+                                </button>
+
                             </div>
+
 
                         </div>
                     ) : (
-                            <div className='border  flex-auto rounded-xl '>
-                               
-                               <div >
-                                    <Image className=" w-auto h-auto rounded-xl" src={details} alt="details" />
-                               </div>
-
+                        <div className='  flex-auto rounded-xl '>
+                            <div >
+                                <Image className=" w-auto h-auto rounded-xl" src={details} alt="details" />
                             </div>
+                        </div>
                     )}
-                    
+
                 </div>
 
 
