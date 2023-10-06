@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MyLogo from '@/images/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import MyBest from '@/images/best.svg'
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { input } from '@material-tailwind/react';
-import En from "@/images/En.svg"
-import Swal from 'sweetalert2';
+import details from "@/images/detail.svg"
+import Ring from "@/images/ring.svg"
 
-export default function 
-h1() {
-  return (
-    <>
-    <div className="navbar bg-base-100">
+export default function order() {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className='font-mtsans font-mtthai'>
+            <div className="navbar bg-base-100">
                 <div className="flex lg:flex-1 ">
                     <Link href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Mentor Diamond</span>
@@ -24,7 +24,7 @@ h1() {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <Image className="h-30 w-auto" src={MyBest} alt="Logo" />
+                                <Image className="" src={Ring} alt="Logo" />
                             </div>
                         </label>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
@@ -42,139 +42,69 @@ h1() {
             </div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col  ">
+                <div className="drawer-content flex flex-row gap-10 p-10">
                     {/* Page content here */}
-                    <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
-                    <div className='flex justify-between my-5'>
-                        <div className=''>
-                            <div className=" relative mx-auto text-gray-600">
-                                <input className="border-2 ml-10 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm "
-                                    type="search" name="search" placeholder="Search" />
-                                <button type="submit" className="absolute right-0 top-0 mt-2 mr-4">
-                                    <MagnifyingGlassIcon className="h-6 w-6 text-gray-500" />
-                                </button>
-                            </div>
+                    <div className='border bg-white w-full max-w-xl p-8 rounded-xl'>
+                        <h1 className='text-xl  font-bold'>Order</h1>
+                        <div className='grid grid-cols-4 mt-5 bg-white shadow-lg rounded-xl '>
+                            <div><Image className="m-5   rounded-xl" width={100} height={100} src={Ring} alt="Logo" /></div>
+                            <div className='p-8'>
+                            <p> Customer_id  </p>
+                            <p> notes </p>
+                            <p> status </p>
+                            <p>Total </p></div>
+                            <div className=' flex justify-end  col-span-4 mr-5 mb-5'>
+                                <button
+                                    onClick={() => { setIsOpen(!isOpen) }}
+                                    className='bg-gray-700  text-white px-3 py-2 rounded-full'>details</button></div>
                         </div>
-                        <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-slate-700 hover:bg-slate-600 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
-                            <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
-                            Add product
-                        </button>
+                        
+
                     </div>
-                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-5">
-                        <table className="w-full text-sm text-left text-gray-500 ">
-                            <thead className="text-xs text-center text-white uppercase bg-slate-700">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        Type
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Product name
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Product detail
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Product image
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Created_At
-                                    </th>
+                    {isOpen ? (
+                        <div className='border bg-white flex-auto p-5 rounded-xl'>
+                            <h1 className='text-xl font-bold text-center'>Order Detail</h1>
+                                <div className=''>
+                                    <p className='mt-5'>Order no.</p>
                                     
-                                    <th scope="col" className="px-6 py-3">
-                                        Manage
-                                    </th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody className='text-center'>
-                                <tr className="bg-white border-b ">
-                                    <td scope="row" className="px-6 py-4   whitespace-nowrap ">
-                                        Apple MacBook Pro 17"
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Silver
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Laptop
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    
-                                    <td className="px-6 py-4">
-                                        <Link href="" className="text-md font-normal leading-6 text-gray-900">
-                                          <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                              <PencilSquareIcon className="h-5 w-5 text-white " />
-                                          </button>
-                                          <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                              <InformationCircleIcon className="h-5 w-5 text-white" />
-                                          </button>
-                                        </Link>                                        
-                                    </td>
-                                    
-                                </tr>
-                                <tr className="bg-white border-b ">
-                                    <td scope="row" className="px-6 py-4   whitespace-nowrap ">
-                                        Microsoft Surface Pro
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        White
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Laptop PC
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    
-                                    <td className="px-6 py-4">
-                                      <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                          <PencilSquareIcon className="h-5 w-5 text-white " />
-                                      </button>
-                                      <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                          <InformationCircleIcon className="h-5 w-5 text-white" />
-                                      </button>
-                                    </td>
-                                   
-                                </tr>
-                                <tr className="bg-white ">
-                                    <td scope="row" className="px-6 py-4  whitespace-nowrap ">
-                                        Magic Mouse 2
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Black
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Accessories
-                                    </td>
-                                    <td className='flex justify-center items-center'>
-                                        <Image className="" width={100} height={150} src={En} alt="Logo" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        หลังเที่ยง
-                                    </td>
-                                    
-                                    <td className="px-6 py-4">
-                                        <button type="button" className=" bg-yellow-400 mr-5 hover:bg-yellow-500 ml-2.5  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                            <PencilSquareIcon className="h-5 w-5 text-white " />
-                                        </button>
-                                      <button type="button" className=" bg-blue-700  hover:bg-blue-800  font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                          <InformationCircleIcon className="h-5 w-5 text-white" />
-                                      </button>
-                                    </td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    <div className='grid grid-cols-3 gap-4 '>
+                                        <Image className="m-5 rounded-xl " width={250} height={160} src={Ring} alt="Logo" />
+                                        <div className='col-span-2 ml-10'>
+                                            <p className='mt-5  font-medium text-sm'> skus_id :<span className='pl-2'>123549849</span> </p>
+                                            <p className='text-sm  text-gray-500'>color :<span className='pl-2'>123549849</span></p>
+                                            <p className='text-sm text-gray-500 '>Price :<span className='pl-2'>123549849</span></p>
+                                            <p className='text-sm text-gray-500' >Glodwight :<span className='pl-2'>123549849</span></p>
+                                            <p className=' text-sm text-gray-500'>Size :<span className='pl-2'>123549849</span></p>
+                                            <p className='text-sm text-gray-500'>Qty :<span className='pl-2'>123549849</span></p>
+                                            <p className='text-sm text-gray-500'>Cost :<span className='pl-2'>123549849</span></p>
+                                        </div>
+                                    </div>
+                                    <div className='flex justify-between border-b border-gray-300 '>
+                                        <p className='ml-5 font-medium'>Total</p>
+                                        <p className='font-medium'>$2545</p>
+                                    </div> </div>
+                            <div className='grid grid-cols-3 gap-4 border-b border-gray-300 '>
+                                <Image className="m-5 rounded-xl " width={150} height={100} src={Ring} alt="Logo" />
+                                <div className="flex items-center col-span-2 ml-10">
+                                    <input id="checked-checkbox" type="checkbox" value="" className="w-4 h-4  bg-gray-700 border-gray-300 rounded " />
+                                    <label htmlFor="checked-checkbox" className="ml-2  text-sm  text-gray-900 ">Checked state</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    ) : (
+                            <div className='border  flex-auto rounded-xl '>
+                               
+                               <div >
+                                    <Image className=" w-auto h-auto rounded-xl" src={details} alt="details" />
+                               </div>
+
+                            </div>
+                    )}
+                    
                 </div>
-                
+
+
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
@@ -199,7 +129,11 @@ h1() {
                         </li>
                     </ul>
                 </div>
+
+                <div>
+
+                </div>
             </div>
-            </>
-  )
+        </div>
+    )
 }

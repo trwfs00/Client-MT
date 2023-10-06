@@ -7,10 +7,11 @@ import Addpro from '@/src/components/addproduct'
 import Editpd from '@/src/components/editPD'
 import Editskus from '@/src/components/editskus'
 import Order from '@/src/components/order'
+import Orderdetail from '@/src/components/orderdetail'
 
 export default function index() {
   return (
-    <Productdetail />
+    <Order />
     
   );
 }

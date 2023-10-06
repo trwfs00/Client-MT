@@ -24,8 +24,7 @@ export default function addskus() {
                             <div className='flex  justify-center items-center mt-5'>
                                 <Carousel className="w-1/2 h-64" showIndicators={false} showThumbs={false}>
                                     <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                        
+                                        <Image className=""  src={Ring} alt="Logo" />
                                     </div>
                                     <div>
                                         <Image className="" src={Ring} alt="Logo" />
@@ -39,30 +38,24 @@ export default function addskus() {
                                     <div>
                                         <Image className="" src={Ring} alt="Logo" />
                                     </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-
-
                                 </Carousel>
+                                {/* <Carousel className="w-1/2 h-64" showIndicators={false} showThumbs={false}>
+                                    {idPictures && idPictures.length > 0 && (
+                                        <div className="flex flex-wrap gap-2">
+                                            {idPictures.map((image, index) => (
+                                                <div>
+                                                    <Image
+                                                        key={index}
+                                                        src={image.path}
+                                                        alt="Logo"
+                                                        width={100}
+                                                        height={100}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : null}
+                                </Carousel> */}
                           </div>               
                             <div className='flex justify-center items-center my-5'>
                                 <div className="form-control w-full max-w-xs ">
