@@ -68,7 +68,7 @@ export default function order() {
                                     <p className='mt-5'>Order no.</p>
                                     
                                     <div className='grid grid-cols-3 gap-4 '>
-                                        <Image className="m-5 rounded-xl " width={250} height={160} src={Ring} alt="Logo" />
+                                        <Image className="m-5 rounded-xl " width={200} height={150} src={Ring} alt="Logo" />
                                         <div className='col-span-2 ml-10'>
                                             <p className='mt-5  font-medium text-sm'> skus_id :<span className='pl-2'>123549849</span> </p>
                                             <p className='text-sm  text-gray-500'>color :<span className='pl-2'>123549849</span></p>
