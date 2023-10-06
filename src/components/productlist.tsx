@@ -46,7 +46,7 @@ const navaddmin = ({ datas }: Props) => {
     };
     return (
         <>
-            <div className="navbar bg-base-100">
+            {/* <div className="navbar bg-base-100">
                 <div className="flex lg:flex-1 ">
                     <Link href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Mentor Diamond</span>
@@ -73,7 +73,7 @@ const navaddmin = ({ datas }: Props) => {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col  ">
@@ -89,7 +89,7 @@ const navaddmin = ({ datas }: Props) => {
                                 </button>
                             </div>
                         </div>
-                        <Link href={'./Product/addpro'}>
+                        <Link href={'./product/addpro'}>
                             <button type="button" className="  text-white mr-10 w-25 h-10 px-4  bg-slate-700 hover:bg-slate-600 font-medium rounded-lg text-sm  text-center inline-flex items-center   ">
                                 <PlusCircleIcon className="h-6 w-6 mr-2 text-white" />
                                 Add product
@@ -149,14 +149,14 @@ const navaddmin = ({ datas }: Props) => {
                                         </Link>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <Link href={`./Product/${product._id}`}>
+                                        <Link href={`./product/${product._id}`}>
                                             <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                 <PencilSquareIcon className="h-5 w-5 text-white " />
                                             </button>
                                         </Link>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <Link href={`./Product/Productdetail/${product._id}`}>
+                                        <Link href={`./product/productdetail/${product._id}`}>
                                             <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
                                                 <InformationCircleIcon className="h-5 w-5 text-white" />
                                             </button>

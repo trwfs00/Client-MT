@@ -17,6 +17,7 @@ import Purchases from "@/components/purchases";
 import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
 import { useAuth } from './AuthContext';
+import router from 'next/router'
 
 type Props = {
   datas: Data[];
@@ -61,6 +62,7 @@ export default function index({ datas }: Props) {
 
   // if(user?.isAdmin) {
   //   console.log("admin")
+  //   router.push('/admin/product')
   // }else{
   //   console.log('user')
   // }
@@ -78,4 +80,3 @@ export default function index({ datas }: Props) {
     </main>
   )
 }
- 

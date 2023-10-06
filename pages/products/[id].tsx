@@ -93,7 +93,7 @@ export async function getServerSideProps({ params }
     : GetStaticPropsContext<PageParams>): Promise<GetStaticPropsResult<ContentPageProps>> {
     try {
         let proRes = await fetch('http://localhost:8080/product/onePro/' + params?.id)
-        let skuRes = await fetch('http://localhost:8080/product/onePro/' + params?.id)
+        // let skuRes = await fetch('http://localhost:8080/product/onePro/' + params?.id)
         let responeFromServer: ResponeFromServer = await proRes.json()
         // let responeFromServer: ResponeFromServer = await proRes.json()
         console.log(responeFromServer)
