@@ -106,6 +106,7 @@ function image(props: Props) {
         }
 
     }
+    
     return (
 
         <div className="drawer lg:drawer-open">

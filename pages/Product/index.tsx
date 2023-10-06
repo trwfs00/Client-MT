@@ -44,11 +44,13 @@ export const getServerSideProps = async () => {
 export default function Home(props: Props) {
 
   const { auth, user } = useAuth();
-  console.log(user)
-
+  console.log()
+  
   const [products, setProducts] = useState<Data[]>(props.datas);
 
   return (
-        <MyProduct datas={products} />
+    <>
+            <MyProduct datas={products} />
+    </>
   );
 }

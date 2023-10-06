@@ -146,25 +146,6 @@ function navaddmin ({ datas }: Props)  {
                                             </button>
                                         </Link>
                                     </td>
-                                    {/* <td className="px-6 py-4">
-                                            <button type="button" onClick={showAlert} className="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-500 font-medium rounded-lg text-sm p-2  text-center inline-flex items-center  ">
-                                                <TrashIcon className="h-5 w-5 text-white" />
-                                            </button>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <Link href={`./Product/${product._id}`}>
-                                            <button type="button" className=" bg-yellow-400 hover:bg-yellow-600 ml-2.5 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                                <PencilSquareIcon className="h-5 w-5 text-white " />
-                                            </button>
-                                        </Link>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <Link href={`./Product/Productdetail/${product._id}`}>
-                                            <button type="button" className=" bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center  ">
-                                                <InformationCircleIcon className="h-5 w-5 text-white" />
-                                            </button>
-                                        </Link>
-                                    </td> */}
                                 </tr>
                                     )) 
                             ) : (

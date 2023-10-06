@@ -17,6 +17,7 @@ import Purchases from "@/components/purchases";
 import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
 import { useAuth } from './AuthContext';
+import Link from 'next/link'
 
 export default function index() {
 
@@ -26,6 +27,7 @@ export default function index() {
   return (
     <main>
       {user?.fullname}
+      <Link href={`./User/${user?.fullname}`}>Crop</Link>
       <Carousel />
       <Category />
       <Card />

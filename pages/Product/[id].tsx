@@ -9,6 +9,7 @@ import { useAuth } from '../AuthContext';
 type PageParams = {
     id: string
 }
+
 type ContentPageProps = {
     data: Data
 }
