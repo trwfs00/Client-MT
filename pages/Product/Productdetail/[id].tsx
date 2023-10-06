@@ -7,6 +7,7 @@ import Image from 'next/image';
 import En from "@/images/En.svg"
 import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
+
 type PageParams = {
   id: string
 }

@@ -18,7 +18,42 @@ import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
 import { useAuth } from './AuthContext';
 
-export default function index() {
+type Props = {
+  datas: Data[];
+};
+
+type Data = {
+  _id: string;
+  type: string;
+  productName: string;
+  productDesc: string;
+  thumbnail: string;
+  idSKU: {
+      _id: string;
+      price:string;
+  }[];
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
+};
+
+export const getServerSideProps = async () => {
+  try {
+      const response = await fetch('http://localhost:8080/product/');
+      const datas = await response.json();
+
+      return {
+          props: { datas },
+      };
+  } catch (error) {
+      console.error('Error fetching data:', error);
+      return {
+          props: { datas: [] },
+      };
+  }
+}
+
+export default function index({ datas }: Props) {
 
   const { auth, user } = useAuth();
   console.log(user)
@@ -28,7 +63,7 @@ export default function index() {
       {user?.fullname}
       <Carousel />
       <Category />
-      <Card />
+      <Card datas={datas} />
       <Journey />
       <Contactus />
     </main>

@@ -80,7 +80,7 @@ const navigation = (props: Auth) => {
             </Link>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
-            <Link href="#" className="text-md font-normal leading-6 text-gray-900">
+            <Link href="/products" className="text-md font-normal leading-6 text-gray-900">
               New Arrivals
             </Link>
             <Popover className="relative">
