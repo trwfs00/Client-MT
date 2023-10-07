@@ -4,7 +4,7 @@ import { button, input } from '@material-tailwind/react';
 import React from 'react'
 import En from "@/images/En.svg"
 import Ring from "@/images/ring.svg"
-import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline';
+import {  ShoppingBagIcon, ShoppingCartIcon,  UsersIcon } from '@heroicons/react/24/outline';
 export default function addproduct() {
     return (
         <div className="drawer lg:drawer-open">

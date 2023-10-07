@@ -1,19 +1,14 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 import React, { useEffect, useState } from 'react'
-import MyLogo from '@/images/logo.svg';
-import Link from 'next/link';
 import Image from 'next/image';
 import MyBest from '@/images/best.svg'
 import { BriefcaseIcon, CalendarIcon, CurrencyDollarIcon, EnvelopeIcon, InformationCircleIcon, MagnifyingGlassIcon, MapPinIcon, PencilIcon, PencilSquareIcon, PhoneIcon, PhotoIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
-import { input } from '@material-tailwind/react';
-import details from "@/images/detail.svg"
+
 import En from "@/images/En.svg"
 import Datepicker from 'react-tailwindcss-datepicker';
 import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { join } from 'path';
-import { LinkIcon } from '@nextui-org/react';
 
 const country = [
     {
@@ -43,20 +38,7 @@ const relationship = [
         name: 'Divorce'
     },
 ]
-const City = [
-    {
-        id: 1,
-        name: 'KhonKhan'
-    },
-    {
-        id: 2,
-        name: 'BKK'
-    },
-    {
-        id: 3,
-        name: 'Anc'
-    },
-]
+
 
 
 
@@ -68,26 +50,48 @@ export default function Profile() {
         startDate: null,
         endDate: null
     });
+    const [provinces, setProvinces] = useState([] || [
+        { "province": "กระบี่" }, { "province": "กรุงเทพมหานคร" }, { "province": "กาญจนบุรี" }, { "province": "กาฬสินธุ์" }
+    ]);
+    
+const [selectedProvince, setSelectedProvince] = useState();
 
     const handleValueChange = (newValue: any) => {
         //console.log("newValue:", newValue);
         setValue(newValue);
     }
 
-    useEffect(()=>{
-        async function fetchProvinces() {
-            try {
-                const res = await fetch('https://ckartisan.com/api/provinces')
-                // if(!res.ok){
+    useEffect(() => {
+    const fetchProvinces = async () => {
+      try {
+        const resProvinces = await fetch('https://ckartisan.com/api/provinces');
+        const provinceData = await resProvinces.json();
+        setProvinces(provinceData);
+        console.log(provinces);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchProvinces();
+  }, [])
+  useEffect(()=>{
+    console.log(provinces)
+  },[provinces])
 
-                // }
-                const provinces = await res.json()
-                setProvinces(provinces)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-    },[])
+    interface Province {
+        province: string;
+    }
+
+    interface Ptest {
+        "id": number,
+        "name_th": string,
+        "name_en": string,
+        "geography_id": number,
+        "created_at": string,
+        "updated_at": string,
+        "deleted_at": null
+    }
+
 
     // const callProvinces = async () => {
     //     try {
@@ -99,18 +103,15 @@ export default function Profile() {
     //     }
     // }
 
+const [selected, setSelected] = useState(country[0]);
+const [selectedre, setSelectedre] = useState(relationship[0]);
 
-const [provinces, setProvinces] = useState()
-const [selected, setSelected] = useState(country[0])
-const [selectedre, setSelectedre] = useState(relationship[0])
-const [selectedcity, setSelectedcity] = useState(City[0])
 
 console.log(provinces)
 return (
     <div className='p-4 sm:ml-64'>
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 bg-white ">
             <div className='px-20'>
-                
                 <div className="lg:flex lg:items-center lg:justify-between">
                     <div className="min-w-0 flex  ">
                         <Image className="mt-10 rounded-xl " width={150} height={100} src={En} alt="Logo" />
@@ -120,8 +121,6 @@ return (
                             </h2>
                             <span className=''>Lorem ipsum dolor sit amet </span>
                         </div>
-                        
-                       
                     </div>
                     <div className="mt-5 flex lg:ml-4 lg:mt-0">
                         <span className="hidden sm:block">
@@ -310,15 +309,14 @@ return (
                             <dt className="text-sm font-medium leading-6 text-gray-900">City (optional)</dt>
                             <div className="sm:col-span-1">
 
-                                <Listbox value={selectedcity} onChange={setSelectedcity}>
+                                <Listbox value={selectedProvince} onChange={setSelectedProvince}>
                                     {({ open }) => (
                                         <>
 
                                             <div className="relative mt-2">
                                                 <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
                                                     <span className="flex items-center">
-
-                                                        <span className="ml-3 block truncate">{selectedcity.name}</span>
+                                                        <span className="ml-3 block truncate">{selectedProvince?.province || 'เลือกจังหวัด'}</span>
                                                     </span>
                                                     <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                                                         <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -333,16 +331,16 @@ return (
                                                     leaveTo="opacity-0"
                                                 >
                                                     <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                                        {City.map((City) => (
+                                                        {provinces.map((province) => (
                                                             <Listbox.Option
-                                                                key={City.id}
+                                                                key={province}
                                                                 className={({ active }) =>
                                                                     classNames(
                                                                         active ? 'bg-gray-700 text-white' : 'text-gray-900',
                                                                         'relative cursor-default select-none py-2 pl-3 pr-9'
                                                                     )
                                                                 }
-                                                                value={City}
+                                                                value={province}
                                                             >
                                                                 {({ selected, active }) => (
                                                                     <>
@@ -351,7 +349,7 @@ return (
                                                                             <span
                                                                                 className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
                                                                             >
-                                                                                {City.name}
+                                                                                {province?.province || 'เออเร่อค่าา'}
                                                                             </span>
                                                                         </div>
 

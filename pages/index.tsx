@@ -7,12 +7,12 @@ import Addpro from '@/src/components/addproduct'
 import Editpd from '@/src/components/editPD'
 import Proflie from '@/src/components/proflie'
 import Order from '@/src/components/order'
-import Orderdetail from '@/src/components/orderdetail'
+import Edit from '@/src/components/Admin/editadmin'
 
 export default function index() {
   return (
     // <Nav />
-    <Proflie />
+    <Edit />
     
   );
 }
