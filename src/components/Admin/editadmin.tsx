@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import En from "@/images/En.svg"
 import Image from 'next/image';
-import { CheckIcon, ChevronUpDownIcon, EnvelopeIcon, PencilIcon, PhoneIcon, PhotoIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { CameraIcon, CheckIcon, ChevronUpDownIcon, EnvelopeIcon, PencilIcon, PhoneIcon, PhotoIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import Datepicker from 'react-tailwindcss-datepicker';
 import { Listbox, Transition } from '@headlessui/react';
 import { Fragment } from 'react'
@@ -53,19 +53,30 @@ function editadmin() {
       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 ">
         <div className="grid  grid-flow-col gap-4">
           <div className=" border bg-white shadow-xl rounded-md ">
-            <Image className=" rounded-xl m-auto mt-10" width={150} height={100} src={En} alt="Logo" />
+
+            <div className="flex items-center justify-center w-full mt-10  ">
+              <label htmlFor="dropzone-file" className="  flex flex-col items-center justify-center border-2 border-gray-100 rounded-full cursor-pointer bg-gray-50 hover:bg-gray-100 ">
+                <div className="flex flex-col items-center justify-center ">
+                  <Image className="rounded-xl m-auto opacity-40  hover:opacity-70 " width={150} height={100} src={En} alt="Logo" />
+                  <CameraIcon className="h-8 w-8 absolute text-gray-500" />
+          
+                </div>
+                <input id="dropzone-file" type="file" className="hidden" />
+              </label>
+            </div>
+
             <span className='mt-10  flex justify-center items-center'>Jimimos eieieie</span>
             <span className='mt-5  flex justify-center items-center'>Admin</span>
           </div>
-          
+
           <div className="col-span-2 border bg-white shadow-xl rounded-md">
             <div className="mt-10">
               <h1 className='text-center font-medium text-xl border-b pb-5 '>Edit Profile</h1>
             </div>
             <div className=" grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 px-10 py-10">
-              
-              
-              <div className="sm:col-span-3"> 
+
+
+              <div className="sm:col-span-3">
                 <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                   Name
                 </label>
@@ -113,30 +124,30 @@ function editadmin() {
               <div className="sm:col-span-4">
 
                 <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 ">Status (select)</label>
-              <ul className="grid w-full gap-6 md:grid-cols-2">
+                <ul className="grid w-full gap-6 md:grid-cols-2">
                   <li>
                     <input type="radio" id="hosting-small" name="hosting" value="hosting-small" className="hidden peer " required />
                     <label htmlFor="hosting-small" className="bg-gray-100 inline-flex items-center justify-between w-full p-2 text-gray-500  border border-gray-200 rounded-lg cursor-pointer    peer-checked:border-gray-600 peer-checked:text-gray-600 hover:text-gray-600 hover:bg-gray-100 ">
-                        <div className="block">
+                      <div className="block">
                         <div className="w-full  ">Admin</div>
-                          
-                        </div>
-                      </label>
+
+                      </div>
+                    </label>
                   </li>
                   <li>
-                    <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer"/>
+                    <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer" />
                     <label htmlFor="hosting-big" className="bg-gray-100 inline-flex items-center justify-between w-full p-2 text-gray-500  border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300   peer-checked:border-gray-600 peer-checked:text-gray-600 hover:text-gray-600 hover:bg-gray-100 ">
-                        <div className="block">
-                          <div className="w-full  ">User</div>
-                          
-                        </div>
-                        
-                      </label>
+                      <div className="block">
+                        <div className="w-full  ">User</div>
+
+                      </div>
+
+                    </label>
                   </li>
                 </ul>
 
               </div>
-              
+
               <div className="sm:col-span-3">
                 <Datepicker
                   useRange={false}
@@ -148,7 +159,7 @@ function editadmin() {
                   inputClassName={'py-3.5 px-0 w-full text-md font-normal text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-900 '}
                 />
               </div>
-              <div className="col-span-full">
+              {/* <div className="col-span-full">
                 <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
                   Photo
                 </label>
@@ -168,7 +179,7 @@ function editadmin() {
                     <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className='col-span-full'>
                 <button type="button" className="text-white bg-[#0F172A] w-full hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                   Confirm

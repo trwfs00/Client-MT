@@ -2,7 +2,7 @@ import { PaperClipIcon } from '@heroicons/react/20/solid'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import MyBest from '@/images/best.svg'
-import { BriefcaseIcon, CalendarIcon, CurrencyDollarIcon, EnvelopeIcon, InformationCircleIcon, MagnifyingGlassIcon, MapPinIcon, PencilIcon, PencilSquareIcon, PhoneIcon, PhotoIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { BriefcaseIcon, CalendarIcon, CameraIcon, CurrencyDollarIcon, EnvelopeIcon, InformationCircleIcon, MagnifyingGlassIcon, MapPinIcon, PencilIcon, PencilSquareIcon, PhoneIcon, PhotoIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
 
 import En from "@/images/En.svg"
 import Datepicker from 'react-tailwindcss-datepicker';
@@ -113,8 +113,20 @@ return (
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 bg-white ">
             <div className='px-20'>
                 <div className="lg:flex lg:items-center lg:justify-between">
-                    <div className="min-w-0 flex  ">
-                        <Image className="mt-10 rounded-xl " width={150} height={100} src={En} alt="Logo" />
+                    <div className="min-w-0 flex">
+                        <div className="flex items-center justify-center  mt-10  ">
+                            <label htmlFor="dropzone-file" className="  flex flex-col items-center justify-center border-2 border-gray-100 rounded-full cursor-pointer bg-gray-50 hover:bg-gray-100 ">
+                                <div className="flex flex-col items-center justify-center ">
+
+                                    <Image className=" rounded-xl m-auto  opacity-40  hover:opacity-70 " width={150} height={100} src={En} alt="Logo" />
+                                    {/* <PencilIcon class="h-6 w-6 absolute text-gray-500" /> */}
+                                    {/* <PencilSquareIcon class="h-6 w-6 absolute text-gray-500" /> */}
+                                    {/* <p className='absolute text-lg'>Edit</p> */}
+                                    <CameraIcon className="h-8 w-8 absolute text-gray-500" />
+                                </div>
+                                <input id="dropzone-file" type="file" className="hidden" />
+                            </label>
+                        </div>
                         <div className='m-20 '>
                             <h2 className="text-2xl  font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                                 Profile
@@ -157,16 +169,7 @@ return (
                                 </div>
                             </div>
                         </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-                            <div className="sm:col-span-1">
-
-                                <div className="flex items-center border-b border-gray-300 py-2">
-                                    <EnvelopeIcon className="h-6 w-6 text-gray-300" />
-                                    <input className="appearance-none  border-none bg-transparent border-0 border-b border-gray-300 focus:ring-0 focus:border-gray-900 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Email" aria-label="Full name" />
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Relationship (optional)</dt>
                             <div className="sm:col-span-1">
@@ -233,149 +236,7 @@ return (
                                 </Listbox>
                             </div>
                         </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Country (optional)</dt>
-                            <div className="sm:col-span-1">
-
-                                <Listbox value={selected} onChange={setSelected}>
-                                    {({ open }) => (
-                                        <>
-
-                                            <div className="relative mt-2">
-                                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
-                                                    <span className="flex items-center">
-
-                                                        <span className="ml-3 block truncate">{selected.name}</span>
-                                                    </span>
-                                                    <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                                                    </span>
-                                                </Listbox.Button>
-
-                                                <Transition
-                                                    show={open}
-                                                    as={Fragment}
-                                                    leave="transition ease-in duration-100"
-                                                    leaveFrom="opacity-100"
-                                                    leaveTo="opacity-0"
-                                                >
-                                                    <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                                        {country.map((country) => (
-                                                            <Listbox.Option
-                                                                key={country.id}
-                                                                className={({ active }) =>
-                                                                    classNames(
-                                                                        active ? 'bg-gray-700 text-white' : 'text-gray-900',
-                                                                        'relative cursor-default select-none py-2 pl-3 pr-9'
-                                                                    )
-                                                                }
-                                                                value={country}
-                                                            >
-                                                                {({ selected, active }) => (
-                                                                    <>
-                                                                        <div className="flex items-center">
-
-                                                                            <span
-                                                                                className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
-                                                                            >
-                                                                                {country.name}
-                                                                            </span>
-                                                                        </div>
-
-                                                                        {selected ? (
-                                                                            <span
-                                                                                className={classNames(
-                                                                                    active ? 'text-white' : 'text-gray-500',
-                                                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
-                                                                                )}
-                                                                            >
-                                                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                                                            </span>
-                                                                        ) : null}
-                                                                    </>
-                                                                )}
-                                                            </Listbox.Option>
-                                                        ))}
-                                                    </Listbox.Options>
-                                                </Transition>
-                                            </div>
-                                        </>
-                                    )}
-                                </Listbox>
-                            </div>
-
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">City (optional)</dt>
-                            <div className="sm:col-span-1">
-
-                                <Listbox value={selectedProvince} onChange={setSelectedProvince}>
-                                    {({ open }) => (
-                                        <>
-
-                                            <div className="relative mt-2">
-                                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
-                                                    <span className="flex items-center">
-                                                        <span className="ml-3 block truncate">{selectedProvince?.province || 'เลือกจังหวัด'}</span>
-                                                    </span>
-                                                    <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                                                    </span>
-                                                </Listbox.Button>
-
-                                                <Transition
-                                                    show={open}
-                                                    as={Fragment}
-                                                    leave="transition ease-in duration-100"
-                                                    leaveFrom="opacity-100"
-                                                    leaveTo="opacity-0"
-                                                >
-                                                    <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                                        {provinces.map((province) => (
-                                                            <Listbox.Option
-                                                                key={province}
-                                                                className={({ active }) =>
-                                                                    classNames(
-                                                                        active ? 'bg-gray-700 text-white' : 'text-gray-900',
-                                                                        'relative cursor-default select-none py-2 pl-3 pr-9'
-                                                                    )
-                                                                }
-                                                                value={province}
-                                                            >
-                                                                {({ selected, active }) => (
-                                                                    <>
-                                                                        <div className="flex items-center">
-
-                                                                            <span
-                                                                                className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
-                                                                            >
-                                                                                {province?.province || 'เออเร่อค่าา'}
-                                                                            </span>
-                                                                        </div>
-
-                                                                        {selected ? (
-                                                                            <span
-                                                                                className={classNames(
-                                                                                    active ? 'text-white' : 'text-gray-900',
-                                                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
-                                                                                )}
-                                                                            >
-                                                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                                                            </span>
-                                                                        ) : null}
-                                                                    </>
-                                                                )}
-                                                            </Listbox.Option>
-                                                        ))}
-                                                    </Listbox.Options>
-                                                </Transition>
-                                            </div>
-                                        </>
-                                    )}
-                                </Listbox>
-                            </div>
-
-                        </div>
+                        
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Birthday (optional)</dt>
 

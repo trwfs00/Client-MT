@@ -12,7 +12,8 @@ import Edit from '@/src/components/Admin/editadmin'
 export default function index() {
   return (
     // <Nav />
-    <Edit />
+    <Proflie />
+    // <Edit />
     
   );
 }
