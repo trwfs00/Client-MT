@@ -13,18 +13,20 @@ import NewAddresss from '@/pages/auth/register'
 import EditAddress from '@/components/editaddress'
 import Checkout from '@/components/checkout'
 import Successful from '@/components/successful'
+import Search from '@/components/search'
+import Size from '@/components/size'
 
 
 export default function index() {
   return (
     <main>
-      <Carousel />
+      <Size/>
+      {/* <Carousel />
       <Category />
       <Card />
       <Journey />
-      <Contactus />
+      <Contactus /> */}
       {/* <Contactus/> */}
-      {/* <Footer/> */}
     </main>
   )
 }
