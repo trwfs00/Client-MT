@@ -11,7 +11,7 @@ const register = () => {
 
     // const [selectedGender, setSelectedGender] = useState(0);
 
-    const handleValueChange = async (newValue: any) => {
+    const handleValueChange = (newValue: any) => {
         //console.log("newValue:", newValue);
         setValue(newValue);
     }
