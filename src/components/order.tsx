@@ -97,7 +97,7 @@ export default function order() {
                                         <div className="form-control">
                                             <label className="label cursor-pointer">
 
-                                                <input type="radio" name="radio-10" className="radio checked:radio-accent" />
+                                                <input type="radio" name="radio-10" className="radio checked:bg-blue-500" />
                                                 <span className="label-text pl-3">pay complete</span>
                                             </label>
                                         </div>

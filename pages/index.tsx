@@ -12,7 +12,7 @@ import Orderdetail from '@/src/components/orderdetail'
 export default function index() {
   return (
     // <Nav />
-    <Sidebar/>
+    <Proflie />
     
   );
 }

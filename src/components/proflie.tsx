@@ -1,410 +1,432 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MyLogo from '@/images/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import MyBest from '@/images/best.svg'
-import { InformationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, PhotoIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { BriefcaseIcon, CalendarIcon, CurrencyDollarIcon, EnvelopeIcon, InformationCircleIcon, MagnifyingGlassIcon, MapPinIcon, PencilIcon, PencilSquareIcon, PhoneIcon, PhotoIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TrashIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { input } from '@material-tailwind/react';
 import details from "@/images/detail.svg"
-import Ring from "@/images/ring.svg"
+import En from "@/images/En.svg"
+import Datepicker from 'react-tailwindcss-datepicker';
+import { Fragment } from 'react'
+import { Listbox, Transition } from '@headlessui/react'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { join } from 'path';
+import { LinkIcon } from '@nextui-org/react';
 
+const country = [
+    {
+        id: 1,
+        name: 'Thailand'
+    },
+    {
+        id: 2,
+        name: 'Finland'
+    },
+    {
+        id: 3,
+        name: 'Lao'
+    },
+]
+const relationship = [
+    {
+        id: 1,
+        name: 'Single'
+    },
+    {
+        id: 2,
+        name: 'Married'
+    },
+    {
+        id: 3,
+        name: 'Divorce'
+    },
+]
+const City = [
+    {
+        id: 1,
+        name: 'KhonKhan'
+    },
+    {
+        id: 2,
+        name: 'BKK'
+    },
+    {
+        id: 3,
+        name: 'Anc'
+    },
+]
+
+
+
+function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(' ')
+}
 export default function Profile() {
-    return (
-        <div className='font-mtsans font-mtthai'>
-            <div className="navbar bg-base-100">
-                <div className="flex lg:flex-1 ">
-                    <Link href="/" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Mentor Diamond</span>
-                        <Image className="h-10 w-auto" src={MyLogo} alt="Logo" />
-                    </Link>
-                </div>
-                <div className="flex-none  gap-5">
+    const [value, setValue] = useState({
+        startDate: null,
+        endDate: null
+    });
 
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <Image className="" src={Ring} alt="Logo" />
-                            </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
+    const handleValueChange = (newValue: any) => {
+        //console.log("newValue:", newValue);
+        setValue(newValue);
+    }
+
+    useEffect(()=>{
+        async function fetchProvinces() {
+            try {
+                const res = await fetch('https://ckartisan.com/api/provinces')
+                // if(!res.ok){
+
+                // }
+                const provinces = await res.json()
+                setProvinces(provinces)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    },[])
+
+    // const callProvinces = async () => {
+    //     try {
+    //         const res = await fetch('https://ckartisan.com/api/provinces')
+    //         const provinces = await res.json()
+    //         // setProvinces(provinces)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+
+const [provinces, setProvinces] = useState()
+const [selected, setSelected] = useState(country[0])
+const [selectedre, setSelectedre] = useState(relationship[0])
+const [selectedcity, setSelectedcity] = useState(City[0])
+
+console.log(provinces)
+return (
+    <div className='p-4 sm:ml-64'>
+        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 bg-white ">
+            <div className='px-20'>
+                
+                <div className="lg:flex lg:items-center lg:justify-between">
+                    <div className="min-w-0 flex  ">
+                        <Image className="mt-10 rounded-xl " width={150} height={100} src={En} alt="Logo" />
+                        <div className='m-20 '>
+                            <h2 className="text-2xl  font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                                Profile
+                            </h2>
+                            <span className=''>Lorem ipsum dolor sit amet </span>
+                        </div>
+                        
+                       
+                    </div>
+                    <div className="mt-5 flex lg:ml-4 lg:mt-0">
+                        <span className="hidden sm:block">
+                            <button
+                                type="button"
+                                className="inline-flex items-center rounded-md bg-gray-800 px-5 py-2 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600"
+                            >
+                                <PencilIcon className="-ml-0.5 mr-1.5 h-5 w-5 text-white" aria-hidden="true" />
+                                Edit
+                            </button>
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div className="drawer lg:drawer-open">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-row gap-10 p-10">
-                    {/* Page content here */}
-                    <form>
-                        <div className="space-y-12">
-                            <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-                                <p className="mt-1 text-sm leading-6 text-gray-600">
-                                    This information will be displayed publicly so be careful what you share.
-                                </p>
 
-                                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                    <div className="sm:col-span-4">
-                                        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Username
-                                        </label>
-                                        <div className="mt-2">
-                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                                <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
-                                                <input
-                                                    type="text"
-                                                    name="username"
-                                                    id="username"
-                                                    autoComplete="username"
-                                                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                                    placeholder="janesmith"
-                                                />
-                                            </div>
-                                        </div>
+                <div className="mt-6 border-t border-gray-100">
+                    <dl className="divide-y divide-gray-100">
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+                            <div className=" grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                <div className="sm:col-span-6">
+                                    <div className="flex items-center border-b border-gray-300 py-2">
+                                        <input className="appearance-none border-none bg-transparent border-0 border-b border-gray-300 focus:ring-0 focus:border-gray-900 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Full name" aria-label="Full name" />
                                     </div>
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
-                                            About
-                                        </label>
-                                        <div className="mt-2">
-                                            <textarea
-                                                id="about"
-                                                name="about"
-                                                rows={3}
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                defaultValue={''}
-                                            />
-                                        </div>
-                                        <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
-                                    </div>
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Photo
-                                        </label>
-                                        <div className="mt-2 flex items-center gap-x-3">
-                                            <UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true" />
-                                            <button
-                                                type="button"
-                                                className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                                Change
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Cover photo
-                                        </label>
-                                        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                            <div className="text-center">
-                                                <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                                                <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                                                    <label
-                                                        htmlFor="file-upload"
-                                                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                                                    >
-                                                        <span>Upload a file</span>
-                                                        <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                                    </label>
-                                                    <p className="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-                                <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
-                                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                                            First name
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="first-name"
-                                                id="first-name"
-                                                autoComplete="given-name"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Last name
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="last-name"
-                                                id="last-name"
-                                                autoComplete="family-name"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-4">
-                                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Email address
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="email"
-                                                name="email"
-                                                type="email"
-                                                autoComplete="email"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Country
-                                        </label>
-                                        <div className="mt-2">
-                                            <select
-                                                id="country"
-                                                name="country"
-                                                autoComplete="country-name"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                            >
-                                                <option>United States</option>
-                                                <option>Canada</option>
-                                                <option>Mexico</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
-                                            Street address
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="street-address"
-                                                id="street-address"
-                                                autoComplete="street-address"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-2 sm:col-start-1">
-                                        <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
-                                            City
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="city"
-                                                id="city"
-                                                autoComplete="address-level2"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-2">
-                                        <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900">
-                                            State / Province
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="region"
-                                                id="region"
-                                                autoComplete="address-level1"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="sm:col-span-2">
-                                        <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-900">
-                                            ZIP / Postal code
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="postal-code"
-                                                id="postal-code"
-                                                autoComplete="postal-code"
-                                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
-                                <p className="mt-1 text-sm leading-6 text-gray-600">
-                                    We'll always let you know about important changes, but you pick what else you want to hear about.
-                                </p>
-
-                                <div className="mt-10 space-y-10">
-                                    <fieldset>
-                                        <legend className="text-sm font-semibold leading-6 text-gray-900">By Email</legend>
-                                        <div className="mt-6 space-y-6">
-                                            <div className="relative flex gap-x-3">
-                                                <div className="flex h-6 items-center">
-                                                    <input
-                                                        id="comments"
-                                                        name="comments"
-                                                        type="checkbox"
-                                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                    />
-                                                </div>
-                                                <div className="text-sm leading-6">
-                                                    <label htmlFor="comments" className="font-medium text-gray-900">
-                                                        Comments
-                                                    </label>
-                                                    <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
-                                                </div>
-                                            </div>
-                                            <div className="relative flex gap-x-3">
-                                                <div className="flex h-6 items-center">
-                                                    <input
-                                                        id="candidates"
-                                                        name="candidates"
-                                                        type="checkbox"
-                                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                    />
-                                                </div>
-                                                <div className="text-sm leading-6">
-                                                    <label htmlFor="candidates" className="font-medium text-gray-900">
-                                                        Candidates
-                                                    </label>
-                                                    <p className="text-gray-500">Get notified when a candidate applies for a job.</p>
-                                                </div>
-                                            </div>
-                                            <div className="relative flex gap-x-3">
-                                                <div className="flex h-6 items-center">
-                                                    <input
-                                                        id="offers"
-                                                        name="offers"
-                                                        type="checkbox"
-                                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                    />
-                                                </div>
-                                                <div className="text-sm leading-6">
-                                                    <label htmlFor="offers" className="font-medium text-gray-900">
-                                                        Offers
-                                                    </label>
-                                                    <p className="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <legend className="text-sm font-semibold leading-6 text-gray-900">Push Notifications</legend>
-                                        <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
-                                        <div className="mt-6 space-y-6">
-                                            <div className="flex items-center gap-x-3">
-                                                <input
-                                                    id="push-everything"
-                                                    name="push-notifications"
-                                                    type="radio"
-                                                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                />
-                                                <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
-                                                    Everything
-                                                </label>
-                                            </div>
-                                            <div className="flex items-center gap-x-3">
-                                                <input
-                                                    id="push-email"
-                                                    name="push-notifications"
-                                                    type="radio"
-                                                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                />
-                                                <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
-                                                    Same as email
-                                                </label>
-                                            </div>
-                                            <div className="flex items-center gap-x-3">
-                                                <input
-                                                    id="push-nothing"
-                                                    name="push-notifications"
-                                                    type="radio"
-                                                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                />
-                                                <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
-                                                    No push notifications
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
                                 </div>
                             </div>
                         </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Contact</dt>
+                            <div className="sm:col-span-1">
 
-                        <div className="mt-6 flex items-center justify-end gap-x-6">
-                            <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Save
-                            </button>
+                                <div className="flex items-center border-b border-gray-300 py-2">
+                                    <PhoneIcon className="h-6 w-6 text-gray-300" />
+                                    <input className="appearance-none  border-none bg-transparent border-0 border-b border-gray-300 focus:ring-0 focus:border-gray-900 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Phone number" aria-label="Full name" />
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                    
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
+                            <div className="sm:col-span-1">
 
-                </div>
+                                <div className="flex items-center border-b border-gray-300 py-2">
+                                    <EnvelopeIcon className="h-6 w-6 text-gray-300" />
+                                    <input className="appearance-none  border-none bg-transparent border-0 border-b border-gray-300 focus:ring-0 focus:border-gray-900 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Email" aria-label="Full name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Relationship (optional)</dt>
+                            <div className="sm:col-span-1">
+                                <Listbox value={selected} onChange={setSelectedre}>
+                                    {({ open }) => (
+                                        <>
+                                            <div className="relative mt-2">
+                                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
+                                                    <span className="flex items-center">
+                                                        <span className="ml-3 block truncate">{selectedre.name}</span>
+                                                    </span>
+                                                    <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                                    </span>
+                                                </Listbox.Button>
+                                                <Transition
+                                                    show={open}
+                                                    as={Fragment}
+                                                    leave="transition ease-in duration-100"
+                                                    leaveFrom="opacity-100"
+                                                    leaveTo="opacity-0">
+                                                    <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-gray-300 ring-opacity-5 focus:outline-none sm:text-sm">
+                                                        {relationship.map((relationship) => (
+                                                            <Listbox.Option
+                                                                key={relationship.id}
+                                                                className={({ active }) =>
+                                                                    classNames(
+                                                                        active ? 'bg-gray-700 text-white' : 'text-gray-900',
+                                                                        'relative cursor-default select-none py-2 pl-3 pr-9'
+                                                                    )
+                                                                }
+                                                                value={relationship}
+                                                            >
+                                                                {({ selected, active }) => (
+                                                                    <>
+                                                                        <div className="flex items-center">
+
+                                                                            <span
+                                                                                className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                                                                            >
+                                                                                {relationship.name}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {selected ? (
+                                                                            <span
+                                                                                className={classNames(
+                                                                                    active ? 'text-white' : 'text-gray-900',
+                                                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
+                                                                                )}
+                                                                            >
+                                                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                                                            </span>
+                                                                        ) : null}
+                                                                    </>
+                                                                )}
+                                                            </Listbox.Option>
+                                                        ))}
+                                                    </Listbox.Options>
+                                                </Transition>
+                                            </div>
+                                        </>
+                                    )}
+                                </Listbox>
+                            </div>
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Country (optional)</dt>
+                            <div className="sm:col-span-1">
+
+                                <Listbox value={selected} onChange={setSelected}>
+                                    {({ open }) => (
+                                        <>
+
+                                            <div className="relative mt-2">
+                                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
+                                                    <span className="flex items-center">
+
+                                                        <span className="ml-3 block truncate">{selected.name}</span>
+                                                    </span>
+                                                    <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                                    </span>
+                                                </Listbox.Button>
+
+                                                <Transition
+                                                    show={open}
+                                                    as={Fragment}
+                                                    leave="transition ease-in duration-100"
+                                                    leaveFrom="opacity-100"
+                                                    leaveTo="opacity-0"
+                                                >
+                                                    <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                                        {country.map((country) => (
+                                                            <Listbox.Option
+                                                                key={country.id}
+                                                                className={({ active }) =>
+                                                                    classNames(
+                                                                        active ? 'bg-gray-700 text-white' : 'text-gray-900',
+                                                                        'relative cursor-default select-none py-2 pl-3 pr-9'
+                                                                    )
+                                                                }
+                                                                value={country}
+                                                            >
+                                                                {({ selected, active }) => (
+                                                                    <>
+                                                                        <div className="flex items-center">
+
+                                                                            <span
+                                                                                className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                                                                            >
+                                                                                {country.name}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {selected ? (
+                                                                            <span
+                                                                                className={classNames(
+                                                                                    active ? 'text-white' : 'text-gray-500',
+                                                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
+                                                                                )}
+                                                                            >
+                                                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                                                            </span>
+                                                                        ) : null}
+                                                                    </>
+                                                                )}
+                                                            </Listbox.Option>
+                                                        ))}
+                                                    </Listbox.Options>
+                                                </Transition>
+                                            </div>
+                                        </>
+                                    )}
+                                </Listbox>
+                            </div>
+
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">City (optional)</dt>
+                            <div className="sm:col-span-1">
+
+                                <Listbox value={selectedcity} onChange={setSelectedcity}>
+                                    {({ open }) => (
+                                        <>
+
+                                            <div className="relative mt-2">
+                                                <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-sm sm:leading-6">
+                                                    <span className="flex items-center">
+
+                                                        <span className="ml-3 block truncate">{selectedcity.name}</span>
+                                                    </span>
+                                                    <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                                    </span>
+                                                </Listbox.Button>
+
+                                                <Transition
+                                                    show={open}
+                                                    as={Fragment}
+                                                    leave="transition ease-in duration-100"
+                                                    leaveFrom="opacity-100"
+                                                    leaveTo="opacity-0"
+                                                >
+                                                    <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                                        {City.map((City) => (
+                                                            <Listbox.Option
+                                                                key={City.id}
+                                                                className={({ active }) =>
+                                                                    classNames(
+                                                                        active ? 'bg-gray-700 text-white' : 'text-gray-900',
+                                                                        'relative cursor-default select-none py-2 pl-3 pr-9'
+                                                                    )
+                                                                }
+                                                                value={City}
+                                                            >
+                                                                {({ selected, active }) => (
+                                                                    <>
+                                                                        <div className="flex items-center">
+
+                                                                            <span
+                                                                                className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                                                                            >
+                                                                                {City.name}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {selected ? (
+                                                                            <span
+                                                                                className={classNames(
+                                                                                    active ? 'text-white' : 'text-gray-900',
+                                                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
+                                                                                )}
+                                                                            >
+                                                                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                                                                            </span>
+                                                                        ) : null}
+                                                                    </>
+                                                                )}
+                                                            </Listbox.Option>
+                                                        ))}
+                                                    </Listbox.Options>
+                                                </Transition>
+                                            </div>
+                                        </>
+                                    )}
+                                </Listbox>
+                            </div>
+
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Birthday (optional)</dt>
 
 
-                <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-                        {/* Sidebar content here */}
-                        <li>
-                            <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
-                                <span className="flex-1 ml-3 text-left whitespace-nowrap"> Manage Product</span>
-                            </button>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                                <UsersIcon className="h-6 w-6 text-gray-500" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Manage Use</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                                <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Manage purchase order</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                            <Datepicker
+                                useRange={false}
+                                asSingle={true}
+                                showShortcuts={true}
+                                primaryColor={"blue"}
+                                value={value}
+                                onChange={handleValueChange}
+                                inputClassName={'py-3.5 px-0 w-full text-md font-normal text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-900 '}
+                            />
+                            {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  " placeholder="Select date"/> */}
 
-                <div>
-
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Gender(optional)</dt>
+                            <fieldset>
+                                <div className=" space-y-6">
+                                    <div className="flex items-center gap-x-3">
+                                        <input
+                                            id="push-everything"
+                                            name="push-notifications"
+                                            type="radio"
+                                            className="h-4 w-4 border-gray-300 text-gray-900 focus:ring-indigo-600"
+                                        />
+                                        <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-600">
+                                            Female
+                                        </label>
+                                    </div>
+                                    <div className="flex items-center gap-x-3">
+                                        <input
+                                            id="push-email"
+                                            name="push-notifications"
+                                            type="radio"
+                                            className="h-4 w-4 border-gray-300 text-gray-900 focus:ring-indigo-600"
+                                        />
+                                        <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-600">
+                                            Male
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </dl>
                 </div>
             </div>
         </div>
-    )
+    </div>
+)
 }
