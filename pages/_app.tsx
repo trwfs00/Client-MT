@@ -71,15 +71,11 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <AuthProvider>
-      <main className={`${inter.variable} ${playfair.variable} ${noto.variable} bg-gray-100`}>
-        <>
-          <MyBanner />
-          <MyNav auth={auth} />
-          <Component {...pageProps} />
-          <MyFooter />
-        </>
-      </main>
-    </AuthProvider>
+    <main className={`${inter.variable} ${playfair.variable} ${noto.variable}`}>
+      {/* <MyBanner/> */}
+      {/* <MyNav/> */}
+        <Component {...pageProps} />
+      {/* <MyFooter/> */}
+    </main>
   )
 }

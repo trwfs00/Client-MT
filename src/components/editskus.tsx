@@ -30,38 +30,6 @@ export default function addskus() {
                                     <div>
                                         <Image className="" src={Ring} alt="Logo" />
                                     </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-                                    <div>
-                                        <Image className="" src={Ring} alt="Logo" />
-                                    </div>
-
-
                                 </Carousel>
                             </div>
                             <div className='flex justify-center items-center my-5'>
