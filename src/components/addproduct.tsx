@@ -35,11 +35,10 @@ export const getServerSideProps = async () => {
 
 export default function addproduct() {
     return (
-        <div className="drawer lg:drawer-open">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col  ">
-                {/* Page content here */}
-                <h1 className='text-xl font-bold mt-10 ml-10'>Add Product</h1>
+       
+            <div className=" ">
+               
+            <h1 className='text-xl  font-bold mt-10 ml-10'>Add Product </h1>
                 <div className='contrainer mx-10 my-2'>
 
                     <div className="grid grid-cols-2 gap-4 bg-white sm:rounded-lg mt-5 shadow">
@@ -99,32 +98,8 @@ export default function addproduct() {
                     
                 </div>
             </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-
-                <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-                    {/* Sidebar content here */}
-                    <li>
-                        <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                            <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
-                            <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
-                        </button>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <UsersIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
-                            <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+            
+                    
+        
     )
 }

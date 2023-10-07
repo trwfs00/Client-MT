@@ -109,11 +109,10 @@ function image(props: Props) {
     
     return (
 
-        <div className="drawer lg:drawer-open">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col  ">
-                {/* Page content here */}
-                <h1 className='text-xl font-bold mt-10 ml-10'>Add Product</h1>
+        
+          
+            <div className="p-4 sm:ml-64  ">
+                <h1 className='text-xl font-bold mt-10 ml-10'>Add Product </h1>
                 <div className='contrainer mx-10 my-2'>
                     <form onSubmit={handleSubmit} >
                         <div className="grid grid-cols-2 gap-4 bg-white sm:rounded-lg mt-5 shadow">
@@ -144,12 +143,12 @@ function image(props: Props) {
 
                                 <div className="form-control w-full max-w-xs  ">
                                     <label className="label">
-                                        <span className="label-text font-medium">Type</span>
+                                        <span className="label-text font-medium ">Type</span>
                                     </label>
-                                    <select className="select select-bordered border-gray-700"
+                                    <select className="select select-bordered text-gray-500 border-gray-700"
                                     value={type}
                                     onChange={(e) => setType(e.target.value)}>
-                                        <option value={"Rings"} selected>Rings</option>
+                                        <option value={"Rings"} selected >Rings</option>
                                         <option value={"Earrings"} >Earrings</option>
                                         <option value={"Bracelets"} >Bracelets</option>
                                         <option value={"Necklaces"} >Necklaces</option>
@@ -183,33 +182,8 @@ function image(props: Props) {
                     </form>
                 </div>
             </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-
-                <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-                    {/* Sidebar content here */}
-                    <li>
-                        <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                            <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
-                            <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
-                        </button>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <UsersIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
-                            <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+            
+        
 
         // <div className='bg-gray-800 h-screen'>
         //     <div className='max-w-6xl m-auto mt-10'>
