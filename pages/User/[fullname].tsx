@@ -122,6 +122,14 @@ function index({ data: { _id, fullname, phone, dateOfbirth, gender, profile_pict
         setShouldSubmit(false); // Reset the flag when toggling edit mode
     };
 
+    function formatDate(inputDate: string | number | Date) {
+        const date = new Date(inputDate);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+
+        return `${day}/${month}/${year}`;
+    }
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -160,10 +168,12 @@ function index({ data: { _id, fullname, phone, dateOfbirth, gender, profile_pict
             } catch (error) {
                 // Handle errors if needed
                 setError('An error occurred');
+                console.log(error)
             }
         } else {
             // User clicked "Submit" without actually changing anything
             setError('No changes to submit');
+            console.log("error")
         }
     };
 
@@ -299,11 +309,11 @@ function index({ data: { _id, fullname, phone, dateOfbirth, gender, profile_pict
                                 </label>
                                 <div className="mt-2">
                                     <input
-                                        type="date"
+                                        type="text"
                                         name="Birthday"
                                         id="Birthday"
                                         onChange={(e) => setdateOfbirth(new Date(e.target.value))}
-                                        value={_dateOfbirth ? _dateOfbirth.toISOString().split('T')[0] : ''}
+                                        value={_dateOfbirth ? formatDate(_dateOfbirth) : ''}
                                         autoComplete="address-level2"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         readOnly={isEditing === false}

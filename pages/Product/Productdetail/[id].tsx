@@ -126,8 +126,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext<Page
 
 function details({ productData, skusData }: ProductPageProps,) {
   const { auth, user } = useAuth();
-  console.log(user) 
-  
+  console.log(user)
+
   const skuse = skusData;
   const { _id, type, productName, productDesc, thumbnail, idSKU } = productData
   // const [pro, setPro] = useState<Data[]>(data);
@@ -187,23 +187,22 @@ function details({ productData, skusData }: ProductPageProps,) {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-
         <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
           {/* Sidebar content here */}
           <li>
-            <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+            <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
               <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
               <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
             </button>
           </li>
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
               <UsersIcon className="h-6 w-6 text-gray-500" />
               <span className="flex-1 ml-3 whitespace-nowrap">User</span>
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
               <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
               <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
             </a>

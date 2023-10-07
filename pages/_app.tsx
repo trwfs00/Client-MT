@@ -7,6 +7,7 @@ import MyFooter from '@/components/footer2'
 import { useEffect, useState } from 'react'
 import { stringify } from 'querystring'
 import { AuthProvider } from './AuthContext';
+import { useAuth } from './AuthContext';
 
 
 const inter = Inter({
@@ -72,10 +73,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <main className={`${inter.variable} ${playfair.variable} ${noto.variable} bg-gray-100`}>
-        <MyBanner />
-        <MyNav auth={auth} />
-        <Component {...pageProps} />
-        <MyFooter />
+        <>
+          <MyBanner />
+          <MyNav auth={auth} />
+          <Component {...pageProps} />
+          <MyFooter />
+        </>
       </main>
     </AuthProvider>
   )

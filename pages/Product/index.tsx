@@ -4,6 +4,7 @@ import MyNav from '@/components/navigation'
 import React, { useEffect, useState } from 'react'
 import MyProduct from '@/components/productlist'
 import { useAuth } from '../AuthContext';
+import Router from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,13 +45,16 @@ export const getServerSideProps = async () => {
 export default function Home(props: Props) {
 
   const { auth, user } = useAuth();
-  console.log()
-  
+
+  // if (user?.isAdmin === false) {
+  //   Router.push('/');
+  // }
+
   const [products, setProducts] = useState<Data[]>(props.datas);
 
   return (
     <>
-            <MyProduct datas={products} />
+      <MyProduct datas={products} />
     </>
   );
 }

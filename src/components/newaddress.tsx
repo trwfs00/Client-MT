@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Switch } from '@headlessui/react'
 import { useRouter } from 'next/router';
 
 type Props = {
     datas: Data[];
 };
+
+type Province = {
+    id: number;
+    name_th: string;
+    name_en: string;
+    geography_id: number;
+    created_at: string;
+    updated_at: string;
+    deleted_at: null | string;
+};
+
 
 type Data = {
     Users_idUsers: string,
@@ -39,6 +50,21 @@ function newaddress() {
     const [error, setError] = useState('')
     const [message, setMessage] = useState('')
 
+    const [provinces, setProvinces] = useState<Province[]>([]);
+    const [selectedProvince, setSelectedProvince] = useState('');
+
+    useEffect(() => {
+        // Make an HTTP request to fetch data from the API
+        fetch('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json')
+            .then((response) => response.json())
+            .then((data: Province[]) => {
+                // Update the provinces state with the fetched data
+                setProvinces(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -46,7 +72,7 @@ function newaddress() {
         console.log('Users_idUsers:', id);
         console.log('Contact.fullname:', Contact.fullname);
         console.log('Contact.phonenumber:', Contact.phonenumber);
-        console.log('Address.province:', Address.province);
+        console.log('Address.province:', selectedProvince);
         console.log('Address.district:', Address.district);
         console.log('Address.subdistrict:', Address.subdistrict);
         console.log('Address.streetname:', Address.streetname);
@@ -55,7 +81,7 @@ function newaddress() {
             id &&
             Contact.fullname &&
             Contact.phonenumber &&
-            Address.province &&
+            selectedProvince &&
             Address.district &&
             Address.subdistrict &&
             Address.streetname &&
@@ -71,7 +97,7 @@ function newaddress() {
                             phonenumber: Contact.phonenumber
                         },
                         Address: {
-                            province: Address.province,
+                            province: selectedProvince,
                             district: Address.district,
                             subdistrict: Address.subdistrict,
                             streetname: Address.streetname,
@@ -134,15 +160,20 @@ function newaddress() {
                     <h1 className="sm:text-l text-l font-medium title-font mb-4 text-gray-900 ">
                         Address (*)</h1>
                     <div className="inline-block relative w-full  z-0  mb-6 group">
-                        <select id="underline_select"
+                        <select
+                            id="underline_select"
                             className="block py-3.5 px-0 w-full text-md font-light text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-700 dark:border-gray-600 dark:focus:border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 peer"
-                            onChange={(e) => setAddress({ ...Address, province: e.target.value })}
-                            value={Address.province}
+                            onChange={(e) => setSelectedProvince(e.target.value)}
+                            value={selectedProvince}
                         >
-                            <option selected disabled>Province</option>
-                            <option value="Khon kaen">Khon kaen</option>
-                            <option value="Bangkok">Bangkok</option>
-                            <option value="Chaiyaphum">Chaiyaphum</option>
+                            <option value="" disabled>
+                                Select a Province
+                            </option>
+                            {provinces.map((province) => (
+                                <option key={province.id} value={province.name_en}>
+                                    {province.name_en}
+                                </option>
+                            ))}
                         </select>
 
                         <label

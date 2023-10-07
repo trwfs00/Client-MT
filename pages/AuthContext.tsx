@@ -22,14 +22,14 @@ export const AuthProvider = ({ children }: any) => {
                         console.log(userExist)
                         setAuth(false)
                     } else {
-                        //   setMessage(`Hi ${userExist.fullname}`)
+                        //   setMessage(Hi ${userExist.fullname})
                         setAuth(true)
                         setUser(userExist)
                         console.log(userExist)
                     }
                 } catch (error) {
                     console.log(error)
-                    // setMessage(`Error: ${error}`)
+                    // setMessage(Error: ${error})
                     // setAuth(false)
                 }
 
