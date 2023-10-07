@@ -86,9 +86,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <main className={`${inter.variable} ${playfair.variable} ${noto.variable} `}>
-        
-        {user?.isAdmin ? null : <MyBanner />}
-        {user?.isAdmin ? <AdminNav/> : <MyNav auth={auth} />}
+      <MyBanner />
+      <MyNav auth={auth} />
+        {/* {user?.isAdmin ? null : <MyBanner />}
+        {user?.isAdmin ? <AdminNav/> : <MyNav auth={auth} />} */}
         <Component {...pageProps} />
         <MyFooter />
       </main>

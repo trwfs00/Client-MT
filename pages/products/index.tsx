@@ -17,6 +17,8 @@ import Image from "next/image";
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+import { useAuth } from '../AuthContext';
+
 
 type Props = {
     datas: Data[];
@@ -111,8 +113,27 @@ export const getServerSideProps = async () => {
 
 export default function index({ datas }: Props) {
 
+    const { auth, user } = useAuth();
+
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     console.log(datas)
+
+    // const handleCart = async (e:any) => {
+    //     e.preventDefault()
+
+    //     const userID = user?._id
+
+    //     try {
+    //         await fetch('http://localhost:8080/cart/addcart',{
+    //             method: "POST",
+    //                     headers: { 'Content-Type': 'application/json' },
+    //                     body: JSON.stringify({ userID, })
+    //         })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
     return (
 
         <div className="mx-auto max-w-7xl p-4 bg-white">

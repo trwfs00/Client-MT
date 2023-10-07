@@ -168,7 +168,7 @@ export default function Card({ datas }: Props) {
                             </div>
                             <div className="mt-4 flex flex-col justify-between">
                                     <h3 className="text-sm text-gray-700">
-                                        <a href='/#'>
+                                        <a href={`./products/${product._id}`}>
                                             <span aria-hidden="true" className="absolute inset-0" />
                                             {product.productName}
                                         </a>
