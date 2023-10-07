@@ -200,11 +200,11 @@ function editpro({ data: { _id, type, productName, productDesc, thumbnail } }: C
         //     </div>
         // </div>
 
-        <div className="drawer lg:drawer-open">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col  ">
-                {/* Page content here */}
-                <h1 className='text-xl font-bold mt-10 ml-10'>Edit product</h1>
+        
+           
+        <div className=" p-4 sm:ml-64 ">
+               
+                <h1 className='text-xl font-bold mt-10 ml-10'>Edit product </h1>
                 <div className='contrainer mx-10 my-2'>
                     <form onSubmit={handleSubmit}>
                         <div className="grid grid-cols-2 gap-4 bg-white sm:rounded-lg mt-5 shadow">
@@ -230,7 +230,7 @@ function editpro({ data: { _id, type, productName, productDesc, thumbnail } }: C
                                     <label className="label">
                                         <span className="label-text font-medium">Type</span>
                                     </label>
-                                    <select className="select select-bordered border-gray-700"
+                                    <select className="select text-gray-400 select-bordered border-gray-700"
                                         onChange={(e) => setType(e.target.value)}
                                         value={_type ? _type : ""}>
                                         <option value="Rings" selected={_type === "Rings"}>
@@ -270,39 +270,14 @@ function editpro({ data: { _id, type, productName, productDesc, thumbnail } }: C
 
                             </div>
                             <div className='col-span-2 flex justify-center items-center  mb-5 '>
-                                <button type='submit' className="btn btn-neutral text-white">Edit product</button>
+                            <button type='submit' className="btn btn-neutral text-white hover:bg-gray-600">Edit product</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-
-                <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-                    {/* Sidebar content here */}
-                    <li>
-                        <button type="button" className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                            <ShoppingCartIcon className="h-6 w-6 text-gray-500 " />
-                            <span className="flex-1 ml-3 text-left whitespace-nowrap"> Product</span>
-                        </button>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group">
-                            <UsersIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
-                            <ShoppingBagIcon className="h-6 w-6 text-gray-500" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">purchase order</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+            
+        
     )
 }
 

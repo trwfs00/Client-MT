@@ -64,11 +64,10 @@ function navaddmin ({ datas }: Props)  {
 
     return (
         <>
-            <div className="drawer lg:drawer-open">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col  ">
-                    {/* Page content here */}
-                    <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
+           
+                
+            <div className="p-4 sm:ml-64 ">
+                   <h1 className='text-xl font-bold mt-10 ml-10'>Product List</h1>
                     <div className='flex justify-between my-5'>
                         <div className=''>
                             <div className=" relative mx-auto text-gray-600">
@@ -150,14 +149,14 @@ function navaddmin ({ datas }: Props)  {
                                     )) 
                             ) : (
                                 <tr>
-                                    <td colSpan={8} className='text-white p-4'>ไม่มีสินค้า</td>
+                                    <td colSpan={8} className='text-black p-4 bg-white'>ไม่มีสินค้า</td>
                                 </tr>
                             )}
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
+           
         </>
     )}
 
