@@ -65,14 +65,14 @@ export default function App({ Component, pageProps }: AppProps) {
             setMessage(`Hi ${userExist.fullname}`)
             setAuth(true)
             setUser(userExist)
-            console.log(user)
+            // console.log(user)
           }
           // * api cart 
           const userID = userExist._id
           const responseCart = await fetch(`http://localhost:8080/cart/usercart?Users_idUsers=${userID}`);
           const cartData = await responseCart.json()
           setCart(cartData)
-          console.log(cart)
+          // console.log(cart)
         } catch (error) {
           console.log(error)
           setMessage(`Error: ${error}`)

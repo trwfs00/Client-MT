@@ -112,7 +112,7 @@ function newaddress() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    router.push(`/User/Address/${id}`);
+                    router.push(`/User/Address/Chooseads/${id}`);
                     console.log(data);
                     // Rest of your code
                 } else {

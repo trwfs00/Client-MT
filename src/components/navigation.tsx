@@ -21,6 +21,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 import Link from 'next/link';
 import Signin from '@/src/components/loginForm'
 import ShopBag from '@/components/shoppingbag'
+import Search from '@/components/search'
 
 const products = [
   { name: 'Men Rings', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -172,9 +173,7 @@ const navigation = ({authCheck, cartData}: any) => {
           </Popover.Group>
         </div>
         <div className="flex lg:flex lg:flex-1 lg:justify-end gap-8">
-          <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
-            <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </button>
+        <Search/>
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>

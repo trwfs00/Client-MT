@@ -18,12 +18,12 @@ type Props = {
 }
 
 type Data = {
-    _id:string,
-    Users_idUsers:string,
-    SKUs:{
-        _id:string,
-        qty:number,
-        size:number
+    _id: string,
+    Users_idUsers: string,
+    SKUs: {
+        _id: string,
+        qty: number,
+        size: number
     }[],
 }
 
@@ -117,46 +117,47 @@ function getRandomDate(start: Date, end: Date): Date {
 
 const productDefaults = [{
     _id: {
-      $oid: "6521bf11ca2744b2c3c4b4ae"
+        $oid: "6521bf11ca2744b2c3c4b4ae"
     },
     Users_idUsers: {
-      $oid: "65214eb2eeac82f956d966a6"
+        $oid: "65214eb2eeac82f956d966a6"
     },
     SKUs: [
-      { SKUs_idSKUs: {
-          $oid: "6516b20babd5fbb4a17d75c8"
+        {
+            SKUs_idSKUs: {
+                $oid: "6516b20babd5fbb4a17d75c8"
+            },
+            size: "52",
+            qty: 1,
+            _id: {
+                $oid: "6521bf57ca2744b2c3c4b4b1"
+            },
+            created_at: {
+                $date: "2023-10-07T20:28:07.884Z"
+            },
+            updated_at: {
+                $date: "2023-10-07T20:28:07.884Z"
+            }
         },
-        size: "52",
-        qty: 1,
-        _id: {
-          $oid: "6521bf57ca2744b2c3c4b4b1"
-        },
-        created_at: {
-          $date: "2023-10-07T20:28:07.884Z"
-        },
-        updated_at: {
-          $date: "2023-10-07T20:28:07.884Z"
+        {
+            SKUs_idSKUs: {
+                $oid: "6516ef47b3ea898c9b525dba"
+            },
+            size: "51",
+            qty: 1,
+            _id: {
+                $oid: "6521bf74ca2744b2c3c4b4b5"
+            },
+            created_at: {
+                $date: "2023-10-07T20:28:36.779Z"
+            },
+            updated_at: {
+                $date: "2023-10-07T20:28:36.779Z"
+            }
         }
-      },
-      {
-        SKUs_idSKUs: {
-          $oid: "6516ef47b3ea898c9b525dba"
-        },
-        size: "51",
-        qty: 1,
-        _id: {
-          $oid: "6521bf74ca2744b2c3c4b4b5"
-        },
-        created_at: {
-          $date: "2023-10-07T20:28:36.779Z"
-        },
-        updated_at: {
-          $date: "2023-10-07T20:28:36.779Z"
-        }
-      }
     ],
     __v: 2
-  }]
+}]
 
 export default function Example(props: any) {
     const products = props.shoppingCart || productDefaults
@@ -164,12 +165,12 @@ export default function Example(props: any) {
     const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
     const [selectedObject, setSelectedObject] = useState<object[]>([]);
     // const [products,setProducts] = useState(products)
-    useEffect(()=>{
+    useEffect(() => {
         console.log(props.shoppingCart?.SKUs);
-        console.log(props.shoppingCart?.SKUs[0]?.SKUs_idSKUs);  
+        console.log(props.shoppingCart?.SKUs[0]?.SKUs_idSKUs);
         //console.log(products[0].Users_idUsers || 'ควย')
         //console.log(products[0].SKUs[0].SKUs_idSKUs.Products_idProducts.productName || 'ควย')
-    },[open])
+    }, [open])
 
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -177,11 +178,11 @@ export default function Example(props: any) {
         setSelectedProducts((prevSelectedProducts) => {
             if (prevSelectedProducts.includes(productId)) {
                 // If the product is already selected, remove it from the selectedProducts array
-                setTotalPrice(totalPrice-price);
+                setTotalPrice(totalPrice - price);
                 return prevSelectedProducts.filter((id) => id !== productId);
             } else {
                 // If the product is not selected, add it to the selectedProducts array
-                setTotalPrice(totalPrice+price);
+                setTotalPrice(totalPrice + price);
                 return [...prevSelectedProducts, productId];
             }
         });
@@ -200,16 +201,16 @@ export default function Example(props: any) {
 
     function formatAsCurrency(number: any) {
         if (typeof number !== 'number') {
-          throw new Error('Input must be a number');
+            throw new Error('Input must be a number');
         }
-      
+
         // Use toLocaleString to format the number with commas and no decimal places
         return number.toLocaleString('th-TH', {
-          style: 'currency',
-          currency: 'THB',
-          maximumFractionDigits: 0 // Set this to 0 to remove decimal places
+            style: 'currency',
+            currency: 'THB',
+            maximumFractionDigits: 0 // Set this to 0 to remove decimal places
         });
-      }
+    }
 
     function timestampToShortAgo(timestamp: string): string {
         const now = new Date();
@@ -331,7 +332,7 @@ export default function Example(props: any) {
                                                                             className="h-4 w-4 rounded border-gray-300 text-gray-700 focus:ring-gray-900"
                                                                             checked={selectedProducts.includes(product.SKUs_idSKUs._id)}
                                                                             onChange={() => {
-                                                                                toggleProductSelection(product.SKUs_idSKUs._id, product.SKUs_idSKUs.price*product.qty)
+                                                                                toggleProductSelection(product.SKUs_idSKUs._id, product.SKUs_idSKUs.price * product.qty)
                                                                                 //add function that toggle collect product.SKUs_idSKUs into selectedObject using useState like toggleProductSelection
                                                                             }}
                                                                         />
@@ -396,7 +397,7 @@ export default function Example(props: any) {
                                                                                     </button>
                                                                                 </div>
                                                                             </div>
-                                                                            <p className="text-gray-800 text-xl font-semibold mt-2">{formatAsCurrency(product.SKUs_idSKUs.price*product.qty)}</p>
+                                                                            <p className="text-gray-800 text-xl font-semibold mt-2">{formatAsCurrency(product.SKUs_idSKUs.price * product.qty)}</p>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -414,7 +415,7 @@ export default function Example(props: any) {
                                                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                                 <div className="mt-6">
                                                     <a
-                                                        href="#"
+                                                        href={`/checkout?item=${JSON.stringify(selectedProducts)}`}
                                                         className={`flex items-center justify-center rounded-md border border-transparent bg-[#0F172A] px-6 py-3 text-base font-medium text-white shadow-sm ${selectedProducts.length === 0 ? 'opacity-90 cursor-not-allowed' : 'hover:bg-[#161F34] transition-all duration-200 hover:scale-105'}`}
                                                         onClick={handleCheckout}
                                                     >

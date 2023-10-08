@@ -5,6 +5,7 @@ import React from 'react'
 type Props = {
     datas: Data[],
     Users_idUsers: string;
+    SKU: SKUData[],
 };
 
 type Data = {
@@ -23,7 +24,30 @@ type Data = {
     }
 };
 
-function myaddress({ datas, Users_idUsers }: Props) {
+type SKUData = {
+    _id: string,
+    size: string,
+    sku_id: {
+        _id: string,
+        Products_idProducts: string,
+        color: string,
+        goldWight: string,
+        price: number,
+        cost: number,
+        idPictures: {
+            path: string
+        }[],
+        deleted_at: string,
+        created_at: string,
+        updated_at: string,
+    }
+}
+
+function myaddress({ datas, Users_idUsers, SKU }: Props) {
+
+    const itemArray = SKU.map((item) => item.sku_id._id);
+    console.log(itemArray)
+
     return (
         <div className="mx-auto max-w-7xl p-4 bg-white">
             <h1 className="sm:text-xl text-2xl font-medium title-font mb-4 text-gray-900 text-center">
@@ -48,6 +72,11 @@ function myaddress({ datas, Users_idUsers }: Props) {
                                             </p> */}
                                         </div>
                                         <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                            <Link href={`/checkout?item=${JSON.stringify(itemArray)}&address=${JSON.stringify(address)}`}>
+                                                <input type="radio" name="choose" id="choose" />
+                                            </Link>
+                                        </div>
+                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                                             <Link href={`../../User/Address/Editads/${address._id}`}>
                                                 <PencilSquareIcon className="h-6 w-6 text-gray-500 hover:scale-105" />
                                             </Link>
@@ -68,7 +97,7 @@ function myaddress({ datas, Users_idUsers }: Props) {
                         )}
                     </ul>
                 </div>
-                <Link href={`../../User/Address/Addads/${Users_idUsers}`}>
+                <Link href={`../../../User/Address/ChoAddads/${Users_idUsers}`}>
                     <div className='text-center flex justify-center group hover:text-gray-900 hover:scale-100'>
                         <PlusCircleIcon className="h-5 w-5 text-gray-500 group-hover:text-gray-900" />
                         <p className='text-sm text-gray-500 truncate pl-2 group-hover:text-gray-900'>Create New Address</p>
