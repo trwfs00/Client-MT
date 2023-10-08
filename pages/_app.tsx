@@ -1,10 +1,10 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Inter, Playfair_Display, Noto_Sans_Thai } from 'next/font/google'
 import MyNav from '@/components/navigation'
 import AdminNav from '@/components/navadmin'
 import MyBanner from '@/components/banner'
 import MyFooter from '@/components/footer2'
+import { Inter, Playfair_Display, Noto_Sans_Thai } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import { stringify } from 'querystring'
 import { AuthProvider } from './AuthContext';

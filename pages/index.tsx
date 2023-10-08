@@ -85,12 +85,14 @@ export default function index({ datas }: Props) {
 
 
   return (
-    <main>
+    <main> 
       <Carousel />
       <Category />
       <Card datas={datas} />
       <Journey />
       <Contactus />
+      {/* <Contactus/> */}
+      {/* <Footer/> */}
     </main>
   )
 }

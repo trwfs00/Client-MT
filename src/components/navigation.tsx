@@ -3,6 +3,7 @@ import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
+import Search from '@/components/search'
 import {
   ArrowPathIcon,
   Bars3BottomLeftIcon,
@@ -173,7 +174,10 @@ const navigation = ({authCheck, cartData}: any) => {
           </Popover.Group>
         </div>
         <div className="flex lg:flex lg:flex-1 lg:justify-end gap-8">
-        <Search/>
+          <Search/>
+          {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
+            <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
+          </button> */}
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
