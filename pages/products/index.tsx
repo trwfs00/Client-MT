@@ -414,9 +414,9 @@ export default function index({ datas }: Props) {
                                                 </a>
                                             </h3>
                                             <p className="mt-1 text-sm text-gray-500">฿{product.idSKU[0]?.price}</p>
-                                            <button className="absolute bottom-20 right-4 h-10 flex lg text-md font-normal bg-black items-center rounded-sm py-2 px-2.5 hover:bg-gray-700 ">
+                                            <Link href={`./products/${product._id}`} className="absolute bottom-20 right-4 h-10 flex lg text-md font-normal bg-black items-center rounded-sm py-2 px-2.5 hover:bg-gray-700 ">
                                                 <ShoppingBagIcon className="h-5 w-5 text-white hover:text-white" />
-                                            </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 ))}

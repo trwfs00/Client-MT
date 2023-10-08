@@ -3,90 +3,185 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ClockIcon, MinusIcon, PlusIcon, ShoppingBagIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Inter } from 'next/font/google'
 import { select } from '@material-tailwind/react'
+import { useAuth } from '../../pages/AuthContext';
+import Link from 'next/link'
+
+
 const inter = Inter({
     subsets: ['latin'],
     weight: ['100', '200', '300', '400', '500', '600', '700'],
     variable: '--font-inter'
 })
 
+type Props = {
+    datas: Data[];
+}
+
+type Data = {
+    _id:string,
+    Users_idUsers:string,
+    SKUs:{
+        _id:string,
+        qty:number,
+        size:number
+    }[],
+}
+
+export const getServerSideProps = async () => {
+
+    const { auth, user } = useAuth();
+    const userID = user?._id
+
+    try {
+        const response = await fetch(`http://localhost:8080/cart/usercart?Users_idUsers=${userID}`);
+        const datas = await response.json();
+        console.log(datas)
+        return {
+            props: { datas },
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: { datas: [] },
+        };
+    }
+}
+
+
 function getRandomDate(start: Date, end: Date): Date {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
-interface Product {
-    id: number;
-    name: string;
-    href: string;
-    color: string;
-    price: string;
-    quantity: number;
-    imageSrc: string;
-    imageAlt: string;
-    createdAt: string;
-}
+// interface Product {
+//     id: string;
+//     name: string;
+//     href: string;
+//     color: string;
+//     price: string;
+//     quantity: number;
+//     imageSrc: string;
+//     imageAlt: string;
+//     createdAt: string;
+// }
 
-const products: Product[] = [
-    {
-        id: 1,
-        name: 'Throwback Hip Bag',
-        href: '#',
-        color: 'Salmon',
-        price: '$90.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-        imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-        createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
-    },
-    {
-        id: 2,
-        name: 'Medium Stuff Satchel',
-        href: '#',
-        color: 'Blue',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-        imageAlt:
-            'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-        createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
-    },
-    {
-        id: 3,
-        name: 'Medium Stuff Satchel #2',
-        href: '#',
-        color: 'Blue',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-        imageAlt:
-            'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-        createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
-    },
-    {
-        id: 4,
-        name: 'Medium Stuff Satchel #3',
-        href: '#',
-        color: 'Blue',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-        imageAlt:
-            'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-        createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
-    },
-    // More products...
-];
+// const products: Product[] = [
+//     {
+//         id: '1',
+//         name: 'Throwback Hip Bag',
+//         href: '#',
+//         color: 'Salmon',
+//         price: '$90.00',
+//         quantity: 1,
+//         imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+//         imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+//         createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
+//     },
+//     {
+//         id:' 2',
+//         name: 'Medium Stuff Satchel',
+//         href: '#',
+//         color: 'Blue',
+//         price: '$32.00',
+//         quantity: 1,
+//         imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+//         imageAlt:
+//             'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+//         createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
+//     },
+//     {
+//         id: '3',
+//         name: 'Medium Stuff Satchel #2',
+//         href: '#',
+//         color: 'Blue',
+//         price: '$32.00',
+//         quantity: 1,
+//         imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+//         imageAlt:
+//             'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+//         createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
+//     },
+//     {
+//         id: '4',
+//         name: 'Medium Stuff Satchel #3',
+//         href: '#',
+//         color: 'Blue',
+//         price: '$32.00',
+//         quantity: 1,
+//         imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+//         imageAlt:
+//             'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+//         createdAt: getRandomDate(new Date(2020, 0, 1), new Date()).toISOString(),
+//     },
+//     // More products...
+// ];
 
-export default function Example() {
+const productDefaults = [{
+    _id: {
+      $oid: "6521bf11ca2744b2c3c4b4ae"
+    },
+    Users_idUsers: {
+      $oid: "65214eb2eeac82f956d966a6"
+    },
+    SKUs: [
+      { SKUs_idSKUs: {
+          $oid: "6516b20babd5fbb4a17d75c8"
+        },
+        size: "52",
+        qty: 1,
+        _id: {
+          $oid: "6521bf57ca2744b2c3c4b4b1"
+        },
+        created_at: {
+          $date: "2023-10-07T20:28:07.884Z"
+        },
+        updated_at: {
+          $date: "2023-10-07T20:28:07.884Z"
+        }
+      },
+      {
+        SKUs_idSKUs: {
+          $oid: "6516ef47b3ea898c9b525dba"
+        },
+        size: "51",
+        qty: 1,
+        _id: {
+          $oid: "6521bf74ca2744b2c3c4b4b5"
+        },
+        created_at: {
+          $date: "2023-10-07T20:28:36.779Z"
+        },
+        updated_at: {
+          $date: "2023-10-07T20:28:36.779Z"
+        }
+      }
+    ],
+    __v: 2
+  }]
+
+export default function Example(props: any) {
+    const products = props.shoppingCart || productDefaults
     const [open, setOpen] = useState(false)
-    const [selectedProducts, setSelectedProducts] = useState<number[]>([]);
+    const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+    const [selectedObject, setSelectedObject] = useState<object[]>([]);
+    // const [products,setProducts] = useState(products)
+    useEffect(()=>{
+        console.log(props.shoppingCart?.SKUs);
+        console.log(props.shoppingCart?.SKUs[0]?.SKUs_idSKUs);  
+        //console.log(products[0].Users_idUsers || 'ควย')
+        //console.log(products[0].SKUs[0].SKUs_idSKUs.Products_idProducts.productName || 'ควย')
+    },[open])
 
-    const toggleProductSelection = (productId: number) => {
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    const toggleProductSelection = (productId: string, price: number) => {
         setSelectedProducts((prevSelectedProducts) => {
             if (prevSelectedProducts.includes(productId)) {
                 // If the product is already selected, remove it from the selectedProducts array
+                setTotalPrice(totalPrice-price);
                 return prevSelectedProducts.filter((id) => id !== productId);
             } else {
                 // If the product is not selected, add it to the selectedProducts array
+                setTotalPrice(totalPrice+price);
                 return [...prevSelectedProducts, productId];
             }
         });
@@ -102,6 +197,19 @@ export default function Example() {
         // Perform the checkout logic here
         // You can use the selectedProducts array for further processing
     };
+
+    function formatAsCurrency(number: any) {
+        if (typeof number !== 'number') {
+          throw new Error('Input must be a number');
+        }
+      
+        // Use toLocaleString to format the number with commas and no decimal places
+        return number.toLocaleString('th-TH', {
+          style: 'currency',
+          currency: 'THB',
+          maximumFractionDigits: 0 // Set this to 0 to remove decimal places
+        });
+      }
 
     function timestampToShortAgo(timestamp: string): string {
         const now = new Date();
@@ -130,23 +238,23 @@ export default function Example() {
         }
     }
 
-    // Check if all products are selected or deselected
-    const isAllProductsSelected = selectedProducts.length === products.length
+    //Check if all products are selected or deselected
+    const isAllProductsSelected = selectedProducts.length === products?.SKUs?.length
     const isNoProductSelected = selectedProducts.length === 0
 
     const toggleSelectAllProducts = () => {
         if (isAllProductsSelected || isNoProductSelected) {
             // If all products are selected or none are selected, toggle them all
-            setSelectedProducts(isAllProductsSelected ? [] : products.map((product) => product.id))
+            setSelectedProducts(isAllProductsSelected ? [] : products.SKUs.map((product: any) => product.SKUs_idSKUs._id))
         } else {
             // If some but not all products are selected, select all
-            setSelectedProducts(products.map((product) => product.id))
+            setSelectedProducts(products.SKUs.map((product: any) => product.SKUs_idSKUs._id))
         }
     }
 
 
     useEffect(() => {
-        console.log(selectedProducts)
+        console.log(selectedProducts);
     }, [selectedProducts])
 
     return (
@@ -214,22 +322,25 @@ export default function Example() {
                                                 <div className="mt-4">
                                                     <div className="flow-root">
                                                         <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                                            {products.map((product) => (
-                                                                <li key={product.id} className="flex py-6">
+                                                            {products.SKUs && products.SKUs.map((product: any) => (
+                                                                <li key={product.SKUs_idSKUs._id} className="flex py-6">
                                                                     <div className="flex items-center mx-3">
                                                                         <input
                                                                             name="selectItems"
                                                                             type="checkbox"
                                                                             className="h-4 w-4 rounded border-gray-300 text-gray-700 focus:ring-gray-900"
-                                                                            checked={selectedProducts.includes(product.id)}
-                                                                            onChange={() => toggleProductSelection(product.id)}
+                                                                            checked={selectedProducts.includes(product.SKUs_idSKUs._id)}
+                                                                            onChange={() => {
+                                                                                toggleProductSelection(product.SKUs_idSKUs._id, product.SKUs_idSKUs.price*product.qty)
+                                                                                //add function that toggle collect product.SKUs_idSKUs into selectedObject using useState like toggleProductSelection
+                                                                            }}
                                                                         />
                                                                     </div>
 
                                                                     <div className="h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                         <img
-                                                                            src={product.imageSrc}
-                                                                            alt={product.imageAlt}
+                                                                            src={product.SKUs_idSKUs.idPictures[0].path}
+                                                                            alt={product.SKUs_idSKUs.Products_idProducts.productName}
                                                                             className="h-full w-full object-cover object-center"
                                                                         />
                                                                     </div>
@@ -240,21 +351,21 @@ export default function Example() {
                                                                                 <div className="flex flex-col">
                                                                                     <div className='flex flex-row mb-1'>
                                                                                         <ClockIcon className="h-4 w-4 text-gray-500" />
-                                                                                        <p className='ml-1 text-xs text-gray-400 font-normal'>{timestampToShortAgo(product.createdAt)}</p>
+                                                                                        <p className='ml-1 text-xs text-gray-400 font-normal'>{timestampToShortAgo(product.SKUs_idSKUs.created_at)}</p>
                                                                                     </div>
                                                                                     <h3>
-                                                                                        <a href={product.href}>{product.name}</a>
+                                                                                        <Link href={`/product/${product.SKUs_idSKUs.Products_idProducts._id}`}>{product.SKUs_idSKUs.Products_idProducts.productName}</Link>
                                                                                     </h3>
                                                                                 </div>
                                                                             </div>
                                                                             <div className='flex flex-row gap-8'>
                                                                                 <span>
                                                                                     <p className="mt-1 text-sm text-gray-500 inline">Size: </p>
-                                                                                    <p className="mt-1 text-sm text-gray-700 inline">{product.color}</p>
+                                                                                    <p className="mt-1 text-sm text-gray-700 inline">{product.size}cm</p>
                                                                                 </span>
                                                                                 <span>
                                                                                     <p className="mt-1 text-sm text-gray-500 inline">Color: </p>
-                                                                                    <p className="mt-1 text-sm text-gray-700 inline">{product.color}</p>
+                                                                                    <p className="mt-1 text-sm text-gray-700 inline">{product.SKUs_idSKUs.color}</p>
                                                                                 </span>
                                                                             </div>
                                                                         </div>
@@ -275,7 +386,7 @@ export default function Example() {
                                                                                         <MinusIcon className="h-4 w-4 text-g[#424242]" />
                                                                                     </button>
                                                                                     <p className='text-md font-semibold mx-7'>
-                                                                                        {product.quantity}
+                                                                                        {product.qty}
                                                                                     </p>
                                                                                     <button
                                                                                         type="button"
@@ -285,7 +396,7 @@ export default function Example() {
                                                                                     </button>
                                                                                 </div>
                                                                             </div>
-                                                                            <p className="text-gray-800 text-xl font-semibold mt-2">{product.price}</p>
+                                                                            <p className="text-gray-800 text-xl font-semibold mt-2">{formatAsCurrency(product.SKUs_idSKUs.price*product.qty)}</p>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -298,7 +409,7 @@ export default function Example() {
                                             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                                                 <div className="flex justify-between text-md font-medium text-gray-900">
                                                     <p>Subtotal</p>
-                                                    <p>$262.00</p>
+                                                    <p>{formatAsCurrency(totalPrice)}</p>
                                                 </div>
                                                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                                 <div className="mt-6">

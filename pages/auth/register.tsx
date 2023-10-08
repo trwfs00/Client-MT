@@ -41,6 +41,8 @@ const register = () => {
     // const [dateOfbirth, setdateOfbirth] = useState('')
     const [relationship, setRelationship] = useState('')
 
+    // const [userID,setUserID] = useState('')
+
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
 
@@ -66,18 +68,27 @@ const register = () => {
             if (password === conpassword) {
                 console.log(fullname, email, password, conpassword, phone, gender, dateOfbirth, relationship)
                 try {
-                    await fetch('http://localhost:8080/user/register', {
+                    const register = await fetch('http://localhost:8080/user/register', {
                         method: "POST",
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, password, fullname, phone, gender, dateOfbirth, relationship })
                     })
+                    const _register = await register.json()
+                    console.log(_register)
+                    const userID = _register._id
+                    console.log(userID)
                     await fetch('http://localhost:8080/user/login', {
                         method: "POST",
                         headers: { 'Content-Type': 'application/json' },
                         credentials: 'include',
                         body: JSON.stringify({ email, password })
                     })
-
+                    await fetch('http://localhost:8080/cart/addcart',{
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify({ Users_idUsers:userID })
+                    })
                     await router.push('/');
                 } catch (err: any) {
                     setError(err)

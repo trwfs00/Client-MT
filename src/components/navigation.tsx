@@ -34,25 +34,52 @@ const callsToAction = [
   { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
 
+// type Props = {
+//   userExist: [UserExist]
+// }
+
+// type UserExist = {
+//   _id: string
+//   email: string,
+//   name: string,
+// }
+
 type Props = {
-  userExist: [UserExist]
+  authCheck:boolean,
+  cartData:{
+    _id:string,
+  Users_idUsers:string,
+  SKUs:{
+    _id:string,
+        qty:number,
+        size:number
+  }[],
+  }
 }
 
-type UserExist = {
-  _id: string
-  email: string,
-  name: string,
-}
 
 type Auth = {
   auth: boolean
+}
+
+type Cart = {
+  _id:string,
+  Users_idUsers:string,
+  SKUs:{
+    _id:string,
+        qty:number,
+        size:number
+  }[],  
 }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = (props: Auth) => {
+const navigation = ({authCheck, cartData}: any) => {
+
+  // console.log(authCheck[0]?.auth)
+  console.log(cartData)
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -80,6 +107,7 @@ const navigation = (props: Auth) => {
               <Image className="h-10 w-auto" src={MyLogo} alt="Logo" />
             </Link>
           </div>
+          
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
             <Link href="/products" className="text-md font-normal leading-6 text-gray-900">
               New Arrivals
@@ -147,16 +175,14 @@ const navigation = (props: Auth) => {
           <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
             <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </button>
-          {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
-            <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </button> */}
           <Link href="#" className="hidden lg:flex text-md font-normal leading-6 text-gray-900">
             <HeartIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
           </Link>
-          <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
+          {/* <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
             <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-          </button>
-          {props.auth
+          </button> */}
+          <ShopBag shoppingCart={cartData}/>
+          {authCheck
             ? <button type="button"
               className={" w-full lg:w-auto text-left"}
               onClick={handleLogout} >
@@ -165,8 +191,8 @@ const navigation = (props: Auth) => {
             : <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900"} />
           }
 
-          <ShopBag/>
-          <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} />
+          
+          {/* <Signin classNames={"hidden lg:flex text-md font-normal leading-6 text-gray-900 w-full"} /> */}
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -195,9 +221,6 @@ const navigation = (props: Auth) => {
               <button className="flex md:flex lg:flex text-md font-normal leading-6 text-gray-900">
                 <MagnifyingGlassIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
               </button>
-              {/* <button className="hidden md:flex lg:flex text-md font-normal leading-6 text-gray-900">
-                <CalendarDaysIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
-              </button> */}
               <button className="flex lg:flex text-md font-normal leading-6 text-gray-900">
                 <ShoppingBagIcon className="h-5 w-5 text-[#424242] translate-y-[0.15em]" />
               </button>
@@ -259,7 +282,7 @@ const navigation = (props: Auth) => {
                 </Link>
               </div>
               <div className="py-6">
-                {props.auth ?
+                {authCheck ?
                   <button type="button"
                     className={" w-full lg:w-auto text-left"}
                     onClick={handleLogout}

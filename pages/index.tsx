@@ -18,6 +18,8 @@ import Carousel from "@/components/carousel"
 import Journey from '@/components/journey'
 import { useAuth } from './AuthContext';
 import router from 'next/router'
+import { useState, useEffect } from 'react'
+
 
 type Props = {
   datas: Data[];
@@ -30,8 +32,8 @@ type Data = {
   productDesc: string;
   thumbnail: string;
   idSKU: {
-      _id: string;
-      price:string;
+    _id: string;
+    price: string;
   }[];
   created_at: string;
   updated_at: string;
@@ -40,23 +42,23 @@ type Data = {
 
 export const getServerSideProps = async () => {
   try {
-      const response = await fetch('http://localhost:8080/product/');
-      const datas = await response.json();
-
-      return {
-          props: { datas },
-      };
+    const response = await fetch('http://localhost:8080/product/');
+    const datas = await response.json();
+    return {
+      props: { datas },
+    };
   } catch (error) {
-      console.error('Error fetching data:', error);
-      return {
-          props: { datas: [] },
-      };
+    console.error('Error fetching data:', error);
+    return {
+      props: { datas: [] },
+    };
   }
 }
 
 export default function index({ datas }: Props) {
 
   const { auth, user } = useAuth();
+  // const [provinces,setProvinces] = useState([])
 
   // console.log(user?.isAdmin)
 
@@ -66,8 +68,20 @@ export default function index({ datas }: Props) {
   // }else{
   //   console.log('user')
   // }
-  
 
+  // useEffect(() => {
+  //   const fetchProvinces = async () => {
+  //     try {
+  //       const resProvinces = await fetch('https://ckartisan.com/api/provinces');
+  //       const provinceData = await resProvinces.json();
+  //       setProvinces(provinceData);
+  //       console.log(provinces);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchProvinces();
+  // }, [])
 
 
   return (

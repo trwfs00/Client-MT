@@ -37,14 +37,15 @@ const noto = Noto_Sans_Thai({
 
 interface User {
   isAdmin: boolean;
-
 }
+
 
 export default function App({ Component, pageProps }: AppProps) {
 
   const [message, setMessage] = useState('')
   const [auth, setAuth] = useState(false)
   const [user, setUser] = useState<User | null>(null)
+  const [cart, setCart] = useState()
 
   useEffect(() => {
     (
@@ -53,8 +54,8 @@ export default function App({ Component, pageProps }: AppProps) {
           const response = await fetch('http://localhost:8080/user/userExist', {
             credentials: "include"
           })
+          
           const userExist = await response.json()
-
           // console.log(userExist)
           if (userExist.auth === false) {
             // console.log(userExist)
@@ -66,6 +67,12 @@ export default function App({ Component, pageProps }: AppProps) {
             setUser(userExist)
             console.log(user)
           }
+          // * api cart 
+          const userID = userExist._id
+          const responseCart = await fetch(`http://localhost:8080/cart/usercart?Users_idUsers=${userID}`);
+          const cartData = await responseCart.json()
+          setCart(cartData)
+          console.log(cart)
         } catch (error) {
           console.log(error)
           setMessage(`Error: ${error}`)
@@ -87,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <main className={`${inter.variable} ${playfair.variable} ${noto.variable} `}>
       <MyBanner />
-      <MyNav auth={auth} />
+      <MyNav authCheck={auth} cartData={cart} />
         {/* {user?.isAdmin ? null : <MyBanner />}
         {user?.isAdmin ? <AdminNav/> : <MyNav auth={auth} />} */}
         <Component {...pageProps} />
