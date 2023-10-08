@@ -19,14 +19,13 @@ import Size from '@/components/size'
 
 export default function index() {
   return (
-    <main>
-      <Size/>
-      {/* <Carousel />
+    <main> 
+      <Carousel />
       <Category />
       <Card />
       <Journey />
-      <Contactus /> */}
-      {/* <Contactus/> */}
+      <Contactus /> 
+      <Contactus/>
     </main>
   )
 }
