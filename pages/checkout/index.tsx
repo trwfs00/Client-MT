@@ -214,6 +214,9 @@ function checkout() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ Orders_idOrders: orderID, SKUs: SKU })
                 })
+
+                router.push('./success')
+
             } catch (error) {
                 console.log(error)
             }

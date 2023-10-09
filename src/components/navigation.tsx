@@ -3,7 +3,7 @@ import MyLogo from '@/images/logo.svg';
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
-import Search from '@/components/search'
+// import Search from '@/components/search'
 import {
   ArrowPathIcon,
   Bars3BottomLeftIcon,
@@ -81,7 +81,7 @@ function classNames(...classes: string[]) {
 const navigation = ({authCheck, cartData}: any) => {
 
   // console.log(authCheck[0]?.auth)
-  console.log(cartData)
+  // console.log(cartData)
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
